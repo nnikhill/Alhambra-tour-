@@ -17,7 +17,9 @@ function common(isDev: boolean, upgrade: boolean) {
     "style-src 'self' 'unsafe-inline'",
     `img-src 'self' data: blob: https:`,
     "font-src 'self'",
-    `connect-src 'self'${isDev ? " ws:" : ""}`,
+    // Google Tag Manager / Google Analytics 4 (public pages).
+    `connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net${isDev ? " ws:" : ""}`,
+    "frame-src https://www.googletagmanager.com",
     "object-src 'none'",
     "base-uri 'self'",
     "form-action 'self'",
@@ -36,5 +38,5 @@ export function strictCsp(nonce: string, isDev = false, upgrade = !isDev) {
 }
 
 export function staticCsp(isDev = false, upgrade = !isDev) {
-  return [...common(isDev, upgrade), `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`, "frame-ancestors 'self'"].join("; ");
+  return [...common(isDev, upgrade), `script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.googletagmanager.com${isDev ? " 'unsafe-eval'" : ""}`, "frame-ancestors 'self'"].join("; ");
 }

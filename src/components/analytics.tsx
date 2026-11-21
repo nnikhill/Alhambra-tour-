@@ -2,12 +2,12 @@
 
 import { useEffect } from "react";
 
-// Vercel Web Analytics + affiliate click events, loaded from bundled JS so it
+// Vercel Web Analytics + affiliate click events (also pushed to the GTM dataLayer), loaded from bundled JS so it
 // also runs under the strict nonce CSP ('strict-dynamic' trusts scripts that
 // nonced code inserts). Replaces the old inline <script> tags in the layout.
 type Va = ((...args: unknown[]) => void) & { q?: unknown[] };
 declare global {
-  interface Window { va?: Va; vaq?: unknown[] }
+  interface Window { va?: Va; vaq?: unknown[]; dataLayer?: unknown[] }
 }
 
 export function Analytics({ vercel }: { vercel: boolean }) {
@@ -24,10 +24,13 @@ export function Analytics({ vercel }: { vercel: boolean }) {
     // + position in partner reports; this adds the click count.
     function onClick(e: MouseEvent) {
       const a = (e.target as Element | null)?.closest?.("a[data-track]") as HTMLAnchorElement | null;
-      if (!a || typeof window.va !== "function") return;
+      if (!a) return;
       let sub = "";
       try { sub = new URL(a.href).searchParams.get("sub_id") || ""; } catch {}
-      window.va("event", { name: a.getAttribute("data-track"), data: { sub_id: sub.slice(0, 120) } });
+      const name = a.getAttribute("data-track") || "affiliate_click";
+      if (typeof window.va === "function") window.va("event", { name, data: { sub_id: sub.slice(0, 120) } });
+      // Google Tag Manager: trigger on Custom Event "affiliate_click", read sub_id.
+      (window.dataLayer = window.dataLayer || []).push({ event: name, sub_id: sub.slice(0, 120), link_url: a.href });
     }
     document.addEventListener("click", onClick);
     return () => document.removeEventListener("click", onClick);
