@@ -16,7 +16,7 @@ export function Highlights() {
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {ITEMS.map((i) => (
             <figure key={i.title} className="overflow-hidden rounded-2xl bg-soft">
-              <img src={i.photo.src} srcSet={i.photo.srcSet} sizes="(min-width:1024px) 300px, 50vw" alt={i.photo.alt} loading="lazy" className="aspect-[4/5] w-full object-cover" />
+              <img src={i.photo.src} width={i.photo.width} height={i.photo.height} srcSet={i.photo.srcSet} sizes="(min-width:1024px) 300px, 50vw" alt={i.photo.alt} loading="lazy" className="aspect-[4/5] w-full object-cover" />
               <figcaption className="p-5">
                 <h3 className="text-lg font-bold">{i.title}</h3>
                 <p className="mt-1 text-[0.95rem] text-muted">{i.text}</p>

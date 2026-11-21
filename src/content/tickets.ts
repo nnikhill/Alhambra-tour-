@@ -1,6 +1,5 @@
-// Ticket-page content. Coverage reflects the official ticket descriptions;
-// the Alcazaba and the Andalusi (Albaicín) monuments have been closed since the
-// August 2026 earthquakes, so coverage notes say so.
+// Ticket-page content. Coverage reflects the official ticket descriptions.
+// The Alcazaba reopened on 23 Sep 2026 on an adapted route (official ticket site).
 
 export type Coverage = {
   nasrid: "day" | "night" | false;
@@ -27,15 +26,15 @@ export const FEATURED = ["general", "alhambra-experiences", "dobla-de-oro"] as c
 export const SOLD_OUT_STEPS = [
   {
     title: "Check Alhambra Experiences and Dobla de Oro",
-    text: "Same official site. Experiences gives you the palaces at night and the gardens next day; Dobla de Oro adds Albaicín monuments to a daytime visit. Both often outlast the General ticket.",
+    text: "Experiences gives you the palaces at night and the gardens next day; Dobla de Oro adds Albaicín monuments to a daytime visit. Both are official tickets that often outlast the General ticket.",
   },
   {
     title: "Book a guided tour with tickets included",
-    text: "Licensed operators hold 39% of the yearly tickets, so tours often have space when the official site shows sold out. It costs more because a guide is included.",
+    text: "Licensed operators book their own tickets in advance, so tours often have space when entry tickets are sold out. It costs more because a guide is included.",
   },
   {
-    title: "Try the official site again at midnight",
-    text: "Cancelled tickets are released back on the official site. Checking just after midnight Spanish time gives you the best chance.",
+    title: "Check entry tickets again the night before",
+    text: "Availability changes as tickets are cancelled and released. Look again the evening before your visit.",
   },
   {
     title: "Settle for the gardens",
@@ -44,11 +43,11 @@ export const SOLD_OUT_STEPS = [
 ];
 
 export const HOW_TO_BOOK = [
-  { title: "Go to tickets.alhambra-patronato.es", text: "The only official ticket site. Lookalike sites resell at a mark-up." },
-  { title: "Choose Alhambra General", text: "Pick the date first; greyed-out dates are sold out." },
-  { title: "Pick your Nasrid Palaces time", text: "A 30-minute slot. Choose one at least an hour after you plan to arrive." },
-  { title: "Enter each visitor's name and ID number", text: "Tickets are personal. Children under 12 go free but still need a ticket." },
-  { title: "Pay and save the PDF", text: "Tickets are non-refundable. Bring the same passport or ID you booked with." },
+  { title: "Choose a ticket that includes the Nasrid Palaces", text: "For a first visit you want the palaces by day. Gardens-only tickets don't include them." },
+  { title: "Pick your date and check the palace time", text: "Some resale tickets assign the Nasrid Palaces time by availability. Read the listing before you pay." },
+  { title: "Enter each visitor's name and ID number", text: "Tickets are personal. Children under 12 go free but still need a ticket in their name." },
+  { title: "Check the cancellation terms", text: "Alhambra tickets are often non-refundable. The terms are shown on each listing before you pay." },
+  { title: "Bring the same passport or ID", text: "Staff can check that it matches the name on the ticket." },
 ];
 
 export const TICKETS_FAQ = [
@@ -58,7 +57,7 @@ export const TICKETS_FAQ = [
   },
   {
     q: "How much are Alhambra tickets in 2026?",
-    a: "The General ticket costs €22.27 for adults when booked online. Night visits to the Nasrid Palaces cost €12.73, and the gardens-only ticket €12.73. Children under 12 go free.",
+    a: "The General ticket costs €22.27 for adults when booked online. Night visits to the Nasrid Palaces cost €12.73, and the gardens-only ticket €12.73. Children under 12 go free; EU citizens over 65, European Youth Card holders and people with a disability of 33% or more pay a reduced price with official proof.",
   },
   {
     q: "Which tickets include the Nasrid Palaces?",
@@ -69,11 +68,11 @@ export const TICKETS_FAQ = [
     a: "Only if any are left for that day, which is rare in spring, summer and autumn. Book online in advance.",
   },
   {
-    q: "Are tickets cheaper on the official site?",
-    a: "Yes. The official site sells at face value. Tour operators and resellers charge more because they include a guide, free cancellation or a ticket on dates the official site has sold out.",
+    q: "Why do resale tickets cost more than €22.27?",
+    a: "€22.27 is the official face value. Resellers such as GetYourGuide add a booking fee, and tours add a guide. In return you often get tickets on dates the official allocation has sold out.",
   },
   {
     q: "Is the Alcazaba included right now?",
-    a: "Tickets that list the Alcazaba still include it on paper, but it has been closed for safety inspections since the August 2026 earthquakes. Check the status before you go.",
+    a: "Yes. It reopened on 23 September 2026 on an adapted route after the August earthquakes, so some areas may still be closed off.",
   },
 ];

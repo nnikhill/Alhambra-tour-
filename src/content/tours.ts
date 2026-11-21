@@ -5,8 +5,6 @@
 export type TourType = {
   id: string;
   name: string;
-  priceFrom: number;
-  priceNote?: string;
   duration: string;
   group: string;
   nasrid: "day" | "night" | "no";
@@ -19,7 +17,6 @@ export const TOUR_TYPES: TourType[] = [
   {
     id: "group",
     name: "Group tour with Nasrid Palaces",
-    priceFrom: 49,
     duration: "About 3 hours",
     group: "Larger groups",
     nasrid: "day",
@@ -30,7 +27,6 @@ export const TOUR_TYPES: TourType[] = [
   {
     id: "small",
     name: "Small-group tour",
-    priceFrom: 69,
     duration: "About 3 hours",
     group: "Usually 15 or fewer",
     nasrid: "day",
@@ -41,8 +37,6 @@ export const TOUR_TYPES: TourType[] = [
   {
     id: "private",
     name: "Private tour",
-    priceFrom: 250,
-    priceNote: "price depends on group size",
     duration: "3–4 hours",
     group: "Just your party",
     nasrid: "day",
@@ -53,7 +47,6 @@ export const TOUR_TYPES: TourType[] = [
   {
     id: "night",
     name: "Night tour of the Nasrid Palaces",
-    priceFrom: 49,
     duration: "1.5–2 hours",
     group: "Small to mid-size groups",
     nasrid: "night",
@@ -64,18 +57,16 @@ export const TOUR_TYPES: TourType[] = [
   {
     id: "no-nasrid",
     name: "Gardens & Generalife tour",
-    priceFrom: 36,
     duration: "About 2 hours",
     group: "Mid-size groups",
     nasrid: "no",
     bestFor: "Last-minute dates when palace tours are full",
-    watchOut: "No Nasrid Palaces, and the Alcazaba is currently closed",
+    watchOut: "No Nasrid Palaces",
     query: "Alhambra Generalife guided tour",
   },
   {
     id: "daytrip",
     name: "Day trip from Seville or Málaga",
-    priceFrom: 175,
     duration: "11–13 hours",
     group: "Coach groups",
     nasrid: "day",
@@ -90,7 +81,7 @@ export const WORTH_IT = {
     "The Nasrid Palaces have almost no signs. A guide explains what the carvings and inscriptions say",
     "Tickets are included, often on dates the official site shows sold out",
     "Your guide gets you to the palace entrance for your fixed time slot",
-    "Most tours on GetYourGuide can be cancelled for free up to 24 hours before",
+    "Many tours on GetYourGuide offer free cancellation up to 24 hours before (check each listing)",
   ],
   no: [
     "It costs more than the €22.27 official ticket",
@@ -127,7 +118,7 @@ export const TOURS_FAQ = [
   },
   {
     q: "How much does an Alhambra guided tour cost?",
-    a: "Group tours with tickets start at around €49 per person, small-group tours around €69, and night tours around €49. Private tours start at about €250, depending on group size.",
+    a: "Every guided tour costs more than the €22.27 official ticket, because the guide and the ticket are included. Shared group tours are the cheapest, small-group and night tours cost more, and private tours are priced per group. Prices change daily, so check the live price on GetYourGuide.",
   },
   {
     q: "Do guided tours include the Alhambra entry ticket?",
@@ -138,7 +129,7 @@ export const TOURS_FAQ = [
     a: "English and Spanish tours run most often. French, German and Italian tours are also common. Choose the language when you book.",
   },
   {
-    q: "Are tours affected by the Alcazaba closure?",
-    a: "Tours still run. The Alcazaba fortress has been closed for inspections since the August 2026 earthquakes, so tours skip it until it reopens.",
+    q: "Do tours visit the Alcazaba?",
+    a: "Most full tours do. The Alcazaba reopened on 23 September 2026 on an adapted route after the August earthquakes, so some parts may still be closed off.",
   },
 ];

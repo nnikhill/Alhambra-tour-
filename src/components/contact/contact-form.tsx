@@ -2,35 +2,42 @@
 
 import { useState } from "react";
 import { Send, CheckCircle2 } from "lucide-react";
+import { CONTACT_EMAIL } from "@/lib/site";
 
+// No backend: the form opens the visitor's email app with the message filled in,
+// addressed to CONTACT_EMAIL. Nothing is sent or stored by this site, so the
+// confirmation says exactly that instead of claiming a message was received.
 export function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [opened, setOpened] = useState(false);
+
+  if (!CONTACT_EMAIL) {
+    return (
+      <p className="rounded-2xl border border-line bg-soft p-6 text-sm text-muted">
+        Our contact email isn&rsquo;t set up yet. Please check back soon.
+      </p>
+    );
+  }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setLoading(true);
-    // Simulate brief network submission
-    setTimeout(() => {
-      setLoading(false);
-      setSubmitted(true);
-    }, 600);
+    const f = new FormData(e.currentTarget);
+    const subject = `[${f.get("topic") ?? "Question"}] from ${f.get("name") ?? ""}`.slice(0, 150);
+    const body = `${f.get("message") ?? ""}\n\nReply to: ${f.get("email") ?? ""}`;
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setOpened(true);
   }
 
-  if (submitted) {
+  if (opened) {
     return (
       <div className="rounded-2xl border border-emerald-200 bg-emerald-50/70 p-8 text-center">
         <CheckCircle2 className="mx-auto size-12 text-emerald-600" />
-        <h3 className="mt-3 text-xl font-bold text-ink">Message received!</h3>
+        <h3 className="mt-3 text-xl font-bold text-ink">Your email app should now be open</h3>
         <p className="mt-2 text-sm text-muted">
-          Thank you for getting in touch. We read every email and typically reply within 24–48 hours.
+          Press send there to reach us. If nothing opened, email us directly at{" "}
+          <a href={`mailto:${CONTACT_EMAIL}`} className="font-semibold text-ink underline">{CONTACT_EMAIL}</a>.
         </p>
-        <button
-          type="button"
-          onClick={() => setSubmitted(false)}
-          className="btn btn-outline mt-5"
-        >
-          Send another message
+        <button type="button" onClick={() => setOpened(false)} className="btn btn-outline mt-5">
+          Back to the form
         </button>
       </div>
     );
@@ -99,18 +106,8 @@ export function ContactForm() {
         />
       </div>
 
-      <button
-        type="submit"
-        disabled={loading}
-        className="btn btn-primary min-h-12 w-full text-base sm:w-auto sm:px-8"
-      >
-        {loading ? (
-          "Sending message..."
-        ) : (
-          <>
-            <Send className="size-4" /> Send message
-          </>
-        )}
+      <button type="submit" className="btn btn-primary min-h-12 w-full text-base sm:w-auto sm:px-8">
+        <Send className="size-4" /> Open in my email app
       </button>
     </form>
   );

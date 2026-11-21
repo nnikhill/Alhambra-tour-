@@ -1,7 +1,7 @@
 import { Check, Minus } from "lucide-react";
-import { OFFICIAL_TICKETS, OFFICIAL_TICKET_URL } from "@/content/facts";
+import { OFFICIAL_TICKETS } from "@/content/facts";
 import { COVERAGE, FEATURED } from "@/content/tickets";
-import { gygUrl } from "@/lib/gyg";
+import { gygUrl, TICKET_GYG_KEY } from "@/lib/gyg";
 import { euro } from "@/lib/format";
 
 // Pricing-card layout (MotionSites "Smart Pricing"), restyled white: three
@@ -28,8 +28,8 @@ export function FeaturedTickets() {
             const rows = [
               { ok: !!c.nasrid, text: c.nasrid === "night" ? "Nasrid Palaces at night" : "Nasrid Palaces by day" },
               { ok: !!c.generalife, text: "Generalife and gardens" },
-              { ok: c.alcazaba, text: "Alcazaba (closed for now)" },
-              ...(c.albaicin ? [{ ok: true, text: "Albaicín monuments (closed for now)" }] : []),
+              { ok: c.alcazaba, text: "Alcazaba (adapted route)" },
+              ...(c.albaicin ? [{ ok: true, text: "Albaicín monuments" }] : []),
               ...(c.extra ? [{ ok: true, text: c.extra }] : []),
             ];
             return (
@@ -62,12 +62,13 @@ export function FeaturedTickets() {
 
                 <div className="mt-auto grid gap-2.5 pt-8">
                   <a
-                    href={OFFICIAL_TICKET_URL}
+                    href={gygUrl(TICKET_GYG_KEY[t.slug], { page: "tickets", position: `ticket_${t.slug}` })}
                     target="_blank"
-                    rel="noopener"
+                    rel="sponsored nofollow noopener"
                     className={`btn h-12 ${hot ? "btn-white" : "btn-primary"}`}
+                    data-track="affiliate_click"
                   >
-                    Book on the official site
+                    Check tickets on GetYourGuide
                   </a>
                   <a
                     href={gygUrl("Alhambra guided tour Nasrid Palaces", { page: "tickets", position: `featured_${t.slug}` })}

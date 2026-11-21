@@ -12,27 +12,19 @@ export type SiteStatus = {
   source: string;
 };
 
+const OFFICIAL_TICKETS_PAGE = "https://tickets.alhambra-patronato.es/en/";
+
 export const STATUS: SiteStatus[] = [
-  {
-    area: "Nasrid Palaces",
-    state: "open",
-    note: "Open on timed 30-minute slots",
-    source: "https://alhambradegranada.org/en/info/alhambranews/alhambra-reopens-granada-earthquakes-august-2026.asp",
-  },
+  { area: "Nasrid Palaces", state: "open", note: "Open, entry at the time on your ticket", source: OFFICIAL_TICKETS_PAGE },
   {
     area: "Alcazaba",
-    state: "closed",
-    note: "Closed for safety inspections after the August 2026 earthquakes",
-    since: "2026-08-19",
-    source: "https://alhambradegranada.org/en/info/alhambranews/alhambra-reopens-granada-earthquakes-august-2026.asp",
+    state: "limited",
+    note: "Reopened 23 Sep 2026 on an adapted route after the August earthquakes",
+    since: "2026-09-23",
+    source: OFFICIAL_TICKETS_PAGE,
   },
-  {
-    area: "Generalife & gardens",
-    state: "open",
-    note: "Open as normal",
-    source: "https://alhambradegranada.org/en/info/alhambranews/alhambra-reopens-granada-earthquakes-august-2026.asp",
-  },
-];
+  { area: "Generalife & gardens", state: "open", note: "Open as normal", source: OFFICIAL_TICKETS_PAGE },
+]
 
 export type OfficialTicket = {
   slug: string;
@@ -45,7 +37,7 @@ export type OfficialTicket = {
   bestFor: string;
 };
 
-// Prices: lovegranada.com/alhambra/prices and artvisitguide.com (Nov 2026). Re-verify before launch.
+// Prices: official price list, alhambra-patronato.es/en?p=13635 (checked 21 Nov 2026).
 export const OFFICIAL_TICKETS: OfficialTicket[] = [
   {
     slug: "general",
@@ -129,12 +121,9 @@ export const OFFICIAL_TICKETS: OfficialTicket[] = [
   },
 ];
 
+// Only facts confirmed on the official site. (Daily capacity, people per slot
+// and the operators' share were removed: no official source found.)
 export const KEY_FACTS = {
-  dailyTickets: 6600,
-  slotMinutes: 30,
-  peoplePerSlot: 300,
-  operatorShare: 39, // % of annual capacity sold through licensed operators
   generalPrice: 22.27,
-};
+}
 
-export const OFFICIAL_TICKET_URL = "https://tickets.alhambra-patronato.es/en/";

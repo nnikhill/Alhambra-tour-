@@ -164,3 +164,87 @@ export const changelog = pgTable("changelog", {
   userId: integer("user_id").references(() => users.id),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
+
+// ─── Blog CMS ────────────────────────────────────────────────────────────────
+// Posts are the source of truth for /blog/ and /blog/<slug>/. Content is
+// sanitized HTML (see src/lib/blog/sanitize.ts); GetYourGuide links are stored
+// as "gyg:<product key>" and turned into tracked affiliate URLs at render time.
+
+export type BookingCta = { title: string; text: string; label: string; query: string };
+export type FaqItem = { q: string; a: string };
+
+export const blogCategories = pgTable("blog_categories", {
+  id: serial("id").primaryKey(),
+  siteId: integer("site_id").references(() => sites.id).notNull(),
+  slug: text("slug").notNull(),
+  name: text("name").notNull(),
+  description: text("description"),
+}, (t) => [uniqueIndex("blog_categories_site_slug").on(t.siteId, t.slug)]);
+
+export const blogTags = pgTable("blog_tags", {
+  id: serial("id").primaryKey(),
+  siteId: integer("site_id").references(() => sites.id).notNull(),
+  slug: text("slug").notNull(),
+  name: text("name").notNull(),
+}, (t) => [uniqueIndex("blog_tags_site_slug").on(t.siteId, t.slug)]);
+
+export const posts = pgTable("posts", {
+  id: serial("id").primaryKey(),
+  siteId: integer("site_id").references(() => sites.id).notNull(),
+  slug: text("slug").notNull(),
+  title: text("title").notNull(),
+  excerpt: text("excerpt").notNull().default(""),
+  content: text("content").notNull().default(""), // sanitized HTML
+  status: pageStatus("status").notNull().default("draft"),
+  publishedAt: timestamp("published_at", { withTimezone: true }),
+  categoryId: integer("category_id").references(() => blogCategories.id),
+  authorId: integer("author_id").references(() => authors.id),
+  featuredImage: text("featured_image"),
+  featuredSrcSet: text("featured_src_set"),
+  featuredAlt: text("featured_alt").notNull().default(""),
+  featuredCredit: text("featured_credit"),
+  featuredWidth: integer("featured_width"),
+  featuredHeight: integer("featured_height"),
+  metaTitle: text("meta_title"),
+  metaDescription: text("meta_description"),
+  focusKeyword: text("focus_keyword"),
+  canonicalUrl: text("canonical_url"),
+  noindex: boolean("noindex").notNull().default(false),
+  ogTitle: text("og_title"),
+  ogDescription: text("og_description"),
+  ogImage: text("og_image"),
+  booking: jsonb("booking").$type<BookingCta | null>(),
+  faq: jsonb("faq").$type<FaqItem[]>().notNull().default([]),
+  relatedIds: integer("related_ids").array().notNull().default([]),
+  featured: boolean("featured").notNull().default(false),
+  readMins: integer("read_mins").notNull().default(1),
+  deletedAt: timestamp("deleted_at", { withTimezone: true }), // trash; null = live
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+  updatedBy: integer("updated_by").references(() => users.id),
+}, (t) => [
+  uniqueIndex("posts_site_slug").on(t.siteId, t.slug),
+  index("posts_site_status").on(t.siteId, t.status, t.publishedAt),
+]);
+
+export const postTags = pgTable("post_tags", {
+  postId: integer("post_id").references(() => posts.id, { onDelete: "cascade" }).notNull(),
+  tagId: integer("tag_id").references(() => blogTags.id, { onDelete: "cascade" }).notNull(),
+}, (t) => [uniqueIndex("post_tags_pk").on(t.postId, t.tagId)]);
+
+export const postRevisions = pgTable("post_revisions", {
+  id: serial("id").primaryKey(),
+  postId: integer("post_id").references(() => posts.id, { onDelete: "cascade" }).notNull(),
+  snapshot: jsonb("snapshot").$type<Record<string, unknown>>().notNull(),
+  note: text("note"),
+  userId: integer("user_id").references(() => users.id),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+}, (t) => [index("post_revisions_post").on(t.postId, t.createdAt)]);
+
+// Login throttling (works across serverless instances, unlike in-memory).
+export const authAttempts = pgTable("auth_attempts", {
+  key: text("key").primaryKey(), // "email:<addr>" or "ip:<addr>"
+  count: integer("count").notNull().default(0),
+  windowStart: timestamp("window_start", { withTimezone: true }).defaultNow().notNull(),
+  lockedUntil: timestamp("locked_until", { withTimezone: true }),
+});

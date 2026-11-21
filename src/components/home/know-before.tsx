@@ -1,11 +1,10 @@
 import { CalendarClock, IdCard, Ticket, TriangleAlert } from "lucide-react";
-import { KEY_FACTS } from "@/content/facts";
 
 const TIPS = [
   { icon: Ticket, title: "Book early", text: "General tickets often sell out weeks ahead in spring, summer and autumn." },
-  { icon: CalendarClock, title: "Your palace time is fixed", text: `The Nasrid Palaces run on ${KEY_FACTS.slotMinutes}-minute slots. Miss yours and you can't get in.` },
+  { icon: CalendarClock, title: "Your palace time is fixed", text: "You can only enter the Nasrid Palaces at the time on your ticket. Miss it and you can't get in." },
   { icon: IdCard, title: "Bring your ID", text: "Tickets carry your name. Bring the passport or ID you booked with." },
-  { icon: TriangleAlert, title: "Alcazaba closed", text: "The fortress has been closed for inspections since the August 2026 earthquakes." },
+  { icon: TriangleAlert, title: "Alcazaba open again", text: "The fortress reopened on 23 September 2026 on an adapted route after the August earthquakes." },
 ];
 
 export function KnowBefore() {

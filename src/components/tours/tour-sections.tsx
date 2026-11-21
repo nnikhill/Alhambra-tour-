@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Check, Moon, Sun, X } from "lucide-react";
 import { CHECKLIST, TOUR_DAY, TOUR_TYPES, WORTH_IT } from "@/content/tours";
 import { PHOTOS } from "@/content/photos";
@@ -26,7 +27,7 @@ export function WorthIt() {
                 <li key={n} className="flex gap-3"><X className="mt-0.5 size-5 shrink-0 text-[#9aa1ad]" aria-hidden />{n}</li>
               ))}
             </ul>
-            <a href="/tickets/" className="mt-6 inline-block font-semibold text-ink underline underline-offset-2">Compare official tickets instead</a>
+            <Link href="/tickets/" className="mt-6 inline-block font-semibold text-ink underline underline-offset-2">Compare official tickets instead</Link>
           </div>
         </div>
       </div>
@@ -40,7 +41,7 @@ export function TourTypes() {
     <section id="compare-tours" aria-labelledby="types-title" className="scroll-mt-24 bg-soft py-14 sm:py-16">
       <div className="wrap">
         <h2 id="types-title" className="section-title">Alhambra tour types compared</h2>
-        <p className="mt-2 max-w-[62ch] text-muted">Typical starting prices per person. You&rsquo;ll see the exact price for your date before you pay.</p>
+        <p className="mt-2 max-w-[62ch] text-muted">Every tour includes the entry ticket. Pick a style, then see live prices and times for your date on GetYourGuide.</p>
         <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {TOUR_TYPES.map((t) => (
             <article key={t.id} className="flex flex-col rounded-2xl border border-line bg-white p-6">
@@ -58,11 +59,7 @@ export function TourTypes() {
               <p className="mt-4 text-[0.93rem]"><span className="font-semibold">Best for:</span> <span className="text-muted">{t.bestFor}</span></p>
               <p className="mt-1 text-[0.93rem]"><span className="font-semibold">Watch out:</span> <span className="text-muted">{t.watchOut}</span></p>
               <div className="mt-auto flex items-end justify-between gap-3 pt-6">
-                <p className="leading-tight">
-                  <span className="block text-sm text-muted">From</span>
-                  <span className="text-2xl font-extrabold">€{t.priceFrom}</span>
-                  {t.priceNote && <span className="block text-[0.78rem] text-muted">{t.priceNote}</span>}
-                </p>
+                <p className="max-w-[12ch] text-sm leading-snug text-muted">Live prices on GetYourGuide</p>
                 <a
                   href={gygUrl(t.query, { page: "tours", position: `type_${t.id}` })}
                   target="_blank"
@@ -76,6 +73,10 @@ export function TourTypes() {
             </article>
           ))}
         </div>
+        <p className="mt-6 text-[0.95rem] text-muted">
+          Not staying in Granada? <Link href="/day-trips/" className="font-semibold text-ink underline underline-offset-2">Compare day trips from Seville and Málaga</Link>.{" "}
+          Not sure you need a guide? <Link href="/blog/alhambra-guided-tour-vs-self-guided/" className="font-semibold text-ink underline underline-offset-2">Guided vs self-guided</Link>.
+        </p>
       </div>
     </section>
   );
@@ -111,7 +112,7 @@ export function TourDay() {
   return (
     <section aria-labelledby="day-title" className="bg-soft py-14 sm:py-16">
       <div className="wrap grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-        <img src={p.src} srcSet={p.srcSet} sizes="(min-width:1024px) 480px, 100vw" alt={p.alt} loading="lazy" className="aspect-[4/5] w-full rounded-2xl object-cover" />
+        <img src={p.src} width={p.width} height={p.height} srcSet={p.srcSet} sizes="(min-width:1024px) 480px, 100vw" alt={p.alt} loading="lazy" className="aspect-[4/5] w-full rounded-2xl object-cover" />
         <div>
           <h2 id="day-title" className="section-title">What a typical 3-hour tour covers</h2>
           <ol className="mt-7 space-y-5">

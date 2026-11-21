@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowRight, Menu, X } from "lucide-react";
@@ -29,8 +29,10 @@ function ArchMark() {
 // (1fr each) so the nav sits on the true centre of the page.
 export function SiteHeader() {
   const path = usePathname() ?? "/";
-  const [open, setOpen] = useState(false);
-  useEffect(() => setOpen(false), [path]);
+  // The menu belongs to the page it was opened on, so navigating closes it
+  // without a state update inside an effect.
+  const [openOn, setOpenOn] = useState<string | null>(null);
+  const open = openOn === path;
 
   const isActive = (href: string) =>
     href === "/tickets/" ? path === "/tickets/" || path.startsWith("/tickets/sold-out") : path.startsWith(href);
@@ -38,10 +40,10 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 px-3 pt-3 sm:px-5">
       <div className="mx-auto max-w-[1280px] rounded-[2rem] border border-white/70 bg-white/85 shadow-[0_8px_30px_rgba(20,24,31,0.10)] backdrop-blur-md">
-        <div className="grid h-16 grid-cols-[1fr_auto] items-center gap-3 pl-4 pr-2 sm:pl-6 xl:grid-cols-[1fr_auto_1fr]">
-          <Link href="/" className="flex items-center gap-2 justify-self-start whitespace-nowrap font-serif text-[1.1rem] font-bold tracking-[-0.01em] no-underline sm:gap-2.5 sm:text-[1.25rem]">
+        <div className="grid h-16 grid-cols-[minmax(0,1fr)_auto] items-center gap-2 pl-3 pr-2 sm:gap-3 sm:pl-6 xl:grid-cols-[1fr_auto_1fr]">
+          <Link href="/" className="flex min-w-0 items-center gap-2 justify-self-start whitespace-nowrap font-serif text-[0.98rem] font-bold tracking-[-0.01em] no-underline sm:gap-2.5 sm:text-[1.25rem]">
             <ArchMark />
-            {SITE.name}
+            <span className="truncate">{SITE.name}</span>
           </Link>
 
           <nav aria-label="Main" className="hidden xl:block">
@@ -63,17 +65,17 @@ export function SiteHeader() {
           </nav>
 
           <div className="flex items-center gap-2 justify-self-end">
-            <Link href="/tickets/" className="btn btn-ink min-h-11 shrink-0 rounded-full px-4 text-[0.92rem] sm:min-h-12 sm:px-5 sm:text-[0.95rem]">
+            <Link href="/tickets/" className="btn btn-ink min-h-11 shrink-0 rounded-full px-3.5 text-[0.92rem] sm:min-h-12 sm:px-5 sm:text-[0.95rem]">
               <span className="hidden sm:inline">See tickets</span>
               <span className="sm:hidden">Tickets</span>
-              <ArrowRight className="size-4" aria-hidden />
+              <ArrowRight className="hidden size-4 sm:block" aria-hidden />
             </Link>
             <button
               type="button"
               aria-expanded={open}
               aria-controls="mobile-nav"
               aria-label={open ? "Close menu" : "Open menu"}
-              onClick={() => setOpen((o) => !o)}
+              onClick={() => setOpenOn((o) => (o === path ? null : path))}
               className="flex size-11 cursor-pointer items-center justify-center rounded-full bg-[#f4f1ec] text-ink xl:hidden"
             >
               {open ? <X className="size-5" aria-hidden /> : <Menu className="size-5" aria-hidden />}

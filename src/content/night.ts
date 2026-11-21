@@ -1,7 +1,6 @@
 // Night visit page content.
 // Schedule: alhambra-patronato.es (Nasrid Palaces night visit page) and
 // alhambradegranada.org/en/info/openingtimes.asp, checked Nov 2026.
-// Guided night tour "from" price: thebettervacation.com (€48 shared tour).
 
 export type NightSeason = {
   id: "summer" | "winter";
@@ -43,13 +42,12 @@ export function runsOn(d: Date) {
   return seasonFor(d).days.includes(d.getDay());
 }
 
-export const NIGHT_GUIDED_FROM = 49;
 export const NIGHT_QUERY = "Alhambra night tour Nasrid Palaces";
 
 export const DAY_VS_NIGHT: { label: string; day: string; night: string }[] = [
   { label: "Nasrid Palaces", day: "Yes", night: "Yes, lit after dark" },
   { label: "Generalife gardens", day: "Yes", night: "No (separate night ticket)" },
-  { label: "Alcazaba fortress", day: "Closed since Aug 2026", night: "No" },
+  { label: "Alcazaba fortress", day: "Yes (adapted route)", night: "No" },
   { label: "Time inside", day: "About 3 hours", night: "About 1.5 hours" },
   { label: "Official price", day: "€22.27", night: "€12.73" },
   { label: "Runs", day: "Every day", night: "2–5 nights a week" },
@@ -62,40 +60,40 @@ export type NightOption = {
   text: string;
   points: string[];
   featured?: boolean;
-  cta: { label: string; kind: "gyg" | "official" };
+  cta: { label: string; kind: "gyg" | "ticket" };
 };
 
 export const NIGHT_OPTIONS: NightOption[] = [
   {
     id: "guided",
     title: "Guided night tour",
-    price: `From €${NIGHT_GUIDED_FROM}`,
+    price: "Live price on GetYourGuide",
     text: "A licensed guide walks you through the palaces and explains what you're seeing in the dark.",
-    points: ["Night ticket included", "Often available when the official site is sold out", "Free cancellation on most tours"],
+    points: ["Night ticket included", "Often available when night tickets are gone", "Cancellation terms on each listing"],
     featured: true,
     cta: { label: "See night tours", kind: "gyg" },
   },
   {
     id: "ticket",
-    title: "Official night ticket",
-    price: "€12.73",
-    text: "The cheapest way in. You walk the palaces on your own at your booked time.",
-    points: ["Nasrid Palaces only", "No changes or refunds", "Sells out fast on weekends"],
-    cta: { label: "Official ticket site", kind: "official" },
+    title: "Night entry ticket",
+    price: "Official price €12.73",
+    text: "The cheapest way in. You walk the palaces on your own at your booked time. Resale tickets on GetYourGuide cost a little more.",
+    points: ["Nasrid Palaces only", "Usually no changes or refunds", "Sells out fast on weekends"],
+    cta: { label: "Night entry tickets", kind: "ticket" },
   },
   {
     id: "experiences",
     title: "Alhambra Experiences",
-    price: "€22.27",
-    text: "Palaces at night, then the Generalife and gardens by day the next morning.",
-    points: ["Night + day on one ticket", "Best if you're in Granada 2 days", "Same official site"],
-    cta: { label: "Official ticket site", kind: "official" },
+    price: "Official price €22.27",
+    text: "An official combined ticket: palaces at night, then the Generalife and gardens by day the next morning. GetYourGuide sells the night and gardens visits as separate tickets.",
+    points: ["Night + day on one ticket", "Best if you're in Granada 2 days", "Or book night + gardens tickets separately"],
+    cta: { label: "Compare night tickets", kind: "ticket" },
   },
 ];
 
 export const NIGHT_PLAN: { title: string; text: string }[] = [
   { title: "Pick a night it runs", text: "In winter that's only Friday and Saturday, so check your dates with the tool above before you plan dinner." },
-  { title: "Book a ticket or a guided tour", text: "Night tickets go fast on weekends. If the official site shows nothing, a guided night tour usually still has places." },
+  { title: "Book a ticket or a guided tour", text: "Night tickets go fast on weekends. If they are gone, a guided night tour with the ticket included often still has places." },
   { title: "Arrive 30 minutes early", text: "Bring the passport or ID you booked with. Your entry time is printed on the ticket and late arrivals can be refused." },
   { title: "Walk the palaces in the dark", text: "Mexuar, the Comares Palace and the Court of the Myrtles, then the Court of the Lions. No flash, please. It spoils the lighting for everyone." },
   { title: "See it lit up from across the valley", text: "Afterwards, head over to the Mirador de San Nicolás in the Albaicín for the classic view of the Alhambra glowing on its hill." },
@@ -108,7 +106,7 @@ export const NIGHT_FAQ = [
   },
   {
     q: "How much is the Alhambra night visit?",
-    a: "The official Nasrid Palaces night ticket costs €12.73. Guided night tours with the ticket included start at around €49 per person.",
+    a: "The official Nasrid Palaces night ticket costs €12.73. Resale tickets and guided night tours cost more; check the live price on GetYourGuide.",
   },
   {
     q: "What do you see on the night visit?",

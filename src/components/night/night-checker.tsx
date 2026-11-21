@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { CalendarDays, Clock, Moon } from "lucide-react";
 import { LAST_CHECKED } from "@/content/facts";
-import { NIGHT_GUIDED_FROM, NIGHT_QUERY, runsOn, seasonFor } from "@/content/night";
+import { NIGHT_QUERY, runsOn, seasonFor } from "@/content/night";
 import { gygUrl } from "@/lib/gyg";
 
 // Pick a date → does the night visit run, at what time, and if not, the
@@ -31,8 +31,11 @@ export function NightChecker() {
   const [iso, setIso] = useState(LAST_CHECKED);
   const [min, setMin] = useState(LAST_CHECKED);
 
+  // Today's date is only known in the browser; the static HTML ships
+  // LAST_CHECKED, then this syncs to the visitor's clock after hydration.
   useEffect(() => {
     const today = toIso(new Date());
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- sync with the client clock after hydration
     setIso(today);
     setMin(today);
   }, []);
@@ -65,7 +68,7 @@ export function NightChecker() {
           </p>
         </div>
 
-        <div key={iso} className="hero-fade" aria-live="polite">
+        <div aria-live="polite">
           {runs ? (
             <div className="rounded-xl bg-[#eef1f8] p-5">
               <p className="inline-flex items-center gap-2 text-sm font-semibold text-[#17733f]">
@@ -107,7 +110,7 @@ export function NightChecker() {
       <div className="mt-6 flex flex-col gap-3 border-t border-line pt-5 sm:flex-row sm:items-center sm:justify-between">
         <p className="flex items-center gap-2 text-[0.95rem] text-muted">
           <Moon className="size-5 text-brand" aria-hidden />
-          Guided night tours from <span className="font-bold text-ink">€{NIGHT_GUIDED_FROM}</span>, ticket included
+          Guided night tours with the ticket included
         </p>
         <a
           href={gygUrl(NIGHT_QUERY, { page: "night", position: runs ? "checker_runs" : "checker_next" })}

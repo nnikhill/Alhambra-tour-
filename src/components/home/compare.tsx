@@ -1,12 +1,12 @@
 import { Check, X } from "lucide-react";
-import { OFFICIAL_TICKET_URL, KEY_FACTS } from "@/content/facts";
+import { KEY_FACTS } from "@/content/facts";
 import { gygUrl } from "@/lib/gyg";
 
 const ROWS: { label: string; official: boolean | string; tour: boolean | string }[] = [
-  { label: "Price per adult", official: `€${KEY_FACTS.generalPrice}`, tour: "From €49" },
+  { label: "Price per adult", official: `Official €${KEY_FACTS.generalPrice} + booking fee`, tour: "Higher: guide included" },
   { label: "Nasrid Palaces included", official: true, tour: true },
   { label: "Available for most dates", official: "Often sold out", tour: true },
-  { label: "Free cancellation", official: false, tour: "On most tours" },
+  { label: "Cancellation", official: "Usually non-refundable", tour: "Varies: check the listing" },
   { label: "Expert guide", official: false, tour: true },
   { label: "Gets you to your palace slot on time", official: false, tour: true },
 ];
@@ -22,21 +22,21 @@ export function Compare() {
     <section id="compare" aria-labelledby="compare-title" className="scroll-mt-24 bg-soft py-16 sm:py-20">
       <div className="wrap grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
         <div>
-          <h2 id="compare-title" className="section-title">Official ticket or guided tour?</h2>
+          <h2 id="compare-title" className="section-title">Entry ticket or guided tour?</h2>
           <p className="mt-4 text-muted">
-            If your date is available on the official site and you&rsquo;re happy exploring alone, the official ticket is the cheapest way in. If it&rsquo;s sold out, or you want a guide, book a tour.
+            Happy exploring alone? An entry ticket is the cheapest way in. Want the history explained, or are entry tickets gone for your date? Book a guided tour with the ticket included.
           </p>
           <p className="mt-4 text-muted">
-            Licensed tour operators hold {KEY_FACTS.operatorShare}% of the Alhambra&rsquo;s yearly tickets, which is why tours still have space when the official site doesn&rsquo;t.
+            Licensed tour operators book their own tickets in advance, which is why tours often still have places when entry tickets are gone.
           </p>
         </div>
 
-        <div className="overflow-hidden rounded-2xl border border-line bg-white">
+        <div className="overflow-x-auto rounded-2xl border border-line bg-white">
           <table className="w-full text-center text-[0.97rem]">
             <thead>
               <tr className="border-b border-line">
                 <th scope="col" className="w-[44%] p-4 text-left text-sm font-medium text-muted"><span className="sr-only">Feature</span></th>
-                <th scope="col" className="p-4 font-bold">Official ticket</th>
+                <th scope="col" className="p-4 font-bold">Entry ticket</th>
                 <th scope="col" className="bg-[#eef1f8] p-4 font-bold text-brand">Guided tour</th>
               </tr>
             </thead>
@@ -51,7 +51,15 @@ export function Compare() {
               <tr>
                 <td className="p-4" />
                 <td className="p-4">
-                  <a href={OFFICIAL_TICKET_URL} target="_blank" rel="noopener" className="btn btn-outline min-h-11 w-full px-3 text-[0.92rem]">Official site</a>
+                  <a
+                    href={gygUrl("Alhambra entry ticket", { page: "home", position: "compare_ticket" })}
+                    target="_blank"
+                    rel="sponsored nofollow noopener"
+                    className="btn btn-outline min-h-11 w-full px-3 text-[0.92rem]"
+                    data-track="affiliate_click"
+                  >
+                    See tickets
+                  </a>
                 </td>
                 <td className="bg-[#f6f8fc] p-4">
                   <a

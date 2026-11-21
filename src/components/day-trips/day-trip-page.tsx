@@ -8,9 +8,10 @@ import { FinalCta } from "@/components/home/final-cta";
 import { CITIES, DAY_TRIP_CHECKLIST, type City } from "@/content/day-trips";
 import { LAST_CHECKED } from "@/content/facts";
 import { PHOTOS } from "@/content/photos";
-import { SITE, absoluteUrl } from "@/lib/site";
+import { AUTHOR, SITE, absoluteUrl } from "@/lib/site";
 import { formatDate } from "@/lib/format";
 import { gygUrl } from "@/lib/gyg";
+import { AffiliateNote } from "@/components/affiliate-note";
 
 // One template, one data entry per departure city.
 export function DayTripPage({ slug }: { slug: City["slug"] }) {
@@ -26,9 +27,11 @@ export function DayTripPage({ slug }: { slug: City["slug"] }) {
             "@context": "https://schema.org",
             "@type": "Article",
             headline: `Alhambra day trip from ${c.name}: tours, prices and how to do it`,
+            image: absoluteUrl("/images/og-default.jpg"),
+            datePublished: "2026-11-21",
             dateModified: LAST_CHECKED,
-            author: { "@type": "Organization", name: SITE.name, url: SITE.url },
-            publisher: { "@type": "Organization", name: SITE.name },
+            author: { "@type": "Organization", name: AUTHOR.name, url: AUTHOR.url },
+            publisher: { "@type": "Organization", name: SITE.name, url: SITE.url, logo: { "@type": "ImageObject", url: absoluteUrl("/images/logo.png") } },
             mainEntityOfPage: absoluteUrl(c.path),
           },
           {
@@ -44,25 +47,30 @@ export function DayTripPage({ slug }: { slug: City["slug"] }) {
         <section className="bg-white">
           <div className="wrap pb-6 pt-8 sm:pt-10">
             <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: "/day-trips/", label: "Day trips" }, { href: c.path, label: `From ${c.name}` }]} />
-            <p className="mt-6 text-[0.9rem] text-muted">Updated {formatDate(LAST_CHECKED)}</p>
-            <div className="hero-rise mt-3 grid gap-6 lg:grid-cols-[1.6fr_1fr] lg:items-end">
+            <div className="mt-6 grid gap-6 lg:grid-cols-[1.6fr_1fr] lg:items-end">
               <h1 className="font-serif text-[clamp(2.3rem,5.6vw,4.6rem)] font-bold leading-[1] tracking-[-0.03em]">
                 Alhambra day trip from {c.name}
               </h1>
               <p className="max-w-[26rem] text-[1.05rem] leading-relaxed text-muted lg:justify-self-end lg:pb-2 lg:text-right">{c.intro}</p>
             </div>
 
-            <dl className="hero-rise mt-8 grid grid-cols-2 gap-y-4 border-y border-line py-5 md:grid-cols-4">
+            <dl className="mt-8 grid grid-cols-2 gap-y-4 border-y border-line py-5 md:grid-cols-4">
               {c.facts.map((f, i) => (
-                <div key={f.label} className={`px-1 md:px-5 ${i > 0 ? "md:border-l md:border-line" : ""}`}>
-                  <dd className="font-serif text-[1.7rem] font-bold leading-none">{f.value}</dd>
+                <div key={f.label} className={`flex flex-col-reverse px-1 md:px-5 ${i > 0 ? "md:border-l md:border-line" : ""}`}>
                   <dt className="mt-1.5 text-[0.88rem] text-muted">{f.label}</dt>
+                  <dd className="font-serif text-[1.7rem] font-bold leading-none">{f.value}</dd>
                 </div>
               ))}
             </dl>
 
-            <div className="hero-rise mt-8">
+            <div className="mt-8">
               <DayPlanner slug={slug} />
+            </div>
+            {/* Disclosure + freshness right under the first booking button */}
+            <div className="mt-3 flex flex-col gap-1 text-[0.85rem] text-muted sm:flex-row sm:items-baseline sm:gap-3">
+              <span className="shrink-0">Updated {formatDate(LAST_CHECKED)}</span>
+              <span aria-hidden className="hidden sm:inline">·</span>
+              <AffiliateNote className="text-[0.85rem]" />
             </div>
           </div>
         </section>
@@ -137,7 +145,7 @@ export function DayTripPage({ slug }: { slug: City["slug"] }) {
         {/* Overnight / cruise */}
         <section aria-labelledby="stay-title" className="py-14 sm:py-16">
           <div className="wrap grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-            <img src={photo.src} srcSet={photo.srcSet} sizes="(min-width:1024px) 480px, 100vw" alt={photo.alt} loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover" />
+            <img src={photo.src} width={photo.width} height={photo.height} srcSet={photo.srcSet} sizes="(min-width:1024px) 480px, 100vw" alt={photo.alt} loading="lazy" className="aspect-[4/3] w-full rounded-2xl object-cover" />
             <div>
               <h2 id="stay-title" className="section-title">{c.overnight.title}</h2>
               <p className="mt-3 max-w-[54ch] text-muted">{c.overnight.text}</p>
@@ -164,9 +172,12 @@ export function DayTripPage({ slug }: { slug: City["slug"] }) {
           <Link href={c.other.path} className="inline-flex items-center gap-2 font-semibold text-ink underline underline-offset-2">
             Leaving from {c.other.name} instead? <ArrowRight className="size-4" aria-hidden />
           </Link>
+          <p className="mt-3 text-[0.95rem] text-muted">
+            Staying overnight? Plan <Link href="/blog/granada-in-one-day/" className="font-semibold text-ink underline underline-offset-2">Granada in one day</Link>.
+          </p>
         </div>
 
-        <FinalCta />
+        <FinalCta page={`daytrip_${slug}`} />
       </main>
     </>
   );

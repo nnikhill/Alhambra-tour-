@@ -5,6 +5,7 @@ import { Check, Minus, Moon, Sun } from "lucide-react";
 import { OFFICIAL_TICKETS, LAST_CHECKED } from "@/content/facts";
 import { COVERAGE } from "@/content/tickets";
 import { euro, formatDate } from "@/lib/format";
+import { gygUrl, TICKET_GYG_KEY } from "@/lib/gyg";
 
 type Filter = "all" | "palaces" | "night" | "gardens";
 
@@ -23,13 +24,13 @@ function match(slug: string, f: Filter) {
   return true;
 }
 
-function Mark({ v, closed }: { v: boolean | "day" | "night"; closed?: boolean }) {
+function Mark({ v, note }: { v: boolean | "day" | "night"; note?: string }) {
   if (!v) return <Minus className="mx-auto size-4 text-[#b4b9c2]" aria-label="Not included" />;
   return (
     <span className="inline-flex items-center gap-1">
       {v === "night" ? <Moon className="size-4 text-brand" aria-hidden /> : v === "day" ? <Sun className="size-4 text-[#c98a12]" aria-hidden /> : <Check className="size-4 text-brand" aria-hidden />}
       <span className="sr-only">{v === "night" ? "At night" : v === "day" ? "By day" : "Included"}</span>
-      {closed && <span className="text-[0.72rem] font-semibold text-alert">closed</span>}
+      {note && <span className="text-[0.72rem] font-medium text-muted">{note}</span>}
     </span>
   );
 }
@@ -46,13 +47,12 @@ export function AllTickets() {
           <p className="text-sm text-muted">Adult online prices, checked {formatDate(LAST_CHECKED)}</p>
         </div>
 
-        <div role="tablist" aria-label="Filter tickets" className="mt-6 flex gap-2 overflow-x-auto [scrollbar-width:none]">
+        <div role="group" aria-label="Filter tickets" className="mt-6 flex gap-2 overflow-x-auto [scrollbar-width:none]">
           {FILTERS.map((x) => (
             <button
               key={x.id}
-              role="tab"
               type="button"
-              aria-selected={f === x.id}
+              aria-pressed={f === x.id}
               onClick={() => setF(x.id)}
               className={`min-h-10 shrink-0 cursor-pointer rounded-full px-4 text-[0.92rem] font-semibold transition-colors ${
                 f === x.id ? "bg-ink text-white" : "bg-white text-muted ring-1 ring-line hover:text-ink"
@@ -64,7 +64,7 @@ export function AllTickets() {
         </div>
 
         <div className="relative mt-6 overflow-x-auto rounded-2xl border border-line bg-white">
-          <table className="w-full min-w-[820px] text-[0.95rem]">
+          <table className="w-full min-w-[900px] text-[0.95rem]">
             <thead>
               <tr className="border-b border-line text-left text-sm text-muted">
                 <th scope="col" className="p-4 font-medium">Ticket</th>
@@ -74,6 +74,7 @@ export function AllTickets() {
                 <th scope="col" className="p-4 text-center font-medium">Alcazaba</th>
                 <th scope="col" className="p-4 text-center font-medium">Albaicín monuments</th>
                 <th scope="col" className="p-4 font-medium">Best for</th>
+                <th scope="col" className="p-4 font-medium"><span className="sr-only">Book</span></th>
               </tr>
             </thead>
             <tbody>
@@ -88,9 +89,21 @@ export function AllTickets() {
                     <td className="whitespace-nowrap p-4 text-right font-bold tabular-nums">{euro(t.price)}</td>
                     <td className="p-4 text-center"><Mark v={c.nasrid} /></td>
                     <td className="p-4 text-center"><Mark v={c.generalife} /></td>
-                    <td className="p-4 text-center"><Mark v={c.alcazaba} closed={c.alcazaba} /></td>
-                    <td className="p-4 text-center"><Mark v={c.albaicin} closed={c.albaicin} /></td>
+                    <td className="p-4 text-center"><Mark v={c.alcazaba} note={c.alcazaba ? "adapted route" : undefined} /></td>
+                    <td className="p-4 text-center"><Mark v={c.albaicin} /></td>
                     <td className="p-4 text-muted">{t.bestFor}</td>
+                    <td className="p-4 text-right">
+                      <a
+                        href={gygUrl(TICKET_GYG_KEY[t.slug], { page: "tickets", position: `table_${t.slug}` })}
+                        target="_blank"
+                        rel="sponsored nofollow noopener"
+                        className="btn btn-outline min-h-10 whitespace-nowrap px-4 text-[0.9rem]"
+                        data-track="affiliate_click"
+                        aria-label={`Check dates: ${t.name}`}
+                      >
+                        Check dates
+                      </a>
+                    </td>
                   </tr>
                 );
               })}
@@ -100,7 +113,7 @@ export function AllTickets() {
         <p className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted">
           <span className="inline-flex items-center gap-1.5"><Sun className="size-4 text-[#c98a12]" aria-hidden /> By day</span>
           <span className="inline-flex items-center gap-1.5"><Moon className="size-4 text-brand" aria-hidden /> At night</span>
-          <span>Alcazaba and Albaicín monuments closed since the August 2026 earthquakes</span>
+          <span>Official prices, checked {formatDate(LAST_CHECKED)}. Resale tickets cost more.</span>
         </p>
       </div>
     </section>

@@ -1,4 +1,3 @@
-import { OFFICIAL_TICKET_URL } from "@/content/facts";
 import { HOW_TO_BOOK, SOLD_OUT_STEPS } from "@/content/tickets";
 import { PHOTOS } from "@/content/photos";
 import { gygUrl } from "@/lib/gyg";
@@ -42,14 +41,14 @@ export function SoldOutPlan() {
   );
 }
 
-/* How to book on the official site — also a real sequence. */
+/* How to book an entry ticket — also a real sequence. */
 export function HowToBook() {
   const p = PHOTOS.myrtles;
   return (
     <section aria-labelledby="howto-title" className="bg-soft py-14 sm:py-16">
       <div className="wrap grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
         <div>
-          <h2 id="howto-title" className="section-title">How to buy Alhambra tickets on the official site</h2>
+          <h2 id="howto-title" className="section-title">How to book Alhambra tickets</h2>
           <ol className="mt-7 space-y-5">
             {HOW_TO_BOOK.map((s, i) => (
               <li key={s.title} className="grid grid-cols-[2.25rem_1fr] gap-4">
@@ -61,11 +60,17 @@ export function HowToBook() {
               </li>
             ))}
           </ol>
-          <a href={OFFICIAL_TICKET_URL} target="_blank" rel="noopener" className="btn btn-outline mt-8 h-12">
-            Open the official ticket site
+          <a
+            href={gygUrl("Alhambra entry ticket", { page: "tickets", position: "howto" })}
+            target="_blank"
+            rel="sponsored nofollow noopener"
+            className="btn btn-primary mt-8 h-12"
+            data-track="affiliate_click"
+          >
+            See Alhambra entry tickets
           </a>
         </div>
-        <img src={p.src} srcSet={p.srcSet} sizes="(min-width:1024px) 520px, 100vw" alt={p.alt} loading="lazy" className="aspect-[4/5] w-full rounded-2xl object-cover" />
+        <img src={p.src} width={p.width} height={p.height} srcSet={p.srcSet} sizes="(min-width:1024px) 520px, 100vw" alt={p.alt} loading="lazy" className="aspect-[4/5] w-full rounded-2xl object-cover" />
       </div>
     </section>
   );

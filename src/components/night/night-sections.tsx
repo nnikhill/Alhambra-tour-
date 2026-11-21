@@ -1,6 +1,6 @@
+import Link from "next/link";
 import { Check } from "lucide-react";
 import { DAY_VS_NIGHT, NIGHT_OPTIONS, NIGHT_PLAN, NIGHT_QUERY } from "@/content/night";
-import { OFFICIAL_TICKET_URL } from "@/content/facts";
 import { PHOTOS } from "@/content/photos";
 import { gygUrl } from "@/lib/gyg";
 
@@ -15,7 +15,7 @@ export function DayVsNight() {
             The night visit is the Nasrid Palaces only, with soft lighting and far fewer people. It&rsquo;s the best second visit
             there is. If you only have one visit, go by day so you also get the gardens.
           </p>
-          <a href="/tickets/" className="mt-5 inline-block font-semibold text-ink underline underline-offset-2">Compare all ticket types</a>
+          <Link href="/tickets/" className="mt-5 inline-block font-semibold text-ink underline underline-offset-2">Compare all ticket types</Link>
         </div>
         <div className="overflow-x-auto rounded-2xl border border-line">
           <table className="w-full min-w-[30rem] text-left text-[0.95rem]">
@@ -48,7 +48,7 @@ export function NightOptions() {
     <section id="night-options" aria-labelledby="opts-title" className="scroll-mt-24 bg-soft py-14 sm:py-16">
       <div className="wrap">
         <h2 id="opts-title" className="section-title">3 ways to see the Alhambra at night</h2>
-        <p className="mt-2 max-w-[62ch] text-muted">Prices per adult. Tours show the exact price for your date before you pay.</p>
+        <p className="mt-2 max-w-[62ch] text-muted">Official prices per adult. Tours and resale tickets show the live price for your date before you pay.</p>
         <div className="mt-8 grid gap-5 md:grid-cols-3">
           {NIGHT_OPTIONS.map((o) => (
             <article
@@ -81,7 +81,13 @@ export function NightOptions() {
                     {o.cta.label}
                   </a>
                 ) : (
-                  <a href={OFFICIAL_TICKET_URL} target="_blank" rel="noopener" className="btn btn-outline h-12 w-full">
+                  <a
+                    href={gygUrl("Alhambra night entry ticket", { page: "night", position: `ticket_${o.id}` })}
+                    target="_blank"
+                    rel="sponsored nofollow noopener"
+                    className="btn btn-outline h-12 w-full"
+                    data-track="affiliate_click"
+                  >
                     {o.cta.label}
                   </a>
                 )}
@@ -115,7 +121,7 @@ export function NightPlan() {
           </ol>
         </div>
         <img
-          src={p.src}
+          src={p.src} width={p.width} height={p.height}
           srcSet={p.srcSet}
           sizes="(min-width:1024px) 440px, 100vw"
           alt={p.alt}

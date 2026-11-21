@@ -26,7 +26,7 @@ export function StickyCta() {
       <div className="flex items-center gap-3">
         <p className="text-sm leading-tight">
           <span className="block text-muted">Tours with tickets</span>
-          <span className="font-extrabold">From €49</span>
+          <span className="font-extrabold">Nasrid Palaces included</span>
         </p>
         <a
           href={gygUrl("Alhambra guided tour Nasrid Palaces", { page: "home", position: "sticky_mobile" })}

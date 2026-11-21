@@ -9,7 +9,7 @@ export const PLAN_FACTS = [
   { value: "8:30", label: "opens every day" },
   { value: "~3 h", label: "for a full visit" },
   { value: "€22.27", label: "General ticket" },
-  { value: "300", label: "people per 30-min palace slot" },
+  { value: "2", label: "closed days a year" },
 ];
 
 export const HOURS = [
@@ -77,6 +77,6 @@ export const PLAN_FAQ = [
   },
   {
     q: "Is the Alcazaba open?",
-    a: "No. The Alcazaba has been closed since the August 2026 earthquakes. The Nasrid Palaces, the Generalife and the gardens are open as normal.",
+    a: "Yes. It reopened on 23 September 2026 on an adapted route after the August 2026 earthquakes. Some areas may still be closed off.",
   },
 ];

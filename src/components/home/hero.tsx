@@ -1,26 +1,25 @@
 "use client";
 
 import { useState } from "react";
-import { Bus, ChevronDown, Moon, Languages, Search, ShieldCheck, Sun, Ticket, Users } from "lucide-react";
+import { ArrowRight, ChevronDown, Languages, Search, Ticket, Users } from "lucide-react";
 import { PHOTOS } from "@/content/photos";
 import { gygUrl } from "@/lib/gyg";
-import { AffiliateNote } from "@/components/affiliate-note";
+import Link from "next/link";
 
-// Full-bleed photo hero (from the user's sunset mockup) keeping the working
-// search bar. The sky side of the photo carries the headline; a light wash
-// keeps it readable, the palace stays visible below the search bar.
+// Home hero: centred heritage-tourism layout (MotionSites "Mostar Guide"
+// direction, rebuilt with DESIGN.md tokens). Goal is booking, so the fold is:
+// headline -> one sentence -> one search card -> done. No entrance animation.
 //
-// SEO: H1 leads with the head term "Alhambra tickets"; the intro carries
-// "guided tours", "Nasrid Palaces" and "Granada".
-// Conversion: the search bar is the single action on the fold. Every field
-// shapes the GetYourGuide search; nothing is a decoy.
+// SEO: H1 leads with the head term "Alhambra tickets".
+// Conversion: the navy search button is the single primary action; the card
+// footer offers the entry-ticket path and carries the affiliate disclosure
+// right next to the links it describes.
 
-type Tab = "day" | "night" | "trip";
+type Kind = "day" | "night" | "trip";
 
-const WHAT: { id: Tab; group: string; icon: typeof Sun; options: { label: string; q: string }[] }[] = [
+const WHAT: { kind: Kind; group: string; options: { label: string; q: string }[] }[] = [
   {
-    id: "day",
-    icon: Sun,
+    kind: "day",
     group: "Day visit",
     options: [
       { label: "Guided tour with Nasrid Palaces", q: "Alhambra guided tour Nasrid Palaces" },
@@ -30,8 +29,7 @@ const WHAT: { id: Tab; group: string; icon: typeof Sun; options: { label: string
     ],
   },
   {
-    id: "night",
-    icon: Moon,
+    kind: "night",
     group: "Night visit",
     options: [
       { label: "Nasrid Palaces night tour", q: "Alhambra night tour Nasrid Palaces" },
@@ -39,9 +37,8 @@ const WHAT: { id: Tab; group: string; icon: typeof Sun; options: { label: string
     ],
   },
   {
-    id: "trip",
-    icon: Bus,
-    group: "Day trips",
+    kind: "trip",
+    group: "Day trip",
     options: [
       { label: "Day trip from Seville", q: "Alhambra day trip from Seville" },
       { label: "Day trip from Málaga", q: "Alhambra day trip from Malaga" },
@@ -53,128 +50,110 @@ const WHAT: { id: Tab; group: string; icon: typeof Sun; options: { label: string
 const GROUPS = ["Just me", "2 people", "Family with kids", "Group of 5+"];
 const LANGS = ["English", "Spanish", "French", "German", "Italian"];
 
-// The hero is cropped to fill the screen height, so phones pick a wide file.
-// Self-hosted WebP (largest 2560 px) generated from custom high-res photography.
 const HERO = {
   ...PHOTOS.hero,
   src: "/images/photos/hero-1920.webp",
-  alt: "The Alhambra fortress and palace complex on Sabika Hill in Granada, Spain, bathed in warm golden evening light",
+  alt: "The Alhambra on its wooded hill above Granada in warm evening light, seen from the Albaicín",
 };
 
 export function Hero() {
-  const [tab, setTab] = useState<Tab>("day");
-  const [opt, setOpt] = useState(0);
+  // "day:0" = WHAT group kind + option index, so one grouped select replaces the old tabs.
+  const [pick, setPick] = useState("day:0");
   const [group, setGroup] = useState(GROUPS[1]);
   const [lang, setLang] = useState(LANGS[0]);
 
-  const current = WHAT.find((g) => g.id === tab)!;
-  const option = current.options[Math.min(opt, current.options.length - 1)];
+  const [kind, idx] = pick.split(":") as [Kind, string];
+  const g = WHAT.find((w) => w.kind === kind) ?? WHAT[0];
+  const option = g.options[Number(idx)] ?? g.options[0];
   const query = [
     group === "Family with kids" || group === "Group of 5+" ? option.q.replace("guided tour", "private tour") : option.q,
     lang !== "English" ? `in ${lang}` : "",
   ].join(" ").trim();
-  const href = gygUrl(query, { page: "home", position: `hero_search_${tab}` });
-
-  // Fit-to-screen: spacing and type scale with viewport height (svh) so the
-  // whole hero, search bar included, shows without scrolling on common
-  // laptops (>= ~730px tall) and phones (>= ~700px). Decorative extras drop
-  // out first on short screens.
-  const gap = "mt-[clamp(0.75rem,2.2svh,1.4rem)]";
+  const href = gygUrl(query, { page: "home", position: `hero_search_${g.kind}` });
 
   return (
-    <section className="relative isolate -mt-[4.75rem] flex min-h-[100svh] flex-col overflow-hidden bg-[#f3e6d8] pt-[clamp(5.4rem,13svh,7.5rem)]">
-      {/* Photo + washes */}
+    <section className="relative isolate -mt-[4.75rem] flex min-h-[100svh] flex-col items-center justify-center overflow-hidden bg-[#f3e6d8] px-4 pb-[clamp(2rem,9svh,6rem)] pt-[calc(4.75rem+clamp(2rem,6svh,4rem))]">
       <img
-        src={HERO.src}
+        src={HERO.src} width={HERO.width} height={HERO.height}
         srcSet={HERO.srcSet}
-        sizes="(min-aspect-ratio: 28/10) 100vw, 280vh"
+        sizes="(max-width: 767px) 140vw, (min-aspect-ratio: 28/10) 100vw, 180vh"
         alt={HERO.alt}
         fetchPriority="high"
-        className="hero-reveal-soft absolute inset-0 -z-20 size-full object-cover object-center lg:object-[center_60%]"
+        className="absolute inset-0 -z-20 size-full object-cover object-[62%_85%]"
       />
-      <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(255,250,244,0.94)_0%,rgba(255,248,240,0.86)_48%,rgba(255,246,236,0.35)_72%,rgba(20,14,8,0.25)_100%)] lg:bg-[linear-gradient(180deg,rgba(255,250,244,0.55)_0%,rgba(255,248,240,0.2)_45%,rgba(20,14,8,0)_75%,rgba(20,14,8,0.45)_100%)]" />
-      <div aria-hidden className="absolute inset-0 -z-10 hidden bg-[linear-gradient(90deg,rgba(255,250,244,0.92)_0%,rgba(255,248,240,0.7)_38%,rgba(255,248,240,0)_62%)] lg:block" />
+      {/* Cream wash: solid behind the text, clear over the palace below */}
+      <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(250,244,236,0.96)_0%,rgba(250,244,236,0.9)_45%,rgba(250,244,236,0.55)_62%,rgba(250,244,236,0)_80%)]" />
 
-      <div className="wrap flex flex-1 flex-col pb-[clamp(0.75rem,2svh,1.5rem)]">
-        <h1 className="hero-rise max-w-[15ch] text-balance font-serif text-[clamp(2rem,min(6vw,7.4svh),4.5rem)] font-bold leading-[0.98] tracking-[-0.03em] text-ink lg:max-w-[17ch]">
-          Alhambra tickets that include the <em className="font-serif font-bold italic text-amber">Nasrid&nbsp;Palaces</em>
+      <div className="flex w-full max-w-[64rem] flex-col items-center text-center">
+        <h1 className="max-w-[20ch] text-balance font-serif text-[clamp(2.1rem,min(5.2vw,7.6svh),4.25rem)] font-bold leading-[1.02] tracking-[-0.025em] text-ink">
+          Alhambra tickets that include the <em className="font-serif font-bold italic text-amber-deep">Nasrid&nbsp;Palaces</em>
         </h1>
 
-        <p className={`hero-rise ${gap} max-w-[34rem] text-[1rem] leading-relaxed text-[#3d4450] sm:text-[1.12rem]`}>
-          Tickets sell out weeks ahead and the palaces let you in at one fixed time.<span className="max-sm:[@media(max-height:740px)]:hidden"> Here&rsquo;s the ticket to get, and the tours that still have places.</span>
+        <p className="mt-[clamp(0.75rem,2.2svh,1.25rem)] max-w-[36rem] text-pretty text-[1.02rem] leading-relaxed text-[#3d4450] sm:text-[1.15rem]">
+          Tickets sell out weeks ahead and the palaces let you in at one fixed time. Pick a tour that still has places.
         </p>
 
-        {/* Trust line: plain text on the light wash, only on tall desktop screens */}
-        <ul className="hero-rise mt-[clamp(0.75rem,2svh,1.25rem)] hidden flex-wrap items-center gap-y-2 text-[0.95rem] font-medium text-ink lg:[@media(min-height:820px)]:flex">
-          {[
-            { icon: ShieldCheck, label: "Nasrid Palaces included" },
-            { icon: Languages, label: "Pick your date and language" },
-            { icon: Ticket, label: "Official prices shown" },
-          ].map(({ icon: Icon, label }, i) => (
-            <li key={label} className={`flex items-center gap-2 pr-5 ${i > 0 ? "border-l border-[#d9c7b3] pl-5" : ""}`}>
-              <Icon className="size-[18px] text-amber" aria-hidden /> {label}
-            </li>
-          ))}
-        </ul>
-
-        {/* Visit type: a toggle group, not ARIA tabs (there are no tab panels) */}
-        <div role="group" aria-label="Visit type" className="hero-card mt-[clamp(1.25rem,4.5svh,2.75rem)] flex gap-1 self-stretch rounded-full bg-white/75 p-1 shadow-[0_8px_24px_rgba(40,24,8,0.10)] backdrop-blur-md sm:self-start">
-          {WHAT.map(({ id, group, icon: Icon }) => (
-            <button
-              key={id}
-              type="button"
-              aria-pressed={tab === id}
-              onClick={() => { setTab(id); setOpt(0); }}
-              className={`flex min-h-11 flex-1 cursor-pointer items-center justify-center gap-1.5 whitespace-nowrap rounded-full px-2.5 text-[0.88rem] font-semibold transition-colors sm:flex-none sm:gap-2 sm:px-4 sm:text-[0.93rem] ${
-                tab === id ? "bg-ink text-white" : "text-[#3d4450] hover:text-ink"
-              }`}
-            >
-              <Icon className="size-[17px]" aria-hidden /> {group}
-            </button>
-          ))}
-        </div>
-
-        {/* Search bar: phones get What on its own row, Who + Language side by side */}
+        {/* Search card */}
         <form
           role="search"
           aria-label="Find Alhambra tickets and tours"
-          className="hero-card mt-2 grid max-w-[66rem] grid-cols-2 overflow-hidden rounded-[1.5rem] bg-white shadow-[0_20px_50px_rgba(40,24,8,0.18)] md:grid-cols-[1.55fr_1fr_1.05fr_auto] md:rounded-full"
+          className="mt-[clamp(1.25rem,4.5svh,2.5rem)] w-full overflow-hidden rounded-2xl bg-white text-left shadow-[0_18px_48px_rgba(40,24,8,0.16)] ring-1 ring-black/5"
           onSubmit={(e) => {
             e.preventDefault();
             // Popup blocked? Fall back to opening GetYourGuide in this tab.
             if (!window.open(href, "_blank", "noopener")) window.location.href = href;
           }}
         >
-          <Field label="What" icon={Ticket} id="f-what" className="col-span-2 md:col-span-1 md:pl-8">
-            <select id="f-what" value={opt} onChange={(e) => setOpt(Number(e.target.value))} className={selectCls}>
-              {current.options.map((o, i) => <option key={o.label} value={i}>{o.label}</option>)}
-            </select>
-          </Field>
-          <Field label="Who" icon={Users} id="f-who" className="border-r">
-            <select id="f-who" value={group} onChange={(e) => setGroup(e.target.value)} className={selectCls}>
-              {GROUPS.map((g) => <option key={g}>{g}</option>)}
-            </select>
-          </Field>
-          <Field label="Language" icon={Languages} id="f-lang">
-            <select id="f-lang" aria-label="Guide language" value={lang} onChange={(e) => setLang(e.target.value)} className={selectCls}>
-              {LANGS.map((l) => <option key={l}>{l}</option>)}
-            </select>
-          </Field>
-          <div className="col-span-2 p-2 md:col-span-1 md:p-2.5">
+          <div className="grid grid-cols-2 md:grid-cols-[minmax(17rem,2fr)_minmax(10.5rem,1fr)_minmax(10.5rem,1fr)_auto]">
+            <Field label="Tour" icon={Ticket} id="f-what" className="col-span-2 md:col-span-1">
+              <select id="f-what" value={pick} onChange={(e) => setPick(e.target.value)} className={selectCls}>
+                {WHAT.map((w) => (
+                  <optgroup key={w.kind} label={w.group}>
+                    {w.options.map((o, i) => <option key={o.label} value={`${w.kind}:${i}`}>{o.label}</option>)}
+                  </optgroup>
+                ))}
+              </select>
+            </Field>
+            <Field label="Who" icon={Users} id="f-who" className="border-r">
+              <select id="f-who" value={group} onChange={(e) => setGroup(e.target.value)} className={selectCls}>
+                {GROUPS.map((x) => <option key={x}>{x}</option>)}
+              </select>
+            </Field>
+            <Field label="Guide language" icon={Languages} id="f-lang">
+              <select id="f-lang" value={lang} onChange={(e) => setLang(e.target.value)} className={selectCls}>
+                {LANGS.map((l) => <option key={l}>{l}</option>)}
+              </select>
+            </Field>
+            <div className="col-span-2 p-2.5 md:col-span-1">
+              <a
+                href={href}
+                target="_blank"
+                rel="sponsored nofollow noopener"
+                className="btn btn-primary h-full min-h-12 w-full px-6 text-[1rem] md:min-h-14"
+                data-track="affiliate_click"
+              >
+                <Search className="size-[18px]" aria-hidden /> Show available tours
+              </a>
+            </div>
+          </div>
+
+          {/* Card footer: second path for ticket-only buyers + disclosure next to the links */}
+          <div className="flex flex-col gap-1 border-t border-line bg-[#fbf8f4] px-5 py-2.5 text-[0.82rem] leading-snug text-muted md:flex-row md:items-center md:justify-between md:gap-6">
             <a
-              href={href}
+              href={gygUrl("Alhambra entry ticket", { page: "home", position: "hero_ticket" })}
               target="_blank"
               rel="sponsored nofollow noopener"
-              className="btn btn-primary h-full min-h-12 w-full rounded-full px-7 text-[1rem] md:min-h-14 md:w-auto"
+              className="inline-flex min-h-6 shrink-0 items-center gap-1.5 py-1 font-semibold text-ink underline-offset-2 hover:underline"
               data-track="affiliate_click"
             >
-              <Search className="size-[18px]" aria-hidden /> Show available tours
+              Only need an entry ticket? See entry tickets <ArrowRight className="size-3.5" aria-hidden />
             </a>
+            <p>
+              We&rsquo;re an independent guide. Links go to GetYourGuide and we may earn a commission at no extra cost to you.{" "}
+              <Link href="/affiliate-disclosure/" className="underline underline-offset-2">How we earn</Link>
+            </p>
           </div>
         </form>
-        {/* Disclosure sits right under the booking links it describes */}
-        <AffiliateNote className="hero-card mt-3 max-w-[40rem] self-start rounded-xl bg-white/85 px-3 py-1.5 text-[0.8rem] text-[#2b313b] backdrop-blur-sm sm:text-[0.84rem]" />
-
       </div>
     </section>
   );
@@ -183,17 +162,17 @@ export function Hero() {
 const selectCls =
   "w-full cursor-pointer appearance-none truncate bg-transparent pr-7 text-[0.98rem] font-medium text-ink outline-none";
 
-function Field({ label, icon: Icon, id, className = "", children }: { label: string; icon: typeof Sun; id: string; className?: string; children: React.ReactNode }) {
+function Field({ label, icon: Icon, id, className = "", children }: { label: string; icon: typeof Ticket; id: string; className?: string; children: React.ReactNode }) {
   return (
-    <div className={`relative min-w-0 border-b border-line px-4 py-2.5 transition-colors hover:bg-[#faf7f3] sm:px-6 md:border-b-0 md:border-r md:py-3.5 ${className}`}>
+    <div className={`relative min-w-0 border-b border-line px-4 py-3 transition-colors hover:bg-[#faf7f3] sm:px-5 md:border-b-0 md:border-r ${className}`}>
       <label htmlFor={id} className="block text-[0.7rem] font-semibold uppercase tracking-[0.08em] text-muted">
         {label}
       </label>
       <div className="mt-1 flex items-center gap-2.5">
-        <Icon className="size-[18px] shrink-0 text-ink" aria-hidden />
+        <Icon className="size-[18px] shrink-0 text-amber-deep" aria-hidden />
         {children}
       </div>
-      <ChevronDown aria-hidden className="pointer-events-none absolute bottom-3.5 right-4 size-4 text-muted md:bottom-4 md:right-5" />
+      <ChevronDown aria-hidden className="pointer-events-none absolute bottom-4 right-4 size-4 text-muted" />
     </div>
   );
 }

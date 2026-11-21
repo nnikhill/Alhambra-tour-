@@ -92,7 +92,7 @@ export function VisitPlanner() {
         </fieldset>
       </div>
 
-      <div key={slot + arrive} className="hero-fade mt-6 rounded-xl bg-[#eef1f8] p-5 sm:p-6" aria-live="polite">
+      <div className="mt-6 rounded-xl bg-[#eef1f8] p-5 sm:p-6" aria-live="polite">
         <p className="text-sm font-semibold text-brand">
           {morning ? "Morning slot: palaces first, gardens after" : "Afternoon slot: gardens first, palaces after"}
         </p>

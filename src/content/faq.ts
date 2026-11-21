@@ -13,11 +13,11 @@ export const HOME_FAQ = [
   },
   {
     q: "Is the Alcazaba open?",
-    a: "Not at the moment. The Alcazaba fortress closed for safety inspections after the earthquakes in August 2026. The Nasrid Palaces and the Generalife are open. We update the status bar at the top of every page when this changes.",
+    a: "Yes. The Alcazaba closed for inspections after the August 2026 earthquakes and reopened on 23 September 2026 on an adapted route, according to the official ticket site.",
   },
   {
     q: "Are tickets on GetYourGuide real?",
-    a: "Guided tours on GetYourGuide are run by licensed operators who buy official tickets in advance and include them in the tour. They cost more than the €22.27 official ticket because a guide, and often free cancellation, are included.",
+    a: "Yes. Tours and tickets on GetYourGuide are sold by tour operators who book Alhambra tickets in advance. They cost more than the €22.27 official price because of the booking fee, and on tours the guide. Each listing shows its cancellation terms.",
   },
   {
     q: "Do children need a ticket?",
@@ -25,6 +25,6 @@ export const HOME_FAQ = [
   },
   {
     q: "Is a guided tour worth it?",
-    a: "For a first visit, often yes. The palace rooms have little signage, the complex is large, and a guide keeps you on time for your slot. If you like to wander at your own pace, the official ticket plus the official audio guide works well.",
+    a: "For a first visit, often yes. The palace rooms have little signage, the complex is large, and a guide keeps you on time for your slot. If you like to wander at your own pace, an entry ticket with an audio guide works well.",
   },
 ];

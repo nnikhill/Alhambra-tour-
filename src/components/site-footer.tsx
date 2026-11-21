@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { SITE } from "@/lib/site";
-import { OFFICIAL_TICKET_URL } from "@/content/facts";
 
 export function SiteFooter() {
   return (
@@ -9,18 +8,23 @@ export function SiteFooter() {
         <div>
           <p className="text-lg font-extrabold">{SITE.name}</p>
           <p className="mt-3 max-w-[46ch] text-[0.95rem] text-muted">
-            An independent guide to visiting the Alhambra. We are not the official Alhambra website. Official tickets are sold at{" "}
-            <a href={OFFICIAL_TICKET_URL} className="underline underline-offset-2" target="_blank" rel="noopener">tickets.alhambra-patronato.es</a>.
+            An independent guide to visiting the Alhambra. We are not the official Alhambra website or ticket seller. Ticket and tour links go to our partner GetYourGuide.
           </p>
         </div>
         <ul className="grid content-start gap-2 text-[0.95rem]">
           <li><Link href="/tickets/" className="text-muted no-underline hover:text-ink">Alhambra tickets</Link></li>
           <li><Link href="/tours/" className="text-muted no-underline hover:text-ink">Guided tours</Link></li>
+          <li><Link href="/tickets/nasrid-palaces/" className="text-muted no-underline hover:text-ink">Nasrid Palaces tickets</Link></li>
           <li><Link href="/tickets/sold-out/" className="text-muted no-underline hover:text-ink">Tickets sold out?</Link></li>
           <li><Link href="/tickets/night-visit/" className="text-muted no-underline hover:text-ink">Night visits</Link></li>
           <li><Link href="/day-trips/" className="text-muted no-underline hover:text-ink">Day trips</Link></li>
           <li><Link href="/plan/" className="text-muted no-underline hover:text-ink">Plan your visit</Link></li>
+          <li><Link href="/guide/" className="text-muted no-underline hover:text-ink">What to see</Link></li>
+          <li><Link href="/plan/opening-hours/" className="text-muted no-underline hover:text-ink">Opening hours</Link></li>
           <li><Link href="/blog/" className="text-muted no-underline hover:text-ink">Blog</Link></li>
+          <li><Link href="/granada/albaicin/" className="text-muted no-underline hover:text-ink">Albaicín</Link></li>
+          <li><Link href="/granada/sacromonte/" className="text-muted no-underline hover:text-ink">Sacromonte</Link></li>
+          <li><Link href="/granada/cathedral/" className="text-muted no-underline hover:text-ink">Granada Cathedral</Link></li>
         </ul>
         <ul className="grid content-start gap-2 text-[0.95rem]">
           <li><Link href="/about/" className="text-muted no-underline hover:text-ink">About us</Link></li>

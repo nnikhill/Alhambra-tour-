@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { CalendarClock, Moon, Sun } from "lucide-react";
 import { OPTIONS, RANKING, type Timeframe } from "@/content/sold-out";
-import { OFFICIAL_TICKET_URL } from "@/content/facts";
 import { gygUrl } from "@/lib/gyg";
 
 // "When is your visit?" → ranked options. One choice at a time; the best bet
@@ -23,13 +22,12 @@ export function OptionFinder() {
     <section id="options" aria-labelledby="options-title" className="scroll-mt-24 py-12 sm:py-14">
       <div className="wrap">
         <h2 id="options-title" className="section-title">When is your visit?</h2>
-        <div role="tablist" aria-label="When is your visit" className="mt-5 grid max-w-[640px] grid-cols-3 gap-1 rounded-xl bg-soft p-1">
+        <div role="group" aria-label="When is your visit" className="mt-5 grid max-w-[640px] grid-cols-3 gap-1 rounded-xl bg-soft p-1">
           {(Object.keys(RANKING) as Timeframe[]).map((k) => (
             <button
               key={k}
-              role="tab"
               type="button"
-              aria-selected={tf === k}
+              aria-pressed={tf === k}
               onClick={() => setTf(k)}
               className={`min-h-12 cursor-pointer rounded-lg px-2 text-[0.9rem] font-semibold leading-tight transition-colors sm:text-[0.97rem] ${
                 tf === k ? "bg-white text-ink shadow-sm" : "text-muted hover:text-ink"
@@ -44,16 +42,14 @@ export function OptionFinder() {
           {r.intro}
         </p>
 
-        <ol key={tf} className="hero-fade mt-7 grid gap-4">
+        <ol aria-live="polite" className="mt-7 grid gap-4">
           {r.order.map((id, i) => {
             const o = OPTIONS[id];
             const best = i === 0;
             const href =
               o.cta.kind === "gyg"
                 ? gygUrl(o.cta.query!, { page: "sold-out", position: `${tf}_${id}` })
-                : o.cta.kind === "official"
-                  ? OFFICIAL_TICKET_URL
-                  : o.cta.href!;
+                : o.cta.href!;
             const sponsored = o.cta.kind === "gyg";
             return (
               <li

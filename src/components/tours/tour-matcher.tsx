@@ -71,7 +71,7 @@ export function TourMatcher() {
         </fieldset>
       </div>
 
-      <div key={t.id} className="hero-fade mt-6 grid gap-4 rounded-xl bg-[#eef1f8] p-5 md:grid-cols-[1fr_auto] md:items-center">
+      <div aria-live="polite" className="mt-6 grid gap-4 rounded-xl bg-[#eef1f8] p-5 md:grid-cols-[1fr_auto] md:items-center">
         <div>
           <p className="text-sm font-semibold text-brand">Your best match</p>
           <p className="mt-1 text-[1.3rem] font-bold leading-snug">{t.name}</p>
@@ -82,10 +82,7 @@ export function TourMatcher() {
           </p>
         </div>
         <div className="flex items-center gap-4 md:flex-col md:items-end md:gap-2">
-          <p className="leading-tight md:text-right">
-            <span className="block text-sm text-muted">From</span>
-            <span className="text-[1.6rem] font-extrabold">€{t.priceFrom}</span>
-          </p>
+          <p className="text-sm leading-snug text-muted md:text-right">Live prices on GetYourGuide</p>
           <a
             href={gygUrl(t.query, { page: "tours", position: `matcher_${t.id}` })}
             target="_blank"

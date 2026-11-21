@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-21T14:51:39.653722Z",
+  "title": "Design System: Alhambra Tour Ticket",
+  "extensions": {
+    "colorMeta": {
+      "brand": {
+        "role": "primary",
+        "displayName": "Courtyard Navy"
+      },
+      "brand-dark": {
+        "role": "primary",
+        "displayName": "Night Navy"
+      },
+      "brand-tint": {
+        "role": "primary",
+        "displayName": "Navy Mist"
+      },
+      "amber": {
+        "role": "secondary",
+        "displayName": "Evening Amber"
+      },
+      "amber-deep": {
+        "role": "secondary",
+        "displayName": "Burnt Amber"
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink"
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Slate"
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline"
+      },
+      "soft": {
+        "role": "neutral",
+        "displayName": "Stone Wash"
+      },
+      "courtyard-sand": {
+        "role": "neutral",
+        "displayName": "Courtyard Sand"
+      }
+    },
+    "shadows": [
+      {
+        "name": "header-float",
+        "value": "0 8px 30px rgba(20,24,31,0.10)",
+        "purpose": "Sticky pill header"
+      },
+      {
+        "name": "answer-lift",
+        "value": "0 10px 30px rgba(20,24,31,0.06)",
+        "purpose": "Quick-answer card"
+      },
+      {
+        "name": "hover-lift",
+        "value": "0 14px 34px rgba(20,24,31,0.10)",
+        "purpose": "Link cards on hover"
+      },
+      {
+        "name": "featured-ring",
+        "value": "0 14px 40px rgba(29,43,92,0.14)",
+        "purpose": "Recommended option"
+      }
+    ],
+    "motion": [
+      {
+        "name": "hero-rise",
+        "value": "translateY(18px)->none, fade",
+        "purpose": "Hero entrance; off for reduced motion"
+      },
+      {
+        "name": "state",
+        "value": "150ms background/box-shadow",
+        "purpose": "Button states"
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single primary action per screen.",
+      "html": "<button class=\"ds-btn-primary\">See tours with the Nasrid Palaces</button>",
+      "css": ".ds-btn-primary{background:#1d2b5c;color:#fff;min-height:48px;padding:0 22px;border-radius:10px;font:600 1rem Figtree,system-ui,sans-serif;border:0;transition:background-color 150ms}.ds-btn-primary:hover{background:#141f45}.ds-btn-primary:focus-visible{outline:3px solid #2563eb;outline-offset:2px}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary action.",
+      "html": "<button class=\"ds-btn-outline\">Entry tickets</button>",
+      "css": ".ds-btn-outline{background:#fff;color:#14181f;min-height:48px;padding:0 22px;border-radius:10px;border:0;box-shadow:inset 0 0 0 1.5px #e5e7eb;font:600 1rem Figtree,system-ui,sans-serif}.ds-btn-outline:hover{box-shadow:inset 0 0 0 1.5px #14181f}"
+    },
+    {
+      "name": "Answer Box",
+      "kind": "custom",
+      "refersTo": "answer-box",
+      "description": "Short answer that opens every page.",
+      "html": "<div class=\"ds-answer\"><p class=\"ds-answer-label\">Short answer</p><p>Get a ticket that includes the Nasrid Palaces by day as soon as your dates are fixed.</p></div>",
+      "css": ".ds-answer{background:#fdf6ec;border:1px solid #efd5b5;border-radius:16px;padding:24px;font:500 1.1rem/1.6 Figtree,system-ui,sans-serif;color:#14181f}.ds-answer-label{font-size:.85rem;font-weight:600;color:#8a4b0a;margin:0 0 6px}"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Flat bordered card.",
+      "html": "<div class=\"ds-card\"><h3>Walk up</h3><p>15–20 min from Plaza Nueva.</p></div>",
+      "css": ".ds-card{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:24px;font-family:Figtree,system-ui,sans-serif}.ds-card h3{margin:0 0 4px;font-size:1.15rem}"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Status and step chips.",
+      "html": "<span class=\"ds-chip\">Best bet</span>",
+      "css": ".ds-chip{background:#eef1f8;color:#1d2b5c;border-radius:9999px;padding:4px 12px;font:600 .8rem Figtree,system-ui,sans-serif}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Evening Courtyard",
+    "keyCharacteristics": [
+      "Answer first",
+      "One navy primary action per screen",
+      "Real monument photography, self-hosted",
+      "Flat surfaces, thin borders",
+      "Independence stated near the first booking link"
+    ]
+  }
+}

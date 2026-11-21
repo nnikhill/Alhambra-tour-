@@ -1,6 +1,6 @@
 // "Alhambra tickets sold out" page content.
 // Sources: official ticket site; turismo.granada.org (Granada Card types);
-// artvisitguide.com (39% operator share, Experiences/Gardens outlast General);
+// artvisitguide.com (Experiences/Gardens outlast General);
 // thebettervacation.com (cancelled tickets released around midnight CET).
 
 export type Timeframe = "now" | "week" | "later";
@@ -14,15 +14,15 @@ export type SoldOutOption = {
   price: string;
   availability: "Often" | "Sometimes" | "Rarely";
   palaces: string;
-  cta: { label: string; kind: "gyg" | "official" | "card" | "link"; query?: string; href?: string };
+  cta: { label: string; kind: "gyg" | "link"; query?: string; href?: string };
 };
 
 export const OPTIONS: Record<OptionId, SoldOutOption> = {
   tour: {
     id: "tour",
     title: "Guided tour with tickets included",
-    what: "Licensed operators hold their own block of tickets, so tours often have space when the official site shows sold out.",
-    price: "From €49",
+    what: "Licensed operators book their own tickets in advance, so tours often have space when entry tickets are sold out.",
+    price: "Live price on GetYourGuide",
     availability: "Often",
     palaces: "Nasrid Palaces by day",
     cta: { label: "Check tours for your date", kind: "gyg", query: "Alhambra guided tour Nasrid Palaces" },
@@ -30,53 +30,53 @@ export const OPTIONS: Record<OptionId, SoldOutOption> = {
   experiences: {
     id: "experiences",
     title: "Alhambra Experiences ticket",
-    what: "Official ticket: the Nasrid Palaces at night, then the Generalife and gardens the next day. Needs two days in Granada.",
-    price: "€22.27",
+    what: "An official ticket sold on the Alhambra ticket site: the Nasrid Palaces at night, then the Generalife and gardens the next day. Needs two days in Granada. GetYourGuide sells the night visit separately.",
+    price: "Official price €22.27",
     availability: "Often",
     palaces: "Nasrid Palaces at night",
-    cta: { label: "Check the official site", kind: "official" },
+    cta: { label: "Compare night tickets", kind: "gyg", query: "Alhambra night entry ticket" },
   },
   dobla: {
     id: "dobla",
     title: "Dobla de Oro General ticket",
-    what: "Official ticket: the full daytime visit plus Albaicín monuments (closed for now). Often still on sale after General is gone.",
-    price: "€30.48",
+    what: "An official ticket sold on the Alhambra ticket site: the full daytime visit plus the Albaicín monuments. Often still on sale after General is gone. Also compare resale entry tickets.",
+    price: "Official price €30.48",
     availability: "Sometimes",
     palaces: "Nasrid Palaces by day",
-    cta: { label: "Check the official site", kind: "official" },
+    cta: { label: "Compare entry tickets", kind: "gyg", query: "Alhambra entry ticket" },
   },
   card: {
     id: "card",
-    title: "Granada Card 48h or 72h",
-    what: "City pass with a General daytime Alhambra visit, other monuments and city buses. You pick your palace time when you buy it.",
-    price: "From about €50",
+    title: "Alhambra tour + Granada city pass",
+    what: "A guided Alhambra tour with the Nasrid Palaces, plus a city pass with entry to the Cathedral, the Royal Chapel and other sights, and city bus rides. Good if you're staying two days.",
+    price: "Live price on GetYourGuide",
     availability: "Sometimes",
     palaces: "Nasrid Palaces by day",
-    cta: { label: "See Granada Card options", kind: "card", href: "https://turismo.granada.org/en/what-does-granada-card-include-types-and-prices" },
+    cta: { label: "See tour + city pass", kind: "gyg", query: "Alhambra tour with city pass" },
   },
   midnight: {
     id: "midnight",
-    title: "Catch a cancelled ticket at midnight",
-    what: "Returned tickets go back on sale on the official site. Check just after midnight Spanish time, every night until your visit.",
-    price: "€22.27",
+    title: "Check again for cancelled tickets",
+    what: "Availability changes as tickets are cancelled and released. Check entry tickets again the evening before your visit.",
+    price: "Live price on GetYourGuide",
     availability: "Rarely",
     palaces: "Nasrid Palaces by day",
-    cta: { label: "Open the official site", kind: "official" },
+    cta: { label: "Check entry tickets", kind: "gyg", query: "Alhambra entry ticket" },
   },
   gardensNight: {
     id: "gardensNight",
     title: "Gardens by day + palaces at night",
-    what: "Two official tickets that sell out much later: the Gardens & Generalife ticket by day and the Nasrid Palaces night visit.",
-    price: "€12.73 + €12.73",
+    what: "Two tickets that sell out much later: the Gardens & Generalife ticket by day and the Nasrid Palaces night visit. Official price €12.73 each; resale costs a little more.",
+    price: "Two tickets",
     availability: "Often",
     palaces: "Nasrid Palaces at night",
-    cta: { label: "Check the official site", kind: "official" },
+    cta: { label: "Gardens ticket", kind: "gyg", query: "Alhambra gardens ticket" },
   },
   daytrip: {
     id: "daytrip",
     title: "Day trip from Seville or Málaga",
-    what: "Coach, entry ticket and guide in one booking. The easiest fix if you're not staying in Granada.",
-    price: "From €175",
+    what: "Transport and a guide in one booking, with the Alhambra ticket on most options (check the listing). The easiest fix if you're not staying in Granada.",
+    price: "Live price on GetYourGuide",
     availability: "Often",
     palaces: "Nasrid Palaces by day",
     cta: { label: "See day trips", kind: "gyg", query: "Alhambra day trip from Seville" },
@@ -102,7 +102,7 @@ export const RANKING: Record<Timeframe, { label: string; intro: string; order: O
 };
 
 export const DONT = [
-  { title: "Don't buy from lookalike sites", text: "Sites with \"Alhambra\" or \"tickets\" in the name often resell at a mark-up. The only official ticket site is tickets.alhambra-patronato.es." },
+  { title: "Don't buy from unknown sites", text: "Book through the official ticket site or a large platform with verified reviews and clear cancellation terms, such as GetYourGuide. Unknown sellers may not deliver a valid ticket." },
   { title: "Don't buy someone else's ticket", text: "Tickets carry the visitor's name, and staff check ID. A ticket in another name won't get you in." },
   { title: "Don't count on the ticket office", text: "On-the-day tickets are only sold if any are left, which rarely happens in spring, summer or autumn." },
 ];
