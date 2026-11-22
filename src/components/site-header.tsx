@@ -29,7 +29,7 @@ function ArchMark({ className = "text-amber" }: { className?: string }) {
 // (1fr each) so the nav sits on the true centre of the page.
 export function SiteHeader() {
   const path = usePathname() ?? "/";
-  const isHome = path === "/";
+  const hasDarkHero = path === "/" || path.startsWith("/tickets/night-visit");
 
   const [openOn, setOpenOn] = useState<string | null>(null);
   const open = openOn === path;
@@ -37,7 +37,7 @@ export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    if (!isHome) {
+    if (!hasDarkHero) {
       setScrolled(true);
       return;
     }
@@ -47,12 +47,12 @@ export function SiteHeader() {
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isHome]);
+  }, [hasDarkHero]);
 
   const isActive = (href: string) =>
     href === "/tickets/" ? path === "/tickets/" || path.startsWith("/tickets/sold-out") : path.startsWith(href);
 
-  const isDark = isHome && !scrolled;
+  const isDark = hasDarkHero && !scrolled;
 
   return (
     <header className="sticky top-0 z-40 px-3 pt-3 sm:px-5">
