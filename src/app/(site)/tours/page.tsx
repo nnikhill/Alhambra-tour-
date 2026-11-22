@@ -57,24 +57,27 @@ export default function ToursPage() {
 
       <main id="main">
         <section className="bg-white">
-          <div className="wrap pb-10 pt-8 sm:pt-10">
+          <div className="wrap pb-8 pt-8 sm:pb-12 sm:pt-10">
             <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: "/tours/", label: "Guided tours" }]} />
-            <div className="mt-6 grid gap-4 lg:grid-cols-[1.6fr_1fr] lg:items-end lg:gap-8">
-              <h1 className="font-serif text-[clamp(1.85rem,3.4vw,2.75rem)] font-bold leading-[1.1] tracking-[-0.025em] text-ink">
+            
+            <div className="mt-6 max-w-3xl">
+              <h1 className="font-serif text-3xl font-bold tracking-tight text-ink sm:text-4xl lg:text-[2.65rem] leading-[1.15]">
                 Alhambra guided tours, compared
               </h1>
-              <p className="max-w-[28rem] text-sm leading-relaxed text-muted sm:text-base lg:justify-self-end lg:pb-1.5 lg:text-right">
+              <p className="mt-3 text-base text-muted sm:text-lg leading-relaxed">
                 Every tour here includes the entry ticket. Tell us who&rsquo;s going and when, and we&rsquo;ll point you to the right kind of tour.
               </p>
             </div>
-            <div className="mt-7">
+
+            <div className="mt-8">
               <TourMatcher />
             </div>
-            {/* Disclosure + freshness right under the first booking button */}
-            <div className="mt-3 flex flex-col gap-1 text-[0.85rem] text-muted sm:flex-row sm:items-baseline sm:gap-3">
+
+            {/* Disclosure + freshness right under the booking tool */}
+            <div className="mt-3.5 flex flex-col gap-1 text-[0.82rem] text-muted sm:flex-row sm:items-baseline sm:gap-3">
               <span className="shrink-0">Updated {formatDate(LAST_CHECKED)}</span>
               <span aria-hidden className="hidden sm:inline">·</span>
-              <AffiliateNote className="text-[0.85rem]" />
+              <AffiliateNote className="text-[0.82rem]" />
             </div>
           </div>
         </section>
