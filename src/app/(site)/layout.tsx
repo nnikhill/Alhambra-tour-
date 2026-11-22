@@ -30,7 +30,8 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
         <SiteHeader />
         {children}
         <SiteFooter />
-        <Analytics vercel={!!process.env.VERCEL} />
+        {/* Vercel Web Analytics only once it is enabled in the Vercel dashboard (else its script 404s). */}
+        <Analytics vercel={process.env.VERCEL_ANALYTICS === "1"} />
     </>
   );
 }

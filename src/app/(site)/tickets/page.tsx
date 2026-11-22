@@ -76,10 +76,10 @@ export default function TicketsPage() {
             <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: "/tickets/", label: "Tickets" }]} />
 
             <div className="mt-8 grid gap-6 lg:grid-cols-[1.6fr_1fr] lg:items-end">
-              <h1 className="text-[clamp(2.2rem,5.4vw,4.4rem)] font-serif font-bold leading-[1] tracking-[-0.035em]">
+              <h1 className="text-[clamp(1.85rem,3.4vw,2.75rem)] font-serif font-bold leading-[1.1] tracking-[-0.025em]">
                 Alhambra ticket types &amp; prices 2026
               </h1>
-              <p className="max-w-[26rem] text-[1.05rem] leading-relaxed text-muted lg:justify-self-end lg:pb-2 lg:text-right">
+              <p className="max-w-[26rem] text-sm leading-relaxed text-muted sm:text-base lg:justify-self-end lg:pb-2 lg:text-right">
                 There are 8 official tickets. Only 3 include the Nasrid Palaces by day. Here&rsquo;s which one to buy, and what to do if it&rsquo;s sold out.
               </p>
             </div>

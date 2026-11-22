@@ -60,10 +60,10 @@ export default function ToursPage() {
           <div className="wrap pb-10 pt-8 sm:pt-10">
             <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: "/tours/", label: "Guided tours" }]} />
             <div className="mt-6 grid gap-4 lg:grid-cols-[1.6fr_1fr] lg:items-end lg:gap-8">
-              <h1 className="font-serif text-[clamp(2.2rem,5vw,4rem)] font-bold leading-[1.02] tracking-[-0.03em] text-ink">
+              <h1 className="font-serif text-[clamp(1.85rem,3.4vw,2.75rem)] font-bold leading-[1.1] tracking-[-0.025em] text-ink">
                 Alhambra guided tours, compared
               </h1>
-              <p className="max-w-[28rem] text-[1.05rem] leading-relaxed text-muted lg:justify-self-end lg:pb-1.5 lg:text-right">
+              <p className="max-w-[28rem] text-sm leading-relaxed text-muted sm:text-base lg:justify-self-end lg:pb-1.5 lg:text-right">
                 Every tour here includes the entry ticket. Tell us who&rsquo;s going and when, and we&rsquo;ll point you to the right kind of tour.
               </p>
             </div>

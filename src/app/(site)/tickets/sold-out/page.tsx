@@ -65,23 +65,23 @@ export default function SoldOutPage() {
             />
             <div className="mt-8 grid gap-8 lg:grid-cols-[1.25fr_1fr] lg:items-center">
               <div>
-                <p className="inline-flex items-center gap-2 rounded-full bg-[#fde8e7] px-3 py-1 text-sm font-semibold text-[#a3261c]">
+                <p className="inline-flex items-center gap-2 rounded-full bg-[#fde8e7] px-3 py-1 text-xs font-semibold text-[#a3261c] sm:text-sm">
                   <span className="size-2 rounded-full bg-[#d92d20]" aria-hidden />
                   Sold out on the official site?
                 </p>
-                <h1 className="mt-5 text-[clamp(2.2rem,5.2vw,4.2rem)] font-serif font-bold leading-[1] tracking-[-0.035em]">
+                <h1 className="mt-4 text-[clamp(1.85rem,3.4vw,2.75rem)] font-serif font-bold leading-[1.1] tracking-[-0.025em]">
                   Alhambra tickets sold out? You can still get in.
                 </h1>
-                <p className="mt-5 max-w-[34rem] text-[1.08rem] leading-relaxed text-muted">
+                <p className="mt-4 max-w-[34rem] text-sm leading-relaxed text-muted sm:text-base">
                   &ldquo;Sold out&rdquo; almost always means the General ticket is gone, not that the Alhambra is full. Here are the 7 ways in that still work, ranked for how soon you&rsquo;re going.
                 </p>
                 <AffiliateNote className="mt-3 max-w-[34rem]" />
-                <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                   <a
                     href={gygUrl("Alhambra guided tour Nasrid Palaces", { page: "sold-out", position: "hero" })}
                     target="_blank"
                     rel="sponsored nofollow noopener"
-                    className="btn btn-primary h-14 px-7 text-lg"
+                    className="btn btn-primary h-12 px-6 text-base font-semibold"
                     data-track="affiliate_click"
                   >
                     Find tours with tickets

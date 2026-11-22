@@ -42,8 +42,8 @@ export function GuideArticle({ g }: { g: Guide }) {
         <article>
           <header className="wrap max-w-[760px] pt-8 sm:pt-10">
             <Breadcrumbs items={g.crumbs} />
-            <h1 className="hero-rise mt-6 font-serif text-[clamp(2rem,4.2vw,3rem)] font-bold leading-[1.1] tracking-[-0.02em]">{g.title}</h1>
-            <p className="mt-4 text-[1.15rem] leading-relaxed text-muted">{g.intro}</p>
+            <h1 className="hero-rise mt-5 font-serif text-[clamp(1.85rem,3.4vw,2.75rem)] font-bold leading-[1.12] tracking-tight">{g.title}</h1>
+            <p className="mt-3 text-sm leading-relaxed text-muted sm:text-base">{g.intro}</p>
             <p className="mt-6 border-t border-line pt-5 text-[0.9rem] text-muted">
               By <Link href="/about/" className="font-semibold text-ink no-underline hover:underline">{AUTHOR.name}</Link>. Last checked {formatDate(g.updated)} against the official Alhambra website. We are an independent guide, not the official
               ticket seller. Some links are <Link href="/affiliate-disclosure/" className="underline underline-offset-2">affiliate links</Link>.

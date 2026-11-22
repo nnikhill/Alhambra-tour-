@@ -45,10 +45,10 @@ export default async function BlogIndex() {
         <div className="wrap pb-12 pt-8 sm:pb-14 sm:pt-10">
           <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: "/blog/", label: "Blog" }]} />
           <div className="mx-auto mt-8 max-w-[44rem] text-center">
-            <h1 className="text-balance font-serif text-[clamp(2.3rem,5vw,3.8rem)] font-bold leading-[1.04] tracking-[-0.025em] text-ink">
+            <h1 className="text-balance font-serif text-[clamp(1.85rem,3.4vw,2.75rem)] font-bold leading-[1.1] tracking-[-0.025em] text-ink">
               Alhambra visitor guides
             </h1>
-            <p className="mx-auto mt-4 max-w-[36rem] text-pretty text-[1.08rem] leading-relaxed text-[#3d4450]">
+            <p className="mx-auto mt-3 max-w-[36rem] text-pretty text-sm leading-relaxed text-[#3d4450] sm:text-base">
               Short, practical answers to the questions people ask before visiting, checked against the official Alhambra site and kept up to date.
             </p>
             <nav aria-label="Popular topics" className="mt-6 flex flex-wrap justify-center gap-2">

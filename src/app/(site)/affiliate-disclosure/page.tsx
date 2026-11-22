@@ -31,10 +31,10 @@ export default function AffiliateDisclosurePage() {
         <section className="border-b border-line/60 bg-soft py-12 sm:py-16">
           <div className="wrap max-w-4xl">
             <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: "/affiliate-disclosure/", label: "Affiliate disclosure" }]} />
-            <h1 className="mt-5 font-serif text-3xl font-extrabold tracking-tight text-ink sm:text-4xl lg:text-5xl">
+            <h1 className="mt-4 font-serif text-[clamp(1.85rem,3.4vw,2.75rem)] font-bold tracking-tight text-ink leading-[1.12]">
               Affiliate Disclosure &amp; Transparency Policy
             </h1>
-            <p className="mt-4 text-lg leading-relaxed text-muted sm:text-xl">
+            <p className="mt-3.5 text-base leading-relaxed text-muted sm:text-lg">
               We believe in 100% transparency. Here is a clear explanation of how this website earns money, how we choose our partners, and why our recommendations remain strictly honest.
             </p>
           </div>

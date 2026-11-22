@@ -35,10 +35,10 @@ export default function AboutPage() {
         <section className="border-b border-line/60 bg-soft py-12 sm:py-16">
           <div className="wrap max-w-4xl">
             <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: "/about/", label: "About us" }]} />
-            <h1 className="mt-5 font-serif text-3xl font-extrabold tracking-tight text-ink sm:text-4xl lg:text-5xl">
+            <h1 className="mt-4 font-serif text-[clamp(1.85rem,3.4vw,2.75rem)] font-bold tracking-tight text-ink leading-[1.12]">
               Making Alhambra visits simple, clear, and stress-free.
             </h1>
-            <p className="mt-4 text-lg leading-relaxed text-muted sm:text-xl">
+            <p className="mt-3.5 text-base leading-relaxed text-muted sm:text-lg">
               The Alhambra is Spain&rsquo;s most visited monument. Yet getting tickets is often one of the most frustrating parts of visiting Spain. We built {SITE.name} to change that.
             </p>
           </div>

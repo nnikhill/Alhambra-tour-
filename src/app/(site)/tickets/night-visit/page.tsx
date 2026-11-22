@@ -53,10 +53,10 @@ export default function NightVisitPage() {
           <div className="wrap pb-6 pt-8 sm:pt-10">
             <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: "/tickets/", label: "Tickets" }, { href: "/tickets/night-visit/", label: "Night visit" }]} />
             <div className="mt-6 grid gap-6 lg:grid-cols-[1.6fr_1fr] lg:items-end">
-              <h1 className="font-serif text-[clamp(2.3rem,5.6vw,4.6rem)] font-bold leading-[1] tracking-[-0.03em]">
+              <h1 className="font-serif text-[clamp(1.85rem,3.4vw,2.75rem)] font-bold leading-[1.1] tracking-[-0.025em]">
                 Alhambra night visit: the palaces after dark
               </h1>
-              <p className="max-w-[26rem] text-[1.05rem] leading-relaxed text-muted lg:justify-self-end lg:pb-2 lg:text-right">
+              <p className="max-w-[26rem] text-sm leading-relaxed text-muted sm:text-base lg:justify-self-end lg:pb-2 lg:text-right">
                 The Nasrid Palaces open after dark on set nights only. Pick your date to see if it runs and when.
               </p>
             </div>

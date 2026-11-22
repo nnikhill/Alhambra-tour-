@@ -57,10 +57,10 @@ export default function PlanPage() {
           <div className="wrap pb-6 pt-8 sm:pt-10">
             <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: "/plan/", label: "Plan your visit" }]} />
             <div className="mt-6 grid gap-6 lg:grid-cols-[1.6fr_1fr] lg:items-end">
-              <h1 className="font-serif text-[clamp(2.3rem,5.6vw,4.6rem)] font-bold leading-[1] tracking-[-0.03em]">
+              <h1 className="font-serif text-[clamp(1.85rem,3.4vw,2.75rem)] font-bold leading-[1.1] tracking-[-0.025em]">
                 Plan your Alhambra visit
               </h1>
-              <p className="max-w-[26rem] text-[1.05rem] leading-relaxed text-muted lg:justify-self-end lg:pb-2 lg:text-right">
+              <p className="max-w-[26rem] text-sm leading-relaxed text-muted sm:text-base lg:justify-self-end lg:pb-2 lg:text-right">
                 Everything is timed around one thing: your Nasrid Palaces slot. Enter it below and we&rsquo;ll lay out your day.
               </p>
             </div>

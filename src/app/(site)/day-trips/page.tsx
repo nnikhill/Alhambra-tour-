@@ -40,10 +40,10 @@ export default function DayTripsHub() {
       />
       <section className="wrap pb-14 pt-8 sm:pt-10">
         <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: "/day-trips/", label: "Day trips" }]} />
-        <h1 className="mt-6 max-w-[16ch] font-serif text-[clamp(2.3rem,5.6vw,4.6rem)] font-bold leading-[1] tracking-[-0.03em]">
+        <h1 className="mt-6 max-w-[16ch] font-serif text-[clamp(1.85rem,3.4vw,2.75rem)] font-bold leading-[1.1] tracking-[-0.025em]">
           Alhambra day trips
         </h1>
-        <p className="mt-4 max-w-[52ch] text-[1.05rem] text-muted">
+        <p className="mt-3.5 max-w-[52ch] text-sm leading-relaxed text-muted sm:text-base">
           Staying on the coast or in Seville? These trips bring you to Granada and back with a guide, and on most options the Alhambra ticket.
         </p>
         <div className="mt-8 max-w-[760px] rounded-2xl border border-[#efd5b5] bg-[#fdf6ec] p-6">

@@ -72,8 +72,8 @@ export function PostArticle({ p, related, preview = false }: { p: PostView; rela
                 <p className="flex items-center justify-center gap-3 text-[0.9rem] text-muted">
                   <CategoryTag c={p.category} /> <span>{p.readMins} min read</span>
                 </p>
-                <h1 className="mt-4 text-balance font-serif text-[clamp(2.2rem,4.8vw,3.6rem)] font-bold leading-[1.06] tracking-[-0.025em] text-ink">{p.title}</h1>
-                {p.excerpt && <p className="mx-auto mt-4 max-w-[38rem] text-pretty text-[1.12rem] leading-relaxed text-[#3d4450]">{p.excerpt}</p>}
+                <h1 className="mt-4 text-balance font-serif text-[clamp(1.85rem,3.4vw,2.75rem)] font-bold leading-[1.1] tracking-[-0.025em] text-ink">{p.title}</h1>
+                {p.excerpt && <p className="mx-auto mt-3 max-w-[38rem] text-pretty text-sm leading-relaxed text-[#3d4450] sm:text-base">{p.excerpt}</p>}
                 <div className="mt-6 inline-flex items-center gap-3 text-left text-[0.9rem]">
                   <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-white ring-1 ring-[#ecdcc8]">
                     <svg viewBox="0 0 28 32" className="h-5 w-5 text-amber" aria-hidden>
