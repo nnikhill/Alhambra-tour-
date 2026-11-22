@@ -125,21 +125,6 @@ export function Hero() {
           still has places.
         </p>
 
-        {/* Video / Discover link (Centered) */}
-        <div className="mt-2.5 flex items-center justify-center sm:mt-3">
-          <a
-            href="#highlights"
-            className="group inline-flex items-center gap-2 text-white transition-opacity hover:opacity-90"
-          >
-            <span className="flex size-7 items-center justify-center rounded-full border border-white/40 bg-white/15 shadow-sm backdrop-blur-md transition-transform group-hover:scale-105 group-hover:border-white sm:size-8">
-              <Play className="ml-0.5 size-3.5 fill-white text-white" />
-            </span>
-            <span className="text-sm font-medium underline underline-offset-4 decoration-white/50 transition-colors group-hover:decoration-white sm:text-[0.92rem]">
-              Discover the Alhambra
-            </span>
-          </a>
-        </div>
-
         {/* Floating Search Card */}
         <form
           role="search"
