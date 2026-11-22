@@ -49,26 +49,29 @@ export default function NightVisitPage() {
       />
 
       <main id="main">
-        {/* Simple clean hero section like earlier */}
+        {/* Simple clean hero section */}
         <section className="bg-white">
-          <div className="wrap pb-6 pt-8 sm:pt-10">
+          <div className="wrap pb-8 pt-8 sm:pb-12 sm:pt-10">
             <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: "/tickets/", label: "Tickets" }, { href: "/tickets/night-visit/", label: "Night visit" }]} />
-            <div className="mt-8 grid gap-6 lg:grid-cols-[1.6fr_1fr] lg:items-end">
-              <h1 className="font-serif text-[clamp(1.85rem,3.4vw,2.75rem)] font-bold leading-[1.1] tracking-[-0.025em]">
+            
+            <div className="mt-6 max-w-3xl">
+              <h1 className="font-serif text-3xl font-bold tracking-tight text-ink sm:text-4xl lg:text-[2.65rem] leading-[1.15]">
                 Alhambra night visit: the palaces after dark
               </h1>
-              <p className="max-w-[26rem] text-sm leading-relaxed text-muted sm:text-base lg:justify-self-end lg:pb-2 lg:text-right">
+              <p className="mt-3 text-base text-muted sm:text-lg leading-relaxed">
                 The Nasrid Palaces open after dark on set nights only. Pick your date to see if it runs and when.
               </p>
             </div>
+
             <div className="mt-8">
               <NightChecker />
             </div>
+
             {/* Disclosure + freshness right under the booking tool */}
-            <div className="mt-3 flex flex-col gap-1 text-[0.85rem] text-muted sm:flex-row sm:items-baseline sm:gap-3">
+            <div className="mt-3.5 flex flex-col gap-1 text-[0.82rem] text-muted sm:flex-row sm:items-baseline sm:gap-3">
               <span className="shrink-0">Updated {formatDate(LAST_CHECKED)}</span>
               <span aria-hidden className="hidden sm:inline">·</span>
-              <AffiliateNote className="text-[0.85rem]" />
+              <AffiliateNote className="text-[0.82rem]" />
             </div>
           </div>
         </section>
