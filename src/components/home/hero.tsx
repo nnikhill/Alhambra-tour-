@@ -1,19 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, ChevronDown, Languages, Search, Ticket, Users } from "lucide-react";
+import Link from "next/link";
+import {
+  ArrowRight,
+  ChevronDown,
+  Info,
+  Languages,
+  Landmark,
+  Play,
+  Search,
+  ShieldCheck,
+  Users,
+} from "lucide-react";
 import { PHOTOS } from "@/content/photos";
 import { gygUrl } from "@/lib/gyg";
-import Link from "next/link";
-
-// Home hero: centred heritage-tourism layout (MotionSites "Mostar Guide"
-// direction, rebuilt with DESIGN.md tokens). Goal is booking, so the fold is:
-// headline -> one sentence -> one search card -> done. No entrance animation.
-//
-// SEO: H1 leads with the head term "Alhambra tickets".
-// Conversion: the navy search button is the single primary action; the card
-// footer offers the entry-ticket path and carries the affiliate disclosure
-// right next to the links it describes.
 
 type Kind = "day" | "night" | "trip";
 
@@ -53,11 +54,10 @@ const LANGS = ["English", "Spanish", "French", "German", "Italian"];
 const HERO = {
   ...PHOTOS.hero,
   src: "/images/photos/hero-1920.webp",
-  alt: "The Alhambra on its wooded hill above Granada in warm evening light, seen from the Albaicín",
+  alt: "The Alhambra fortress and palaces on Sabika Hill in Granada, Spain, bathed in golden hour sunset light",
 };
 
 export function Hero() {
-  // "day:0" = WHAT group kind + option index, so one grouped select replaces the old tabs.
   const [pick, setPick] = useState("day:0");
   const [group, setGroup] = useState(GROUPS[1]);
   const [lang, setLang] = useState(LANGS[0]);
@@ -66,70 +66,193 @@ export function Hero() {
   const g = WHAT.find((w) => w.kind === kind) ?? WHAT[0];
   const option = g.options[Number(idx)] ?? g.options[0];
   const query = [
-    group === "Family with kids" || group === "Group of 5+" ? option.q.replace("guided tour", "private tour") : option.q,
+    group === "Family with kids" || group === "Group of 5+"
+      ? option.q.replace("guided tour", "private tour")
+      : option.q,
     lang !== "English" ? `in ${lang}` : "",
-  ].join(" ").trim();
+  ]
+    .join(" ")
+    .trim();
   const href = gygUrl(query, { page: "home", position: `hero_search_${g.kind}` });
 
   return (
-    <section className="relative isolate -mt-[4.75rem] flex min-h-[100svh] flex-col items-center justify-center overflow-hidden bg-[#f3e6d8] px-4 pb-[clamp(2rem,9svh,6rem)] pt-[calc(4.75rem+clamp(2rem,6svh,4rem))]">
+    <section className="relative isolate -mt-[5.25rem] flex min-h-[100svh] flex-col justify-between overflow-hidden pt-[calc(5.25rem+clamp(2rem,5svh,4rem))]">
+      {/* Background panoramic photo */}
       <img
-        src={HERO.src} width={HERO.width} height={HERO.height}
+        src={HERO.src}
+        width={HERO.width}
+        height={HERO.height}
         srcSet={HERO.srcSet}
-        sizes="(max-width: 767px) 140vw, (min-aspect-ratio: 28/10) 100vw, 180vh"
+        sizes="100vw"
         alt={HERO.alt}
         fetchPriority="high"
-        className="absolute inset-0 -z-20 size-full object-cover object-[62%_85%]"
+        className="absolute inset-0 -z-30 size-full object-cover object-[center_45%]"
       />
-      {/* Cream wash: solid behind the text, clear over the palace below */}
-      <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(250,244,236,0.96)_0%,rgba(250,244,236,0.9)_45%,rgba(250,244,236,0.55)_62%,rgba(250,244,236,0)_80%)]" />
 
-      <div className="flex w-full max-w-[64rem] flex-col items-center text-center">
-        <h1 className="max-w-[20ch] text-balance font-serif text-[clamp(2.1rem,min(5.2vw,7.6svh),4.25rem)] font-bold leading-[1.02] tracking-[-0.025em] text-ink">
-          Alhambra tickets that include the <em className="font-serif font-bold italic text-amber-deep">Nasrid&nbsp;Palaces</em>
-        </h1>
+      {/* Cinematic gradient overlays for legibility */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-20 bg-[radial-gradient(ellipse_at_top_left,rgba(0,0,0,0.65)_0%,rgba(0,0,0,0.35)_50%,rgba(0,0,0,0.15)_80%)]"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-20 bg-gradient-to-r from-black/65 via-black/35 to-transparent"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-20 bg-gradient-to-b from-black/45 via-transparent to-black/50"
+      />
 
-        <p className="mt-[clamp(0.75rem,2.2svh,1.25rem)] max-w-[36rem] text-pretty text-[1.02rem] leading-relaxed text-[#3d4450] sm:text-[1.15rem]">
-          Tickets sell out weeks ahead and the palaces let you in at one fixed time. Pick a tour that still has places.
-        </p>
+      {/* Top / Main Hero Content */}
+      <div className="wrap flex flex-1 flex-col justify-center py-6 sm:py-8 lg:py-10">
+        <div className="max-w-[44rem]">
+          {/* Location pill badge */}
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/25 px-3.5 py-1.5 text-xs font-medium text-white shadow-sm backdrop-blur-md sm:text-sm">
+            <svg
+              viewBox="0 0 24 24"
+              className="size-3.5 shrink-0 fill-none stroke-currentColor stroke-[2]"
+              aria-hidden
+            >
+              <path d="M4 21V9l2-2v14M8 21V7l2-2v16M14 21V5l2-2v18M18 21V7l2-2v16M2 21h20M7 9h2M13 7h2M17 9h2" />
+            </svg>
+            <span>Granada, Spain</span>
+          </div>
 
-        {/* Search card */}
+          {/* Main Headline */}
+          <h1 className="mt-4 font-serif text-[clamp(2.35rem,5.6vw,4.6rem)] font-normal leading-[1.08] tracking-[-0.025em] text-white sm:mt-5">
+            Alhambra tickets that <br className="hidden sm:inline" />
+            include the{" "}
+            <em className="font-serif font-normal italic text-[#e5b364]">Nasrid Palaces</em>
+          </h1>
+
+          {/* Subtitle */}
+          <p className="mt-3.5 max-w-[34rem] text-base leading-relaxed text-white/90 sm:mt-4 sm:text-[1.12rem]">
+            Tickets sell out weeks ahead and the palaces let you in at one fixed time. Pick a tour that
+            still has places.
+          </p>
+
+          {/* Video / Discover link */}
+          <div className="mt-6 flex items-center">
+            <a
+              href="#highlights"
+              className="group inline-flex items-center gap-3 text-white transition-opacity hover:opacity-90"
+            >
+              <span className="flex size-10 items-center justify-center rounded-full border border-white/40 bg-white/15 shadow-sm backdrop-blur-md transition-transform group-hover:scale-105 group-hover:border-white">
+                <Play className="ml-0.5 size-4 fill-white text-white" />
+              </span>
+              <span className="text-base font-medium underline underline-offset-4 decoration-white/50 transition-colors group-hover:decoration-white sm:text-[1.05rem]">
+                Discover the Alhambra
+              </span>
+            </a>
+          </div>
+        </div>
+
+        {/* Floating Search Card */}
         <form
           role="search"
           aria-label="Find Alhambra tickets and tours"
-          className="mt-[clamp(1.25rem,4.5svh,2.5rem)] w-full overflow-hidden rounded-2xl bg-white text-left shadow-[0_18px_48px_rgba(40,24,8,0.16)] ring-1 ring-black/5"
+          className="mt-8 w-full overflow-hidden rounded-2xl bg-white shadow-[0_24px_60px_rgba(0,0,0,0.30)] ring-1 ring-black/5 sm:rounded-3xl lg:mt-12"
           onSubmit={(e) => {
             e.preventDefault();
-            // Popup blocked? Fall back to opening GetYourGuide in this tab.
             if (!window.open(href, "_blank", "noopener")) window.location.href = href;
           }}
         >
-          <div className="grid grid-cols-2 md:grid-cols-[minmax(17rem,2fr)_minmax(10.5rem,1fr)_minmax(10.5rem,1fr)_auto]">
-            <Field label="Tour" icon={Ticket} id="f-what" className="col-span-2 md:col-span-1">
-              <select id="f-what" value={pick} onChange={(e) => setPick(e.target.value)} className={selectCls}>
-                {WHAT.map((w) => (
-                  <optgroup key={w.kind} label={w.group}>
-                    {w.options.map((o, i) => <option key={o.label} value={`${w.kind}:${i}`}>{o.label}</option>)}
-                  </optgroup>
-                ))}
-              </select>
-            </Field>
-            <Field label="Who" icon={Users} id="f-who" className="border-r">
-              <select id="f-who" value={group} onChange={(e) => setGroup(e.target.value)} className={selectCls}>
-                {GROUPS.map((x) => <option key={x}>{x}</option>)}
-              </select>
-            </Field>
-            <Field label="Guide language" icon={Languages} id="f-lang">
-              <select id="f-lang" value={lang} onChange={(e) => setLang(e.target.value)} className={selectCls}>
-                {LANGS.map((l) => <option key={l}>{l}</option>)}
-              </select>
-            </Field>
-            <div className="col-span-2 p-2.5 md:col-span-1">
+          {/* Top Form Fields Row */}
+          <div className="grid grid-cols-1 divide-y divide-line/70 sm:grid-cols-2 md:grid-cols-[minmax(18rem,2fr)_minmax(11rem,1fr)_minmax(11rem,1fr)_auto] md:divide-x md:divide-y-0">
+            {/* Field 1: Tour */}
+            <div className="relative px-5 py-3.5 transition-colors hover:bg-[#faf8f5] sm:px-6 sm:py-4">
+              <label
+                htmlFor="f-tour"
+                className="block text-[0.68rem] font-bold uppercase tracking-[0.08em] text-[#717b8c]"
+              >
+                Tour
+              </label>
+              <div className="mt-1 flex items-center gap-3">
+                <Landmark className="size-5 shrink-0 text-[#b87428]" aria-hidden />
+                <select
+                  id="f-tour"
+                  value={pick}
+                  onChange={(e) => setPick(e.target.value)}
+                  className="w-full cursor-pointer appearance-none truncate bg-transparent pr-7 text-[0.98rem] font-medium text-ink outline-none"
+                >
+                  {WHAT.map((w) => (
+                    <optgroup key={w.kind} label={w.group}>
+                      {w.options.map((o, i) => (
+                        <option key={o.label} value={`${w.kind}:${i}`}>
+                          {o.label}
+                        </option>
+                      ))}
+                    </optgroup>
+                  ))}
+                </select>
+              </div>
+              <ChevronDown
+                aria-hidden
+                className="pointer-events-none absolute bottom-4 right-4 size-4 text-muted"
+              />
+            </div>
+
+            {/* Field 2: Who */}
+            <div className="relative px-5 py-3.5 transition-colors hover:bg-[#faf8f5] sm:px-6 sm:py-4">
+              <label
+                htmlFor="f-who"
+                className="block text-[0.68rem] font-bold uppercase tracking-[0.08em] text-[#717b8c]"
+              >
+                Who
+              </label>
+              <div className="mt-1 flex items-center gap-3">
+                <Users className="size-5 shrink-0 text-[#b87428]" aria-hidden />
+                <select
+                  id="f-who"
+                  value={group}
+                  onChange={(e) => setGroup(e.target.value)}
+                  className="w-full cursor-pointer appearance-none truncate bg-transparent pr-7 text-[0.98rem] font-medium text-ink outline-none"
+                >
+                  {GROUPS.map((x) => (
+                    <option key={x}>{x}</option>
+                  ))}
+                </select>
+              </div>
+              <ChevronDown
+                aria-hidden
+                className="pointer-events-none absolute bottom-4 right-4 size-4 text-muted"
+              />
+            </div>
+
+            {/* Field 3: Guide Language */}
+            <div className="relative px-5 py-3.5 transition-colors hover:bg-[#faf8f5] sm:px-6 sm:py-4">
+              <label
+                htmlFor="f-lang"
+                className="block text-[0.68rem] font-bold uppercase tracking-[0.08em] text-[#717b8c]"
+              >
+                Guide Language
+              </label>
+              <div className="mt-1 flex items-center gap-3">
+                <Languages className="size-5 shrink-0 text-[#b87428]" aria-hidden />
+                <select
+                  id="f-lang"
+                  value={lang}
+                  onChange={(e) => setLang(e.target.value)}
+                  className="w-full cursor-pointer appearance-none truncate bg-transparent pr-7 text-[0.98rem] font-medium text-ink outline-none"
+                >
+                  {LANGS.map((l) => (
+                    <option key={l}>{l}</option>
+                  ))}
+                </select>
+              </div>
+              <ChevronDown
+                aria-hidden
+                className="pointer-events-none absolute bottom-4 right-4 size-4 text-muted"
+              />
+            </div>
+
+            {/* Field 4: Search Button */}
+            <div className="flex items-center p-2.5 sm:p-3">
               <a
                 href={href}
                 target="_blank"
                 rel="sponsored nofollow noopener"
-                className="btn btn-primary h-full min-h-12 w-full px-6 text-[1rem] md:min-h-14"
+                className="flex h-full min-h-[52px] w-full items-center justify-center gap-2.5 rounded-xl bg-[#1e3425] px-7 text-[0.98rem] font-semibold text-white shadow-sm transition hover:bg-[#15261b] sm:rounded-2xl"
                 data-track="affiliate_click"
               >
                 <Search className="size-[18px]" aria-hidden /> Show available tours
@@ -137,42 +260,59 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Card footer: second path for ticket-only buyers + disclosure next to the links */}
-          <div className="flex flex-col gap-1 border-t border-line bg-[#fbf8f4] px-5 py-2.5 text-[0.82rem] leading-snug text-muted md:flex-row md:items-center md:justify-between md:gap-6">
+          {/* Card Footer Sub-bar */}
+          <div className="flex flex-col gap-2.5 border-t border-[#edebe8] bg-[#fbfaf8] px-6 py-3 text-[0.84rem] text-[#555f6e] sm:flex-row sm:items-center sm:justify-between sm:gap-6">
             <a
               href={gygUrl("Alhambra entry ticket", { page: "home", position: "hero_ticket" })}
               target="_blank"
               rel="sponsored nofollow noopener"
-              className="inline-flex min-h-6 shrink-0 items-center gap-1.5 py-1 font-semibold text-ink underline-offset-2 hover:underline"
+              className="inline-flex items-center gap-2 font-medium text-ink transition hover:underline"
               data-track="affiliate_click"
             >
-              Only need an entry ticket? See entry tickets <ArrowRight className="size-3.5" aria-hidden />
+              <Info className="size-4 shrink-0 text-[#717b8c]" aria-hidden />
+              <span>Only need an entry ticket? See entry tickets &rarr;</span>
             </a>
-            <p>
-              We&rsquo;re an independent guide. Links go to GetYourGuide and we may earn a commission at no extra cost to you.{" "}
-              <Link href="/affiliate-disclosure/" className="underline underline-offset-2">How we earn</Link>
-            </p>
+            <div className="flex items-center gap-2 text-[0.82rem] text-[#555f6e]">
+              <ShieldCheck className="size-4 shrink-0 text-[#1e3425]" aria-hidden />
+              <span>
+                We&rsquo;re an independent guide. Links go to GetYourGuide.
+              </span>
+            </div>
           </div>
         </form>
       </div>
-    </section>
-  );
-}
 
-const selectCls =
-  "w-full cursor-pointer appearance-none truncate bg-transparent pr-7 text-[0.98rem] font-medium text-ink outline-none";
+      {/* Bottom Scroll Indicator & Curved Separator */}
+      <div className="flex flex-col items-center">
+        {/* Scroll down button */}
+        <div className="mb-4 flex items-center justify-center gap-3">
+          <div className="h-px w-10 bg-white/30 sm:w-16" />
+          <a
+            href="#tickets"
+            aria-label="Scroll to tickets"
+            className="flex size-9 items-center justify-center rounded-full border border-white/40 bg-black/20 text-white/90 backdrop-blur-md transition hover:border-white hover:text-white"
+          >
+            <ChevronDown className="size-4" />
+          </a>
+          <div className="h-px w-10 bg-white/30 sm:w-16" />
+        </div>
 
-function Field({ label, icon: Icon, id, className = "", children }: { label: string; icon: typeof Ticket; id: string; className?: string; children: React.ReactNode }) {
-  return (
-    <div className={`relative min-w-0 border-b border-line px-4 py-3 transition-colors hover:bg-[#faf7f3] sm:px-5 md:border-b-0 md:border-r ${className}`}>
-      <label htmlFor={id} className="block text-[0.7rem] font-semibold uppercase tracking-[0.08em] text-muted">
-        {label}
-      </label>
-      <div className="mt-1 flex items-center gap-2.5">
-        <Icon className="size-[18px] shrink-0 text-amber-deep" aria-hidden />
-        {children}
+        {/* Curved wave bottom divider */}
+        <div className="relative -mb-px w-full overflow-hidden leading-none">
+          <svg
+            viewBox="0 0 1440 96"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="block h-10 w-full preserve-3d sm:h-14 lg:h-20"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0 48C280 96 520 8 820 48C1100 88 1320 32 1440 16V96H0V48Z"
+              className="fill-white"
+            />
+          </svg>
+        </div>
       </div>
-      <ChevronDown aria-hidden className="pointer-events-none absolute bottom-4 right-4 size-4 text-muted" />
-    </div>
+    </section>
   );
 }
