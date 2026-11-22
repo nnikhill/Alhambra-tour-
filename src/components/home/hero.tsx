@@ -76,7 +76,7 @@ export function Hero() {
   const href = gygUrl(query, { page: "home", position: `hero_search_${g.kind}` });
 
   return (
-    <section className="relative isolate -mt-[5.25rem] flex h-[100svh] min-h-[580px] max-h-[100svh] flex-col justify-between overflow-hidden pt-[calc(4.75rem+0.75rem)]">
+    <section className="relative isolate -mt-[5.25rem] flex h-[100svh] min-h-[580px] max-h-[100svh] flex-col items-center justify-between overflow-hidden pt-[calc(4.75rem+0.75rem)]">
       {/* Background panoramic photo */}
       <img
         src={HERO.src}
@@ -92,66 +92,59 @@ export function Hero() {
       {/* Cinematic gradient overlays for legibility */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-20 bg-[radial-gradient(ellipse_at_top_left,rgba(0,0,0,0.65)_0%,rgba(0,0,0,0.35)_50%,rgba(0,0,0,0.15)_80%)]"
+        className="absolute inset-0 -z-20 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.52)_0%,rgba(0,0,0,0.30)_55%,rgba(0,0,0,0.58)_100%)]"
       />
       <div
         aria-hidden
-        className="absolute inset-0 -z-20 bg-gradient-to-r from-black/65 via-black/35 to-transparent"
-      />
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-20 bg-gradient-to-b from-black/45 via-transparent to-black/50"
+        className="absolute inset-0 -z-20 bg-gradient-to-b from-black/50 via-transparent to-black/55"
       />
 
-      {/* Top / Main Hero Content */}
-      <div className="wrap flex flex-1 flex-col justify-center py-2 sm:py-4">
-        <div className="max-w-[42rem]">
-          {/* Location pill badge */}
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/25 px-3 py-1 text-[0.78rem] font-medium text-white shadow-sm backdrop-blur-md">
-            <svg
-              viewBox="0 0 24 24"
-              className="size-3.5 shrink-0 fill-none stroke-currentColor stroke-[2]"
-              aria-hidden
-            >
-              <path d="M4 21V9l2-2v14M8 21V7l2-2v16M14 21V5l2-2v18M18 21V7l2-2v16M2 21h20M7 9h2M13 7h2M17 9h2" />
-            </svg>
-            <span>Granada, Spain</span>
-          </div>
+      {/* Main Centered Content */}
+      <div className="wrap flex flex-1 flex-col items-center justify-center py-2 text-center sm:py-4">
+        {/* Location pill badge */}
+        <div className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/25 px-3 py-1 text-[0.78rem] font-medium text-white shadow-sm backdrop-blur-md">
+          <svg
+            viewBox="0 0 24 24"
+            className="size-3.5 shrink-0 fill-none stroke-currentColor stroke-[2]"
+            aria-hidden
+          >
+            <path d="M4 21V9l2-2v14M8 21V7l2-2v16M14 21V5l2-2v18M18 21V7l2-2v16M2 21h20M7 9h2M13 7h2M17 9h2" />
+          </svg>
+          <span>Granada, Spain</span>
+        </div>
 
-          {/* Main Headline */}
-          <h1 className="mt-2.5 font-serif text-[clamp(1.85rem,3.5vw,2.85rem)] font-normal leading-[1.12] tracking-[-0.02em] text-white sm:mt-3">
-            Alhambra tickets that <br className="hidden sm:inline" />
-            include the{" "}
-            <em className="font-serif font-normal italic text-[#e5b364]">Nasrid Palaces</em>
-          </h1>
+        {/* Main Headline (Centered) */}
+        <h1 className="mt-2.5 max-w-[22ch] text-balance font-serif text-[clamp(1.85rem,3.5vw,2.85rem)] font-normal leading-[1.12] tracking-[-0.02em] text-white sm:mt-3">
+          Alhambra tickets that include the{" "}
+          <em className="font-serif font-normal italic text-[#e5b364]">Nasrid&nbsp;Palaces</em>
+        </h1>
 
-          {/* Subtitle */}
-          <p className="mt-2 max-w-[32rem] text-sm leading-relaxed text-white/90 sm:mt-2.5 sm:text-[0.98rem]">
-            Tickets sell out weeks ahead and the palaces let you in at one fixed time. Pick a tour that
-            still has places.
-          </p>
+        {/* Subtitle (Centered) */}
+        <p className="mt-2 max-w-[34rem] text-pretty text-sm leading-relaxed text-white/90 sm:mt-2.5 sm:text-[0.98rem]">
+          Tickets sell out weeks ahead and the palaces let you in at one fixed time. Pick a tour that
+          still has places.
+        </p>
 
-          {/* Video / Discover link */}
-          <div className="mt-3 flex items-center sm:mt-4">
-            <a
-              href="#highlights"
-              className="group inline-flex items-center gap-2.5 text-white transition-opacity hover:opacity-90"
-            >
-              <span className="flex size-8 items-center justify-center rounded-full border border-white/40 bg-white/15 shadow-sm backdrop-blur-md transition-transform group-hover:scale-105 group-hover:border-white sm:size-9">
-                <Play className="ml-0.5 size-3.5 fill-white text-white" />
-              </span>
-              <span className="text-sm font-medium underline underline-offset-4 decoration-white/50 transition-colors group-hover:decoration-white sm:text-[0.95rem]">
-                Discover the Alhambra
-              </span>
-            </a>
-          </div>
+        {/* Video / Discover link (Centered) */}
+        <div className="mt-2.5 flex items-center justify-center sm:mt-3">
+          <a
+            href="#highlights"
+            className="group inline-flex items-center gap-2 text-white transition-opacity hover:opacity-90"
+          >
+            <span className="flex size-7 items-center justify-center rounded-full border border-white/40 bg-white/15 shadow-sm backdrop-blur-md transition-transform group-hover:scale-105 group-hover:border-white sm:size-8">
+              <Play className="ml-0.5 size-3.5 fill-white text-white" />
+            </span>
+            <span className="text-sm font-medium underline underline-offset-4 decoration-white/50 transition-colors group-hover:decoration-white sm:text-[0.92rem]">
+              Discover the Alhambra
+            </span>
+          </a>
         </div>
 
         {/* Floating Search Card */}
         <form
           role="search"
           aria-label="Find Alhambra tickets and tours"
-          className="mt-4 w-full max-w-[64rem] overflow-hidden rounded-2xl bg-white shadow-[0_20px_50px_rgba(0,0,0,0.28)] ring-1 ring-black/5 sm:mt-6 sm:rounded-3xl"
+          className="mt-4 w-full max-w-[64rem] overflow-hidden rounded-2xl bg-white text-left shadow-[0_20px_50px_rgba(0,0,0,0.28)] ring-1 ring-black/5 sm:mt-5 sm:rounded-3xl"
           onSubmit={(e) => {
             e.preventDefault();
             if (!window.open(href, "_blank", "noopener")) window.location.href = href;
@@ -283,7 +276,7 @@ export function Hero() {
       </div>
 
       {/* Bottom Scroll Indicator & Curved Separator */}
-      <div className="flex flex-col items-center">
+      <div className="flex w-full flex-col items-center">
         {/* Scroll down button */}
         <div className="mb-2 flex items-center justify-center gap-2.5 sm:mb-2.5">
           <div className="h-px w-8 bg-white/30 sm:w-12" />
