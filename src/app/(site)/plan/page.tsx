@@ -54,32 +54,36 @@ export default function PlanPage() {
       <main id="main">
         {/* Hero */}
         <section className="bg-white">
-          <div className="wrap pb-6 pt-8 sm:pt-10">
+          <div className="wrap pb-8 pt-8 sm:pb-12 sm:pt-10">
             <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: "/plan/", label: "Plan your visit" }]} />
-            <div className="mt-6 grid gap-6 lg:grid-cols-[1.6fr_1fr] lg:items-end">
-              <h1 className="font-serif text-[clamp(1.85rem,3.4vw,2.75rem)] font-bold leading-[1.1] tracking-[-0.025em]">
+            
+            <div className="mt-6 max-w-3xl">
+              <h1 className="font-serif text-3xl font-bold tracking-tight text-ink sm:text-4xl lg:text-[2.65rem] leading-[1.15]">
                 Plan your Alhambra visit
               </h1>
-              <p className="max-w-[26rem] text-sm leading-relaxed text-muted sm:text-base lg:justify-self-end lg:pb-2 lg:text-right">
+              <p className="mt-3 text-base text-muted sm:text-lg leading-relaxed">
                 Everything is timed around one thing: your Nasrid Palaces slot. Enter it below and we&rsquo;ll lay out your day.
               </p>
             </div>
-            <dl className="mt-8 grid grid-cols-2 gap-y-4 border-y border-line py-5 md:grid-cols-4">
+
+            <dl className="mt-8 grid grid-cols-2 gap-y-5 border-y border-line/80 py-6 sm:grid-cols-4 sm:gap-x-8">
               {PLAN_FACTS.map((f, i) => (
-                <div key={f.label} className={`flex flex-col-reverse px-1 md:px-5 ${i > 0 ? "md:border-l md:border-line" : ""}`}>
-                  <dt className="mt-1.5 text-[0.88rem] text-muted">{f.label}</dt>
-                  <dd className="font-serif text-[1.7rem] font-bold leading-none">{f.value}</dd>
+                <div key={f.label} className={`flex flex-col-reverse px-2 sm:px-4 ${i > 0 ? "sm:border-l sm:border-line/70" : ""}`}>
+                  <dt className="mt-1 text-xs sm:text-[0.88rem] text-muted">{f.label}</dt>
+                  <dd className="font-serif text-2xl font-bold tracking-tight text-ink sm:text-3xl">{f.value}</dd>
                 </div>
               ))}
             </dl>
+
             <div className="mt-8">
               <VisitPlanner />
             </div>
-            {/* Disclosure + freshness right under the first booking button */}
-            <div className="mt-3 flex flex-col gap-1 text-[0.85rem] text-muted sm:flex-row sm:items-baseline sm:gap-3">
+
+            {/* Disclosure + freshness right under the booking tool */}
+            <div className="mt-3.5 flex flex-col gap-1 text-[0.82rem] text-muted sm:flex-row sm:items-baseline sm:gap-3">
               <span className="shrink-0">Updated {formatDate(LAST_CHECKED)}</span>
               <span aria-hidden className="hidden sm:inline">·</span>
-              <AffiliateNote className="text-[0.85rem]" />
+              <AffiliateNote className="text-[0.82rem]" />
             </div>
           </div>
         </section>
