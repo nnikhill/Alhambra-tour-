@@ -76,7 +76,7 @@ export function Hero() {
   const href = gygUrl(query, { page: "home", position: `hero_search_${g.kind}` });
 
   return (
-    <section className="relative isolate -mt-[5.25rem] flex min-h-[100svh] flex-col justify-between overflow-hidden pt-[calc(5.25rem+clamp(2rem,5svh,4rem))]">
+    <section className="relative isolate -mt-[5.25rem] flex h-[100svh] min-h-[580px] max-h-[100svh] flex-col justify-between overflow-hidden pt-[calc(4.75rem+0.75rem)]">
       {/* Background panoramic photo */}
       <img
         src={HERO.src}
@@ -104,10 +104,10 @@ export function Hero() {
       />
 
       {/* Top / Main Hero Content */}
-      <div className="wrap flex flex-1 flex-col justify-center py-6 sm:py-8 lg:py-10">
-        <div className="max-w-[44rem]">
+      <div className="wrap flex flex-1 flex-col justify-center py-2 sm:py-4">
+        <div className="max-w-[42rem]">
           {/* Location pill badge */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/25 px-3.5 py-1.5 text-xs font-medium text-white shadow-sm backdrop-blur-md sm:text-sm">
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/25 px-3 py-1 text-[0.78rem] font-medium text-white shadow-sm backdrop-blur-md">
             <svg
               viewBox="0 0 24 24"
               className="size-3.5 shrink-0 fill-none stroke-currentColor stroke-[2]"
@@ -119,28 +119,28 @@ export function Hero() {
           </div>
 
           {/* Main Headline */}
-          <h1 className="mt-4 font-serif text-[clamp(2.35rem,5.6vw,4.6rem)] font-normal leading-[1.08] tracking-[-0.025em] text-white sm:mt-5">
+          <h1 className="mt-2.5 font-serif text-[clamp(1.85rem,3.5vw,2.85rem)] font-normal leading-[1.12] tracking-[-0.02em] text-white sm:mt-3">
             Alhambra tickets that <br className="hidden sm:inline" />
             include the{" "}
             <em className="font-serif font-normal italic text-[#e5b364]">Nasrid Palaces</em>
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-3.5 max-w-[34rem] text-base leading-relaxed text-white/90 sm:mt-4 sm:text-[1.12rem]">
+          <p className="mt-2 max-w-[32rem] text-sm leading-relaxed text-white/90 sm:mt-2.5 sm:text-[0.98rem]">
             Tickets sell out weeks ahead and the palaces let you in at one fixed time. Pick a tour that
             still has places.
           </p>
 
           {/* Video / Discover link */}
-          <div className="mt-6 flex items-center">
+          <div className="mt-3 flex items-center sm:mt-4">
             <a
               href="#highlights"
-              className="group inline-flex items-center gap-3 text-white transition-opacity hover:opacity-90"
+              className="group inline-flex items-center gap-2.5 text-white transition-opacity hover:opacity-90"
             >
-              <span className="flex size-10 items-center justify-center rounded-full border border-white/40 bg-white/15 shadow-sm backdrop-blur-md transition-transform group-hover:scale-105 group-hover:border-white">
-                <Play className="ml-0.5 size-4 fill-white text-white" />
+              <span className="flex size-8 items-center justify-center rounded-full border border-white/40 bg-white/15 shadow-sm backdrop-blur-md transition-transform group-hover:scale-105 group-hover:border-white sm:size-9">
+                <Play className="ml-0.5 size-3.5 fill-white text-white" />
               </span>
-              <span className="text-base font-medium underline underline-offset-4 decoration-white/50 transition-colors group-hover:decoration-white sm:text-[1.05rem]">
+              <span className="text-sm font-medium underline underline-offset-4 decoration-white/50 transition-colors group-hover:decoration-white sm:text-[0.95rem]">
                 Discover the Alhambra
               </span>
             </a>
@@ -151,29 +151,29 @@ export function Hero() {
         <form
           role="search"
           aria-label="Find Alhambra tickets and tours"
-          className="mt-8 w-full overflow-hidden rounded-2xl bg-white shadow-[0_24px_60px_rgba(0,0,0,0.30)] ring-1 ring-black/5 sm:rounded-3xl lg:mt-12"
+          className="mt-4 w-full max-w-[64rem] overflow-hidden rounded-2xl bg-white shadow-[0_20px_50px_rgba(0,0,0,0.28)] ring-1 ring-black/5 sm:mt-6 sm:rounded-3xl"
           onSubmit={(e) => {
             e.preventDefault();
             if (!window.open(href, "_blank", "noopener")) window.location.href = href;
           }}
         >
           {/* Top Form Fields Row */}
-          <div className="grid grid-cols-1 divide-y divide-line/70 sm:grid-cols-2 md:grid-cols-[minmax(18rem,2fr)_minmax(11rem,1fr)_minmax(11rem,1fr)_auto] md:divide-x md:divide-y-0">
+          <div className="grid grid-cols-1 divide-y divide-line/70 sm:grid-cols-2 md:grid-cols-[minmax(16rem,2fr)_minmax(10rem,1fr)_minmax(10rem,1fr)_auto] md:divide-x md:divide-y-0">
             {/* Field 1: Tour */}
-            <div className="relative px-5 py-3.5 transition-colors hover:bg-[#faf8f5] sm:px-6 sm:py-4">
+            <div className="relative px-4 py-2.5 transition-colors hover:bg-[#faf8f5] sm:px-5 sm:py-3">
               <label
                 htmlFor="f-tour"
-                className="block text-[0.68rem] font-bold uppercase tracking-[0.08em] text-[#717b8c]"
+                className="block text-[0.62rem] font-bold uppercase tracking-[0.08em] text-[#717b8c] sm:text-[0.66rem]"
               >
                 Tour
               </label>
-              <div className="mt-1 flex items-center gap-3">
-                <Landmark className="size-5 shrink-0 text-[#b87428]" aria-hidden />
+              <div className="mt-0.5 flex items-center gap-2.5">
+                <Landmark className="size-4.5 shrink-0 text-[#b87428]" aria-hidden />
                 <select
                   id="f-tour"
                   value={pick}
                   onChange={(e) => setPick(e.target.value)}
-                  className="w-full cursor-pointer appearance-none truncate bg-transparent pr-7 text-[0.98rem] font-medium text-ink outline-none"
+                  className="w-full cursor-pointer appearance-none truncate bg-transparent pr-6 text-[0.88rem] font-medium text-ink outline-none sm:text-[0.92rem]"
                 >
                   {WHAT.map((w) => (
                     <optgroup key={w.kind} label={w.group}>
@@ -188,25 +188,25 @@ export function Hero() {
               </div>
               <ChevronDown
                 aria-hidden
-                className="pointer-events-none absolute bottom-4 right-4 size-4 text-muted"
+                className="pointer-events-none absolute bottom-3 right-3 size-4 text-muted sm:bottom-3.5 sm:right-4"
               />
             </div>
 
             {/* Field 2: Who */}
-            <div className="relative px-5 py-3.5 transition-colors hover:bg-[#faf8f5] sm:px-6 sm:py-4">
+            <div className="relative px-4 py-2.5 transition-colors hover:bg-[#faf8f5] sm:px-5 sm:py-3">
               <label
                 htmlFor="f-who"
-                className="block text-[0.68rem] font-bold uppercase tracking-[0.08em] text-[#717b8c]"
+                className="block text-[0.62rem] font-bold uppercase tracking-[0.08em] text-[#717b8c] sm:text-[0.66rem]"
               >
                 Who
               </label>
-              <div className="mt-1 flex items-center gap-3">
-                <Users className="size-5 shrink-0 text-[#b87428]" aria-hidden />
+              <div className="mt-0.5 flex items-center gap-2.5">
+                <Users className="size-4.5 shrink-0 text-[#b87428]" aria-hidden />
                 <select
                   id="f-who"
                   value={group}
                   onChange={(e) => setGroup(e.target.value)}
-                  className="w-full cursor-pointer appearance-none truncate bg-transparent pr-7 text-[0.98rem] font-medium text-ink outline-none"
+                  className="w-full cursor-pointer appearance-none truncate bg-transparent pr-6 text-[0.88rem] font-medium text-ink outline-none sm:text-[0.92rem]"
                 >
                   {GROUPS.map((x) => (
                     <option key={x}>{x}</option>
@@ -215,25 +215,25 @@ export function Hero() {
               </div>
               <ChevronDown
                 aria-hidden
-                className="pointer-events-none absolute bottom-4 right-4 size-4 text-muted"
+                className="pointer-events-none absolute bottom-3 right-3 size-4 text-muted sm:bottom-3.5 sm:right-4"
               />
             </div>
 
             {/* Field 3: Guide Language */}
-            <div className="relative px-5 py-3.5 transition-colors hover:bg-[#faf8f5] sm:px-6 sm:py-4">
+            <div className="relative px-4 py-2.5 transition-colors hover:bg-[#faf8f5] sm:px-5 sm:py-3">
               <label
                 htmlFor="f-lang"
-                className="block text-[0.68rem] font-bold uppercase tracking-[0.08em] text-[#717b8c]"
+                className="block text-[0.62rem] font-bold uppercase tracking-[0.08em] text-[#717b8c] sm:text-[0.66rem]"
               >
                 Guide Language
               </label>
-              <div className="mt-1 flex items-center gap-3">
-                <Languages className="size-5 shrink-0 text-[#b87428]" aria-hidden />
+              <div className="mt-0.5 flex items-center gap-2.5">
+                <Languages className="size-4.5 shrink-0 text-[#b87428]" aria-hidden />
                 <select
                   id="f-lang"
                   value={lang}
                   onChange={(e) => setLang(e.target.value)}
-                  className="w-full cursor-pointer appearance-none truncate bg-transparent pr-7 text-[0.98rem] font-medium text-ink outline-none"
+                  className="w-full cursor-pointer appearance-none truncate bg-transparent pr-6 text-[0.88rem] font-medium text-ink outline-none sm:text-[0.92rem]"
                 >
                   {LANGS.map((l) => (
                     <option key={l}>{l}</option>
@@ -242,38 +242,38 @@ export function Hero() {
               </div>
               <ChevronDown
                 aria-hidden
-                className="pointer-events-none absolute bottom-4 right-4 size-4 text-muted"
+                className="pointer-events-none absolute bottom-3 right-3 size-4 text-muted sm:bottom-3.5 sm:right-4"
               />
             </div>
 
             {/* Field 4: Search Button */}
-            <div className="flex items-center p-2.5 sm:p-3">
+            <div className="flex items-center p-2 sm:p-2.5">
               <a
                 href={href}
                 target="_blank"
                 rel="sponsored nofollow noopener"
-                className="flex h-full min-h-[52px] w-full items-center justify-center gap-2.5 rounded-xl bg-[#1e3425] px-7 text-[0.98rem] font-semibold text-white shadow-sm transition hover:bg-[#15261b] sm:rounded-2xl"
+                className="flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#1e3425] px-6 text-[0.92rem] font-semibold text-white shadow-sm transition hover:bg-[#15261b] sm:h-12 sm:rounded-2xl sm:text-[0.95rem]"
                 data-track="affiliate_click"
               >
-                <Search className="size-[18px]" aria-hidden /> Show available tours
+                <Search className="size-4" aria-hidden /> Show available tours
               </a>
             </div>
           </div>
 
           {/* Card Footer Sub-bar */}
-          <div className="flex flex-col gap-2.5 border-t border-[#edebe8] bg-[#fbfaf8] px-6 py-3 text-[0.84rem] text-[#555f6e] sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+          <div className="flex flex-col gap-1.5 border-t border-[#edebe8] bg-[#fbfaf8] px-5 py-2 text-[0.78rem] text-[#555f6e] sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:px-6 sm:py-2.5 sm:text-[0.82rem]">
             <a
               href={gygUrl("Alhambra entry ticket", { page: "home", position: "hero_ticket" })}
               target="_blank"
               rel="sponsored nofollow noopener"
-              className="inline-flex items-center gap-2 font-medium text-ink transition hover:underline"
+              className="inline-flex items-center gap-1.5 font-medium text-ink transition hover:underline"
               data-track="affiliate_click"
             >
-              <Info className="size-4 shrink-0 text-[#717b8c]" aria-hidden />
+              <Info className="size-3.5 shrink-0 text-[#717b8c]" aria-hidden />
               <span>Only need an entry ticket? See entry tickets &rarr;</span>
             </a>
-            <div className="flex items-center gap-2 text-[0.82rem] text-[#555f6e]">
-              <ShieldCheck className="size-4 shrink-0 text-[#1e3425]" aria-hidden />
+            <div className="flex items-center gap-1.5 text-[0.76rem] text-[#555f6e] sm:text-[0.8rem]">
+              <ShieldCheck className="size-3.5 shrink-0 text-[#1e3425]" aria-hidden />
               <span>
                 We&rsquo;re an independent guide. Links go to GetYourGuide.
               </span>
@@ -285,16 +285,16 @@ export function Hero() {
       {/* Bottom Scroll Indicator & Curved Separator */}
       <div className="flex flex-col items-center">
         {/* Scroll down button */}
-        <div className="mb-4 flex items-center justify-center gap-3">
-          <div className="h-px w-10 bg-white/30 sm:w-16" />
+        <div className="mb-2 flex items-center justify-center gap-2.5 sm:mb-2.5">
+          <div className="h-px w-8 bg-white/30 sm:w-12" />
           <a
             href="#tickets"
             aria-label="Scroll to tickets"
-            className="flex size-9 items-center justify-center rounded-full border border-white/40 bg-black/20 text-white/90 backdrop-blur-md transition hover:border-white hover:text-white"
+            className="flex size-7 items-center justify-center rounded-full border border-white/40 bg-black/20 text-white/90 backdrop-blur-md transition hover:border-white hover:text-white sm:size-8"
           >
-            <ChevronDown className="size-4" />
+            <ChevronDown className="size-3.5" />
           </a>
-          <div className="h-px w-10 bg-white/30 sm:w-16" />
+          <div className="h-px w-8 bg-white/30 sm:w-12" />
         </div>
 
         {/* Curved wave bottom divider */}
@@ -303,7 +303,7 @@ export function Hero() {
             viewBox="0 0 1440 96"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="block h-10 w-full preserve-3d sm:h-14 lg:h-20"
+            className="block h-6 w-full preserve-3d sm:h-8 lg:h-10"
             preserveAspectRatio="none"
           >
             <path
