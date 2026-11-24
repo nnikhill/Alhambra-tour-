@@ -28,6 +28,8 @@ export const metadata: Metadata = {
   description: SITE.description,
   openGraph: { siteName: SITE.name, type: "website", locale: "en_GB", images: [{ url: "/images/og-default.jpg", width: 1200, height: 630, alt: "The Alhambra in Granada at sunset" }] },
   twitter: { card: "summary_large_image" },
+  // Pinterest website claim: renders <meta name="p:domain_verify" ...> on every page.
+  other: { "p:domain_verify": "45440f6708b35d72ac85e548e22d0b24" },
 };
 
 export const viewport: Viewport = { themeColor: "#ffffff" };
