@@ -53,7 +53,7 @@ export default function AboutPage() {
               <div>
                 <h2 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">Why We Built {SITE.name}</h2>
                 <p className="mt-4">
-                  The Alhambra in Granada is Spain&rsquo;s most visited monument, but planning a visit can feel like navigating a maze. Official tickets sell out weeks or months in advance, time slots for the Nasrid Palaces are strictly enforced down to the minute, and travelers who arrive without advance preparation are routinely turned away at the gates.
+                  The Alhambra in Granada is Spain&rsquo;s most visited monument, but planning a visit can feel like navigating a maze. Tickets with the Nasrid Palaces often sell out weeks ahead in busy months, and the palaces can only be entered at the time printed on your ticket, so arriving without a plan can mean missing them.
                 </p>
                 <p className="mt-3">
                   We created <strong>{SITE.name}</strong> as an independent, traveler-first resource. Our goal is simple: provide clear, transparent, and actionable advice so you can secure access to the Nasrid Palaces and Generalife gardens, even when the official ticket portal appears completely sold out.
@@ -68,9 +68,9 @@ export default function AboutPage() {
                     <div className="flex size-10 items-center justify-center rounded-xl bg-brand/10 text-brand">
                       <ShieldCheck className="size-5" />
                     </div>
-                    <h3 className="mt-3 text-lg font-bold text-ink">100% Independent</h3>
+                    <h3 className="mt-3 text-lg font-bold text-ink">Independent</h3>
                     <p className="mt-1.5 text-sm leading-relaxed text-muted">
-                      We are completely independent and not affiliated with the <em>Patronato de la Alhambra y Generalife</em>. This means our advice is impartial, honest, and centered entirely on travelers.
+                      We are independent and not affiliated with the <em>Patronato de la Alhambra y Generalife</em>. We earn a commission from GetYourGuide when you book, and we say so on every page with booking links.
                     </p>
                   </div>
 
@@ -88,9 +88,9 @@ export default function AboutPage() {
                     <div className="flex size-10 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600">
                       <CheckCircle2 className="size-5" />
                     </div>
-                    <h3 className="mt-3 text-lg font-bold text-ink">Vetted Guided Tours</h3>
+                    <h3 className="mt-3 text-lg font-bold text-ink">Tours That Include the Palaces</h3>
                     <p className="mt-1.5 text-sm leading-relaxed text-muted">
-                      When entry tickets sell out, tour companies often still have places. We point you to well-reviewed tours that include the Nasrid Palaces, and we say when a listing doesn&rsquo;t.
+                      When entry tickets sell out, tour companies often still have places. We link to tours whose listings say they include the Nasrid Palaces, and we say when an option doesn&rsquo;t include them.
                     </p>
                   </div>
 
@@ -113,7 +113,7 @@ export default function AboutPage() {
                   <div>
                     <h2 className="text-lg font-bold text-ink">We Are an Affiliate Website</h2>
                     <p className="mt-2 text-sm leading-relaxed text-[#3d4450] sm:text-base">
-                      {SITE.name} is an independent travel guide and affiliate website. We partner with licensed, certified ticket and tour platforms such as GetYourGuide. When you click our links and book a tour or ticket, we may earn an affiliate commission at zero additional cost to you. This support allows us to maintain and update these visitor guides completely free of charge. For complete details, see our{" "}
+                      {SITE.name} is an independent travel guide and affiliate website. Our booking links go to GetYourGuide, our affiliate partner. When you click our links and book a tour or ticket, we may earn an affiliate commission at zero additional cost to you. This support allows us to maintain and update these visitor guides completely free of charge. For complete details, see our{" "}
                       <Link href="/affiliate-disclosure/" className="font-semibold text-ink underline underline-offset-2">
                         Affiliate Disclosure
                       </Link>.
@@ -126,7 +126,7 @@ export default function AboutPage() {
               <div>
                 <h2 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">Who We Are</h2>
                 <p className="mt-4">
-                  {SITE.name} is maintained by an independent editorial team of Spain travel writers, cultural heritage researchers, and local guides based across Andalusia. Having visited the Alhambra dozens of times across different seasons and times of day, we share firsthand practical knowledge: which gates have shorter queues, what time to queue for your palace entry, and how to avoid the midday sun in the Generalife gardens.
+                  {SITE.name} is run by a small independent team that works with attraction tickets and tour bookings. We are not tour guides and we don&rsquo;t sell tickets ourselves. Every ticket rule, price and opening time on this site is checked against the official Patronato de la Alhambra y Generalife website, each page shows the date it was last checked, and we update pages when the official information changes. If you spot something out of date, please <Link href="/contact/" className="font-semibold underline">tell us</Link>.
                 </p>
               </div>
 
@@ -140,7 +140,7 @@ export default function AboutPage() {
                   >
                     <div>
                       <p className="font-bold text-ink group-hover:text-brand">Ticket Options</p>
-                      <p className="mt-1 text-sm text-muted">Compare general admission, audio guides, and garden tickets.</p>
+                      <p className="mt-1 text-sm text-muted">Compare all 8 official tickets: day, night and gardens only.</p>
                     </div>
                     <span className="mt-4 inline-flex items-center text-sm font-semibold text-brand">
                       View tickets <ArrowRight className="ml-1 size-4 transition group-hover:translate-x-1" />

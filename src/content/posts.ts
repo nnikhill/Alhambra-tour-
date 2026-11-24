@@ -9,7 +9,7 @@
 //  3. Links up to the pillar (/plan/) and across to the money pages
 //     (/tickets/, /tours/, /tickets/sold-out/, /tickets/night-visit/) with
 //     descriptive anchor text, plus at least one sibling post.
-//  4. An FAQ at the end (FAQPage schema) for People Also Ask.
+//  4. An FAQ at the end for People Also Ask (no FAQPage markup: not eligible).
 //
 // Sources, Nov 2026: tickets.alhambra-patronato.es (Alcazaba reopened 23 Sep
 // 2026); alhambradegranada.org and orain.eus (Aug 2026 earthquake reports,

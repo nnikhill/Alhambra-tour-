@@ -2,18 +2,30 @@ import { Check, X } from "lucide-react";
 import { KEY_FACTS } from "@/content/facts";
 import { gygUrl } from "@/lib/gyg";
 
+// Every cell says its value in words (no bare ticks or blanks), and nothing
+// here is claimed for every tour: details differ by listing.
 const ROWS: { label: string; official: boolean | string; tour: boolean | string }[] = [
-  { label: "Price per adult", official: `Official €${KEY_FACTS.generalPrice} + booking fee`, tour: "Higher: guide included" },
-  { label: "Nasrid Palaces included", official: true, tour: true },
-  { label: "Available for most dates", official: "Often sold out", tour: true },
-  { label: "Cancellation", official: "Usually non-refundable", tour: "Varies: check the listing" },
-  { label: "Expert guide", official: false, tour: true },
-  { label: "Gets you to your palace slot on time", official: false, tour: true },
+  { label: "Price per adult", official: `€${KEY_FACTS.generalPrice} official price (more on resale sites)`, tour: "Higher: includes the guide" },
+  { label: "Nasrid Palaces", official: "Included in the General ticket", tour: "Included when the listing says “with Nasrid Palaces”" },
+  { label: "Availability", official: "Often sold out weeks ahead", tour: "Often still available when tickets are gone" },
+  { label: "Cancellation", official: "Usually non-refundable", tour: "Varies by provider: shown before you pay" },
+  { label: "Guide", official: false, tour: true },
+  { label: "Entry ticket", official: true, tour: "Included on tours sold with a ticket" },
 ];
 
 function Cell({ v }: { v: boolean | string }) {
-  if (v === true) return <Check className="mx-auto size-5 text-brand" aria-label="Yes" />;
-  if (v === false) return <X className="mx-auto size-5 text-[#9aa1ad]" aria-label="No" />;
+  if (v === true)
+    return (
+      <span className="inline-flex items-center gap-1.5 font-semibold">
+        <Check className="size-5 text-brand" aria-hidden /> Included
+      </span>
+    );
+  if (v === false)
+    return (
+      <span className="inline-flex items-center gap-1.5 text-muted">
+        <X className="size-5 text-[#9aa1ad]" aria-hidden /> Not included
+      </span>
+    );
   return <span className="font-semibold">{v}</span>;
 }
 

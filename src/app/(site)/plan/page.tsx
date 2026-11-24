@@ -13,6 +13,7 @@ import { PHOTOS } from "@/content/photos";
 import { AUTHOR, SITE, absoluteUrl } from "@/lib/site";
 import { formatDate } from "@/lib/format";
 import { AffiliateNote } from "@/components/affiliate-note";
+import { RelatedPages } from "@/components/related-pages";
 
 // Primary keyword: "how to visit the alhambra" / "alhambra visit guide".
 // Also: "alhambra opening hours", "how long to visit alhambra", "best time to
@@ -44,11 +45,8 @@ export default function PlanPage() {
             publisher: { "@type": "Organization", name: SITE.name, url: SITE.url, logo: { "@type": "ImageObject", url: absoluteUrl("/images/logo.png") } },
             mainEntityOfPage: absoluteUrl("/plan/"),
           },
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: PLAN_FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
-          },
+          // No FAQPage markup: since Aug 2023 Google shows FAQ rich results only for
+          // well-known government and health sites. The FAQ stays on the page.
         ]}
       />
       <main id="main">
@@ -188,6 +186,7 @@ export default function PlanPage() {
           </div>
         </section>
 
+        <RelatedPages title="More planning guides" pages={["bestTime", "howLong", "rules", "wheelchair", "kids", "madrid"]} />
         <Faq items={PLAN_FAQ} title="Planning your visit: common questions" />
         <FinalCta page="plan" />
       </main>

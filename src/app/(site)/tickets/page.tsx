@@ -61,11 +61,8 @@ export default function TicketsPage() {
               description: `${t.includes}. Official price €${t.price}.`,
             })),
           },
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: TICKETS_FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
-          },
+          // No FAQPage markup: since Aug 2023 Google shows FAQ rich results only for
+          // well-known government and health sites. The FAQ stays on the page.
         ]}
       />
 

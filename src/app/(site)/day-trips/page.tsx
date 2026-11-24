@@ -5,7 +5,6 @@ import { ArrowRight } from "lucide-react";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { FinalCta } from "@/components/home/final-cta";
 import { Faq } from "@/components/home/faq";
-import { JsonLd } from "@/components/json-ld";
 import { CITIES } from "@/content/day-trips";
 import { PHOTOS } from "@/content/photos";
 import { gygUrl } from "@/lib/gyg";
@@ -31,13 +30,7 @@ const CARDS = [
 export default function DayTripsHub() {
   return (
     <main id="main">
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: HUB_FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
-        }}
-      />
+      {/* No FAQPage markup (not eligible for this site; see Google's Aug 2023 change). */}
       <section className="wrap pb-14 pt-8 sm:pt-10">
         <Breadcrumbs items={[{ href: "/", label: "Home" }, { href: "/day-trips/", label: "Day trips" }]} />
         <h1 className="mt-6 max-w-[16ch] font-serif text-[clamp(1.85rem,3.4vw,2.75rem)] font-bold leading-[1.1] tracking-[-0.025em]">

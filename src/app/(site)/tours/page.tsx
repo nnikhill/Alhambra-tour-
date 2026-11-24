@@ -47,11 +47,8 @@ export default function ToursPage() {
             name: "Alhambra tour types",
             itemListElement: TOUR_TYPES.map((t, i) => ({ "@type": "ListItem", position: i + 1, name: t.name, url: GYG_PRODUCTS[t.query] ?? undefined })),
           },
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: TOURS_FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
-          },
+          // No FAQPage markup: since Aug 2023 Google shows FAQ rich results only for
+          // well-known government and health sites. The FAQ stays on the page.
         ]}
       />
 

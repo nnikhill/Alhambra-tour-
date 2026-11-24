@@ -1,4 +1,5 @@
 import { HOW_TO_BOOK, SOLD_OUT_STEPS } from "@/content/tickets";
+import Link from "next/link";
 import { PHOTOS } from "@/content/photos";
 import { gygUrl } from "@/lib/gyg";
 
@@ -22,7 +23,7 @@ export function SoldOutPlan() {
             See tours with tickets included
           </a>
           <p className="mt-4 text-[0.95rem]">
-            <a href="/tickets/sold-out/" className="font-semibold text-ink underline underline-offset-2">Read the full sold-out guide</a>, ranked by how soon you&rsquo;re going.
+            <Link href="/tickets/sold-out/" className="font-semibold text-ink underline underline-offset-2">Read the full sold-out guide</Link>, ranked by how soon you&rsquo;re going.
           </p>
         </div>
         <ol className="grid gap-4">

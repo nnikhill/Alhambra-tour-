@@ -24,12 +24,21 @@ function match(slug: string, f: Filter) {
   return true;
 }
 
+// Every cell states its value in words, so nothing reads as a blank.
 function Mark({ v, note }: { v: boolean | "day" | "night"; note?: string }) {
-  if (!v) return <Minus className="mx-auto size-4 text-[#b4b9c2]" aria-label="Not included" />;
+  if (!v)
+    return (
+      <span className="inline-flex items-center gap-1 whitespace-nowrap text-[0.85rem] text-muted">
+        <Minus className="size-4 text-[#b4b9c2]" aria-hidden /> Not included
+      </span>
+    );
+  const label = v === "night" ? "At night" : v === "day" ? "By day" : "Included";
   return (
-    <span className="inline-flex items-center gap-1">
-      {v === "night" ? <Moon className="size-4 text-brand" aria-hidden /> : v === "day" ? <Sun className="size-4 text-[#c98a12]" aria-hidden /> : <Check className="size-4 text-brand" aria-hidden />}
-      <span className="sr-only">{v === "night" ? "At night" : v === "day" ? "By day" : "Included"}</span>
+    <span className="inline-flex flex-col items-center gap-0.5">
+      <span className="inline-flex items-center gap-1 whitespace-nowrap text-[0.85rem] font-semibold">
+        {v === "night" ? <Moon className="size-4 text-brand" aria-hidden /> : v === "day" ? <Sun className="size-4 text-[#c98a12]" aria-hidden /> : <Check className="size-4 text-brand" aria-hidden />}
+        {label}
+      </span>
       {note && <span className="text-[0.72rem] font-medium text-muted">{note}</span>}
     </span>
   );
@@ -68,13 +77,13 @@ export function AllTickets() {
             <thead>
               <tr className="border-b border-line text-left text-sm text-muted">
                 <th scope="col" className="p-4 font-medium">Ticket</th>
-                <th scope="col" className="p-4 text-right font-medium">Price</th>
+                <th scope="col" className="p-4 text-right font-medium">Official price</th>
                 <th scope="col" className="p-4 text-center font-medium">Nasrid Palaces</th>
                 <th scope="col" className="p-4 text-center font-medium">Generalife &amp; gardens</th>
                 <th scope="col" className="p-4 text-center font-medium">Alcazaba</th>
                 <th scope="col" className="p-4 text-center font-medium">Albaicín monuments</th>
                 <th scope="col" className="p-4 font-medium">Best for</th>
-                <th scope="col" className="p-4 font-medium"><span className="sr-only">Book</span></th>
+                <th scope="col" className="p-4 font-medium">Book via GetYourGuide</th>
               </tr>
             </thead>
             <tbody>
@@ -113,7 +122,7 @@ export function AllTickets() {
         <p className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted">
           <span className="inline-flex items-center gap-1.5"><Sun className="size-4 text-[#c98a12]" aria-hidden /> By day</span>
           <span className="inline-flex items-center gap-1.5"><Moon className="size-4 text-brand" aria-hidden /> At night</span>
-          <span>Official prices, checked {formatDate(LAST_CHECKED)}. Resale tickets cost more.</span>
+          <span>Prices are the Patronato&rsquo;s official adult prices, checked {formatDate(LAST_CHECKED)}. GetYourGuide resells tickets with a booking fee, so its price is higher.</span>
         </p>
       </div>
     </section>

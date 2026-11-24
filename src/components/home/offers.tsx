@@ -15,7 +15,7 @@ function OfferCard({ o, page }: { o: Offer; page: string }) {
       </a>
       <div className="flex flex-1 flex-col p-5">
         <p className="flex items-center gap-1.5 text-sm text-muted">
-          <Clock className="size-4" aria-hidden /> {o.duration}
+          <Clock className="size-4" aria-hidden /> {o.duration ?? "Duration varies: see listing"}
         </p>
         <h3 className="mt-2 text-[1.12rem] font-bold leading-snug">
           <a href={href} target="_blank" rel="sponsored nofollow noopener" className="no-underline hover:underline">{o.title}</a>
@@ -43,7 +43,7 @@ export function Offers({ page = "home" }: { page?: string }) {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <h2 id="offers-title" className="section-title">Alhambra tickets with a guide</h2>
-            <p className="mt-2 max-w-[60ch] text-muted">Every option includes your entry ticket. You&rsquo;ll see the live price and times for your date before paying.</p>
+            <p className="mt-2 max-w-[60ch] text-muted">Each card lists only what the tour&rsquo;s own listing confirms. You&rsquo;ll see the live price, times, language and cancellation terms for your date before paying.</p>
           </div>
         </div>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

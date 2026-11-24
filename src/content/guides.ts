@@ -153,7 +153,7 @@ export const GETTING_THERE_GUIDE: Guide = {
   next: [
     { href: "/plan/opening-hours/", title: "Opening hours", text: "Day, night and closed days." },
     { href: "/tickets/nasrid-palaces/", title: "Nasrid Palaces entry time", text: "How the timed slot works." },
-    { href: "/day-trips/", title: "Day trips", text: "From Seville or Málaga, transport included." },
+    { href: "/granada/cathedral/", title: "Granada Cathedral", text: "In the centre, where the Alhambra buses start." },
   ],
   sources: [
     OFFICIAL_FAQ,
@@ -300,7 +300,7 @@ export const WHAT_TO_SEE: Guide = {
   next: [
     { href: "/tickets/", title: "Alhambra tickets compared", text: "Pick the ticket that covers what you want." },
     { href: "/tickets/nasrid-palaces/", title: "Nasrid Palaces entry", text: "How the timed slot works." },
-    { href: "/blog/granada-in-one-day/", title: "Granada in one day", text: "The Alhambra plus the city, hour by hour." },
+    { href: "/blog/alhambra-after-the-2026-earthquakes/", title: "What's open after the 2026 earthquakes", text: "Every area's status, including the Alcazaba." },
   ],
   schema: [
     {

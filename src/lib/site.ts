@@ -1,9 +1,22 @@
+// Canonical origin. Vercel serves the site on www and redirects the bare domain
+// to it, so canonicals, og:url and the sitemap must use www too (they pointed
+// at the bare domain, i.e. at a redirect). A bare-domain env value is
+// normalised to www so a stale NEXT_PUBLIC_SITE_URL can't bring that back.
+function canonicalOrigin(): string {
+  const raw = process.env.NEXT_PUBLIC_SITE_URL || "https://www.alhambratourticket.com";
+  try {
+    const u = new URL(raw);
+    if (u.hostname === "alhambratourticket.com") u.hostname = "www.alhambratourticket.com";
+    return u.origin;
+  } catch {
+    return "https://www.alhambratourticket.com";
+  }
+}
+
 export const SITE = {
   name: "Alhambra Tour Ticket",
   shortName: "Alhambra Tour Ticket",
-  // Production domain as the fallback so a missing env var on Vercel can never
-  // put localhost into canonicals and the sitemap.
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://alhambratourticket.com",
+  url: canonicalOrigin(),
   description:
     "An independent guide to getting into the Alhambra in Granada: every ticket type, what to do when tickets sell out, and the tours worth booking.",
   author: { name: "Alhambra Tour Ticket", url: "/" },

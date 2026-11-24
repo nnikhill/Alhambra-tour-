@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { withOg } from "@/lib/seo";
 import Link from "next/link";
-import { Mail, Clock, HelpCircle, AlertCircle, ArrowRight } from "lucide-react";
+import { Mail, HelpCircle, AlertCircle, ArrowRight } from "lucide-react";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { JsonLd } from "@/components/json-ld";
 import { ContactForm } from "@/components/contact/contact-form";
-import { SITE, absoluteUrl } from "@/lib/site";
+import { SITE, CONTACT_EMAIL, absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = withOg({
   title: "Contact Us | Alhambra Tour Ticket",
@@ -48,7 +48,7 @@ export default function ContactPage() {
               <div>
                 <h2 className="text-2xl font-bold tracking-tight text-ink">Send Us a Message</h2>
                 <p className="mt-2 text-sm text-muted">
-                  Fill out the form below and our team will get back to you as soon as possible.
+                  Fill in the form and your email app opens with the message ready to send.
                 </p>
                 <div className="mt-6 rounded-2xl border border-line bg-white p-6 sm:p-8 shadow-sm">
                   <ContactForm />
@@ -86,13 +86,14 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-wider text-muted">Direct Email</p>
-                      <p className="font-bold text-ink">contact@alhambratour.com</p>
+                      {CONTACT_EMAIL ? (
+                        <a href={`mailto:${CONTACT_EMAIL}`} className="font-bold text-ink underline">{CONTACT_EMAIL}</a>
+                      ) : (
+                        <p className="text-sm text-muted">Coming soon</p>
+                      )}
                     </div>
                   </div>
-                  <div className="mt-4 flex items-center gap-3 border-t border-line/60 pt-4 text-xs text-muted">
-                    <Clock className="size-4 shrink-0 text-brand" />
-                    <span>Typical reply time: 24 to 48 hours</span>
-                  </div>
+                  <p className="mt-4 border-t border-line/60 pt-4 text-xs text-muted">We read every message. We can&rsquo;t change or refund bookings: those are handled by whoever sold you the ticket.</p>
                 </div>
 
                 {/* Quick Help Links */}

@@ -8,6 +8,7 @@ import { KnowBefore } from "@/components/home/know-before";
 import { Faq } from "@/components/home/faq";
 import { FinalCta } from "@/components/home/final-cta";
 import { StickyCta } from "@/components/sticky-cta";
+import { RelatedPages } from "@/components/related-pages";
 import { JsonLd } from "@/components/json-ld";
 import { HOME_FAQ } from "@/content/faq";
 import { LAST_CHECKED } from "@/content/facts";
@@ -36,11 +37,8 @@ export default function Home() {
             url: "https://www.alhambra-patronato.es/",
             sameAs: ["https://en.wikipedia.org/wiki/Alhambra"],
           },
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: HOME_FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
-          },
+          // No FAQPage markup: since Aug 2023 Google shows FAQ rich results only for
+          // well-known government and health sites. The FAQ stays on the page.
           {
             "@context": "https://schema.org",
             "@type": "WebPage",
@@ -57,6 +55,7 @@ export default function Home() {
         <Compare />
         <Highlights />
         <KnowBefore />
+        <RelatedPages title="Plan the rest of your visit" pages={["tickets", "nasrid", "soldOut", "night", "hours", "dayTrips"]} className="bg-soft" />
         <Faq />
         <FinalCta />
       </main>

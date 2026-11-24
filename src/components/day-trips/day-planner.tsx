@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Clock, Users } from "lucide-react";
 import { CITIES, type City, type StyleId } from "@/content/day-trips";
 import { gygUrl } from "@/lib/gyg";
@@ -66,7 +67,7 @@ export function DayPlanner({ slug }: { slug: City["slug"] }) {
               </a>
             ) : (
               <>
-                <a href="/tickets/" className="btn btn-outline h-12 w-full">Compare Alhambra tickets</a>
+                <Link href="/tickets/" className="btn btn-outline h-12 w-full">Compare Alhambra tickets</Link>
                 <p className="mt-2 text-center text-[0.83rem] text-muted">No ticket yet? A tour is the safer bet.</p>
               </>
             )}

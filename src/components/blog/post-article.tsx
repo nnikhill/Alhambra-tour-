@@ -52,9 +52,6 @@ export function PostArticle({ p, related, preview = false }: { p: PostView; rela
               mainEntityOfPage: absoluteUrl(`/blog/${p.slug}/`),
               ...(p.focusKeyword ? { keywords: p.focusKeyword } : {}),
             },
-            ...(p.faq.length
-              ? [{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: p.faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) }]
-              : []),
           ]}
         />
       )}

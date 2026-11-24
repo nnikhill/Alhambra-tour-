@@ -97,43 +97,43 @@ export type Offer = {
   title: string;
   badge?: string;
   photo: "lions" | "myrtles" | "hero" | "generalife";
-  duration: string;
+  /** Only when confirmed on the listing; otherwise the card says to check it. */
+  duration?: string;
   includes: string[];
   query: string;
 };
+// Card claims are limited to what each linked listing's own title states
+// (see GYG_PRODUCTS). Durations, languages and cancellation terms vary by
+// option, so the card sends people to the listing for those.
 export const OFFERS: Offer[] = [
   {
     id: "guided",
-    title: "Alhambra guided tour with Nasrid Palaces",
-    badge: "Most booked",
+    title: "Alhambra ticket and guided tour with Nasrid Palaces",
+    badge: "Our first pick",
     photo: "lions",
-    duration: "3 hours",
-    includes: ["Entry ticket included", "Nasrid Palaces + Generalife", "Official licensed guide"],
+    duration: "About 3 hours",
+    includes: ["Entry ticket included", "Nasrid Palaces included", "Guided visit"],
     query: "Alhambra guided tour Nasrid Palaces",
   },
   {
     id: "small-group",
-    title: "Small-group tour with Nasrid Palaces",
-    badge: "Best when sold out",
+    title: "Alhambra with Nasrid Palaces + Albaicín & Sacromonte tour",
     photo: "myrtles",
-    duration: "3 hours",
-    includes: ["Entry ticket included", "Nasrid Palaces + Generalife", "Smaller group"],
+    includes: ["Nasrid Palaces included", "Albaicín and Sacromonte walk", "Longer than an Alhambra-only tour"],
     query: "Alhambra small group tour",
   },
   {
     id: "night",
-    title: "Nasrid Palaces night tour",
+    title: "Nasrid Palaces night visit",
     photo: "hero",
-    duration: "1.5–2 hours",
-    includes: ["Night entry ticket", "Palaces lit after dark", "Fewer crowds"],
+    includes: ["Night entry to the Nasrid Palaces", "Palaces lit after dark", "No Generalife or Alcazaba"],
     query: "Alhambra night tour",
   },
   {
     id: "day-trip",
-    title: "Day trip from Seville",
+    title: "Alhambra day trips from Seville",
     photo: "generalife",
-    duration: "11–13 hours",
-    includes: ["Return transport", "Alhambra ticket on most options", "Free time in Granada"],
+    includes: ["Return transport from Seville", "Alhambra entry on many trips: check before booking", "Long day (11+ hours)"],
     query: "Alhambra day trip from Seville",
   },
 ];

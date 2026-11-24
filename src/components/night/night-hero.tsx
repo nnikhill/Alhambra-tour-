@@ -36,10 +36,15 @@ export function NightHero() {
   const [iso, setIso] = useState(LAST_CHECKED);
   const [min, setMin] = useState(LAST_CHECKED);
 
+  // Server HTML uses the last-checked date; the browser switches to today
+  // after hydration (deferred so it isn't a synchronous setState in the effect).
   useEffect(() => {
-    const today = toIso(new Date());
-    setIso(today);
-    setMin(today);
+    const t = setTimeout(() => {
+      const today = toIso(new Date());
+      setIso(today);
+      setMin(today);
+    }, 0);
+    return () => clearTimeout(t);
   }, []);
 
   const date = fromIso(iso);

@@ -37,10 +37,7 @@ export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    if (!isHome) {
-      setScrolled(true);
-      return;
-    }
+    if (!isHome) return; // off the home page the header is always solid (see isDark)
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
     };

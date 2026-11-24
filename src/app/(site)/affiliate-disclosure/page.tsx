@@ -35,7 +35,7 @@ export default function AffiliateDisclosurePage() {
               Affiliate Disclosure &amp; Transparency Policy
             </h1>
             <p className="mt-3.5 text-base leading-relaxed text-muted sm:text-lg">
-              We believe in 100% transparency. Here is a clear explanation of how this website earns money, how we choose our partners, and why our recommendations remain strictly honest.
+              Here is a plain explanation of how this website earns money and how that affects what we link to.
             </p>
           </div>
         </section>
@@ -52,7 +52,7 @@ export default function AffiliateDisclosurePage() {
                   <div>
                     <h2 className="text-lg font-bold text-ink">In Brief</h2>
                     <p className="mt-1 text-sm sm:text-base text-muted">
-                      Some links on {SITE.name} are affiliate links. If you click on one of these links and purchase a tour or ticket, we may receive a small commission at <strong>no extra cost to you</strong>. This funding allows us to keep our independent guides free, up-to-date, and ad-free.
+                      Some links on {SITE.name} are affiliate links. If you click on one of these links and purchase a tour or ticket, we may receive a small commission at <strong>no extra cost to you</strong>. This is how we pay for keeping the guides free and up to date.
                     </p>
                   </div>
                 </div>
@@ -62,7 +62,7 @@ export default function AffiliateDisclosurePage() {
               <div>
                 <h2 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">What Are Affiliate Links?</h2>
                 <p className="mt-3">
-                  An affiliate link contains a tracking code (such as a partner ID or campaign parameter). When you click a tour recommendation on our site and complete a booking on a verified provider&rsquo;s platform (such as GetYourGuide), the booking platform pays us a referral percentage.
+                  An affiliate link contains a tracking code (such as a partner ID or campaign parameter). When you click a tour recommendation on our site and complete a booking on GetYourGuide, the booking platform pays us a referral percentage.
                 </p>
                 <p className="mt-3">
                   <strong>Crucially: You pay the exact same price</strong> as you would going directly to the provider&rsquo;s website. Many listings on partner sites also offer free cancellation up to 24 hours in advance and mobile tickets; check the terms on each listing.

@@ -25,7 +25,7 @@ type Taxonomy = {
 };
 type Revision = { id: number; note: string | null; createdAt: string; user: string | null };
 
-const SITE_URL = "https://alhambratourticket.com";
+const SITE_URL = "https://www.alhambratourticket.com";
 const inputCls = "h-10 w-full rounded-xl border border-line bg-white px-3 text-[0.93rem] outline-none focus:border-brand focus:ring-2 focus:ring-brand/20";
 const areaCls = "w-full rounded-xl border border-line bg-white px-3 py-2 text-[0.93rem] outline-none focus:border-brand focus:ring-2 focus:ring-brand/20";
 
