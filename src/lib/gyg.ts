@@ -9,7 +9,7 @@
 // single tour fits honestly). Unknown text, e.g. the hero search box, falls
 // back to a GetYourGuide search for that text.
 //
-// Tour URLs checked on getyourguide.com, 21 Nov 2026.
+// Tour URLs checked on getyourguide.com, 21 Nov 2026; card facts 24 Nov 2026.
 
 // Not a secret: it appears in every outbound link. The env var lets another
 // site reuse this file; the fallback stops a missing env var from silently
@@ -22,7 +22,8 @@ const GYG = "https://www.getyourguide.com";
 export const GYG_PRODUCTS: Record<string, string> = {
   // Granada: Alhambra Ticket and Guided Tour with Nasrid Palaces (3 h, small-group or private)
   "Alhambra guided tour Nasrid Palaces": `${GYG}/granada-l207/granada-alhambra-ticket-and-guided-tour-with-nasrid-palaces-t285662/`,
-  // Granada: Alhambra Small Group Tour with Nasrid Palaces
+  // Granada: Alhambra Small Group Tour with Nasrid Palaces (3 h; listing retitled,
+  // the URL slug still mentions the Albaicín but the tour no longer covers it)
   "Alhambra small group tour": `${GYG}/granada-l207/alhambra-tour-with-nasrid-palaces-and-albaicin-sacromonte-t171177/`,
   // Alhambra: Private Guided Tour with Nasrid Palaces Tickets
   "Alhambra private tour": `${GYG}/granada-l207/alhambra-guided-private-tour-with-fast-track-entry-t278442/`,
@@ -61,18 +62,29 @@ export const GYG_PRODUCTS: Record<string, string> = {
   "Granada Cathedral Royal Chapel tour": `${GYG}/granada-l207/granada-tour-por-catedrales-y-capillas-t165483/`,
 };
 
-// Which GetYourGuide product to send each official ticket type to. GetYourGuide
-// has no resale product for every combined ticket, so those go to the list.
+// Which GetYourGuide product each official ticket type is resold as. Only
+// tickets GetYourGuide actually sells are listed (its Alhambra entry-ticket list,
+// checked 24 Nov 2026: no Dobla de Oro, Rodríguez-Acosta or Alhambra
+// Experiences tickets). Those go to the official ticket shop instead.
 export const TICKET_GYG_KEY: Record<string, string> = {
   general: "Alhambra entry ticket",
-  "alhambra-experiences": "Alhambra entry ticket",
-  "dobla-de-oro": "Alhambra entry ticket",
-  "rodriguez-acosta": "Alhambra entry ticket",
   "night-nasrid": "Alhambra night entry ticket",
-  "dobla-de-oro-night": "Alhambra night entry ticket",
   "generalife-night": "Alhambra night entry ticket",
   "gardens-generalife": "Alhambra gardens ticket",
 };
+
+export const OFFICIAL_TICKET_SHOP = "https://tickets.alhambra-patronato.es/en/";
+
+export type TicketLink = { href: string; rel: string; track: string; official: boolean };
+
+// One place decides where a ticket's button goes: GetYourGuide when it resells
+// that ticket (affiliate, sponsored), otherwise the official shop (no commission).
+export function ticketLink(slug: string, placement: GygPlacement): TicketLink {
+  const key = TICKET_GYG_KEY[slug];
+  return key
+    ? { href: gygUrl(key, placement), rel: "sponsored nofollow noopener", track: "affiliate_click", official: false }
+    : { href: OFFICIAL_TICKET_SHOP, rel: "noopener", track: "official_click", official: true };
+}
 
 export type GygPlacement = { page: string; position: string };
 
@@ -102,31 +114,33 @@ export type Offer = {
   includes: string[];
   query: string;
 };
-// Card claims are limited to what each linked listing's own title states
-// (see GYG_PRODUCTS). Durations, languages and cancellation terms vary by
-// option, so the card sends people to the listing for those.
+// Card facts checked on each GetYourGuide listing on 24 Nov 2026 (duration,
+// guide languages, what the listing marks as included, cancellation terms).
+// Re-check when a listing changes; never add a claim the listing doesn't make.
 export const OFFERS: Offer[] = [
   {
     id: "guided",
     title: "Alhambra ticket and guided tour with Nasrid Palaces",
     badge: "Our first pick",
     photo: "lions",
-    duration: "About 3 hours",
-    includes: ["Entry ticket included", "Nasrid Palaces included", "Guided visit"],
+    duration: "3 hours",
+    includes: ["Ticket: Nasrid Palaces, Generalife, Alcazaba", "Official guide in English or Spanish", "60% refund if cancelled 2+ days ahead"],
     query: "Alhambra guided tour Nasrid Palaces",
   },
   {
     id: "small-group",
-    title: "Alhambra with Nasrid Palaces + Albaicín & Sacromonte tour",
+    title: "Alhambra small-group tour with Nasrid Palaces",
     photo: "myrtles",
-    includes: ["Nasrid Palaces included", "Albaicín and Sacromonte walk", "Longer than an Alhambra-only tour"],
+    duration: "3 hours",
+    includes: ["Ticket: Nasrid Palaces, Generalife, Alcazaba", "Guide in Spanish or English, radio headsets", "60% refund if cancelled 24 h+ ahead"],
     query: "Alhambra small group tour",
   },
   {
     id: "night",
-    title: "Nasrid Palaces night visit",
+    title: "Nasrid Palaces guided tour at night",
     photo: "hero",
-    includes: ["Night entry to the Nasrid Palaces", "Palaces lit after dark", "No Generalife or Alcazaba"],
+    duration: "1.5 hours",
+    includes: ["Night entry ticket included", "Guide in English or Spanish", "No Generalife or Alcazaba at night"],
     query: "Alhambra night tour",
   },
   {

@@ -26,7 +26,7 @@ export type Guide = {
   ogImage?: string; // 1200x630 share image
 };
 
-const CHECKED = "2026-11-21";
+const CHECKED = "2026-11-24";
 
 const OFFICIAL_HOURS = { label: "Opening hours & prices, Patronato de la Alhambra y Generalife", url: "https://www.alhambra-patronato.es/en?p=13635" };
 const OFFICIAL_TICKETS = { label: "Official ticket shop and visit rules, tickets.alhambra-patronato.es", url: "https://tickets.alhambra-patronato.es/en/" };
@@ -255,7 +255,7 @@ export const WHAT_TO_SEE: Guide = {
     { type: "h2", id: "at-a-glance", text: "The Alhambra at a glance" },
     { type: "table", head: ["Area", "Don't miss", "Time"], rows: [
       ["Nasrid Palaces", "Court of the Myrtles, Court of the Lions", "45 min – 1.5 h"],
-      ["Alcazaba", "Views from the Torre de la Vela", "30 – 45 min"],
+      ["Alcazaba", "Ramparts and the Plaza de Armas (Torre de la Vela closed for now)", "30 – 45 min"],
       ["Palace of Charles V", "Round courtyard, Alhambra Museum", "20 – 40 min"],
       ["Medina & Partal", "Partal pool and portico", "20 – 30 min"],
       ["Generalife", "Patio de la Acequia, Water Stairway", "45 min – 1 h"],
@@ -268,8 +268,8 @@ export const WHAT_TO_SEE: Guide = {
       "**The Palace of the Lions:** the **Court of the Lions**, built for Muhammad V in the 1360s, with the Hall of the Abencerrages and the Hall of the Two Sisters and their honeycomb domes.",
     ] },
     { type: "h2", id: "alcazaba", text: "The Alcazaba" },
-    { type: "p", text: "The fortress at the western tip of the hill and the oldest part of the Alhambra. Climb the **Torre de la Vela** for the best view over Granada, the Albaicín and, on clear days, the Sierra Nevada." },
-    { type: "tip", title: "Open again after the 2026 earthquakes", text: "The Alcazaba closed for inspections after the August 2026 earthquakes. The official ticket site says it reopened from 23 September 2026 with an adapted route. Some areas may still be closed off on your visit." },
+    { type: "p", text: "The fortress at the western tip of the hill and the oldest part of the Alhambra. Its watchtower, the **Torre de la Vela**, has the best view over Granada and the Albaicín, but it is temporarily closed to visitors after the 2026 earthquakes (official ticket site, November 2026)." },
+    { type: "tip", title: "Open again after the 2026 earthquakes", text: "The Alcazaba closed for inspections after the August 2026 earthquakes. The official ticket site says it reopened from 23 September 2026 with an adapted route. The Torre de la Vela and the side rooms of the Hall of the Boat (in the Nasrid Palaces) are still closed, and the route may change." },
     { type: "h2", id: "charles-v", text: "The Palace of Charles V" },
     { type: "p", text: "A Renaissance palace dropped into the middle of the Moorish city in the 16th century, with a striking round courtyard. It houses the **Alhambra Museum** and the **Museum of Fine Arts**." },
     { type: "h2", id: "medina-partal", text: "The Medina and the Partal" },

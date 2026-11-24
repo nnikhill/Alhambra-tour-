@@ -8,7 +8,7 @@ export function FinalCta({ page = "home" }: { page?: string }) {
       <div className="grid items-center gap-8 overflow-hidden rounded-3xl bg-[#eef1f8] p-6 sm:p-10 md:grid-cols-[1.2fr_0.8fr] md:p-12">
         <div>
           <h2 className="max-w-[20ch] text-[clamp(1.7rem,3.5vw,2.5rem)]">Don&rsquo;t leave Granada without seeing the palaces</h2>
-          <p className="mt-4 max-w-[48ch] text-muted">Check tours for your date now. Many offer free cancellation up to 24 hours before; check each listing.</p>
+          <p className="mt-4 max-w-[48ch] text-muted">Check tours for your date now. Refund terms differ by tour (often 60% if you cancel in time), so read them before you pay.</p>
           <a
             href={gygUrl("Alhambra guided tour Nasrid Palaces", { page, position: "final" })}
             target="_blank"

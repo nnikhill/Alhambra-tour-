@@ -1,7 +1,7 @@
 import { Check, Minus } from "lucide-react";
 import { OFFICIAL_TICKETS } from "@/content/facts";
 import { COVERAGE, FEATURED } from "@/content/tickets";
-import { gygUrl, TICKET_GYG_KEY } from "@/lib/gyg";
+import { gygUrl, ticketLink } from "@/lib/gyg";
 import { euro } from "@/lib/format";
 
 // Pricing-card layout (MotionSites "Smart Pricing"), restyled white: three
@@ -61,15 +61,20 @@ export function FeaturedTickets() {
                 </ul>
 
                 <div className="mt-auto grid gap-2.5 pt-8">
-                  <a
-                    href={gygUrl(TICKET_GYG_KEY[t.slug], { page: "tickets", position: `ticket_${t.slug}` })}
-                    target="_blank"
-                    rel="sponsored nofollow noopener"
-                    className={`btn h-12 ${hot ? "btn-white" : "btn-primary"}`}
-                    data-track="affiliate_click"
-                  >
-                    Check tickets on GetYourGuide
-                  </a>
+                  {(() => {
+                    const l = ticketLink(t.slug, { page: "tickets", position: `ticket_${t.slug}` });
+                    return (
+                      <a
+                        href={l.href}
+                        target="_blank"
+                        rel={l.rel}
+                        className={`btn h-12 ${hot ? "btn-white" : "btn-primary"}`}
+                        data-track={l.track}
+                      >
+                        {l.official ? "Book on the official site" : "Check tickets on GetYourGuide"}
+                      </a>
+                    );
+                  })()}
                   <a
                     href={gygUrl("Alhambra guided tour Nasrid Palaces", { page: "tickets", position: `featured_${t.slug}` })}
                     target="_blank"

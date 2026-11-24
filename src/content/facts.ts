@@ -2,7 +2,7 @@
 // Phase 2: these move to the `facts` table and are edited in the admin.
 // Every value carries the date it was last checked against a source.
 
-export const LAST_CHECKED = "2026-11-21";
+export const LAST_CHECKED = "2026-11-24";
 
 export type SiteStatus = {
   area: string;
@@ -15,11 +15,11 @@ export type SiteStatus = {
 const OFFICIAL_TICKETS_PAGE = "https://tickets.alhambra-patronato.es/en/";
 
 export const STATUS: SiteStatus[] = [
-  { area: "Nasrid Palaces", state: "open", note: "Open, entry at the time on your ticket", source: OFFICIAL_TICKETS_PAGE },
+  { area: "Nasrid Palaces", state: "open", note: "Open, entry at the time on your ticket. Side rooms of the Hall of the Boat temporarily closed", source: OFFICIAL_TICKETS_PAGE },
   {
     area: "Alcazaba",
     state: "limited",
-    note: "Reopened 23 Sep 2026 on an adapted route after the August earthquakes",
+    note: "Reopened 23 Sep 2026 on an adapted route after the August earthquakes; Torre de la Vela still closed",
     since: "2026-09-23",
     source: OFFICIAL_TICKETS_PAGE,
   },
@@ -37,7 +37,7 @@ export type OfficialTicket = {
   bestFor: string;
 };
 
-// Prices: official price list, alhambra-patronato.es/en?p=13635 (checked 21 Nov 2026).
+// Prices: official price list, alhambra-patronato.es/en?p=13635 (checked 24 Nov 2026).
 export const OFFICIAL_TICKETS: OfficialTicket[] = [
   {
     slug: "general",

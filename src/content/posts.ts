@@ -174,11 +174,11 @@ export const POSTS: Post[] = [
       { type: "p", text: "A series of earthquakes shook Granada in August 2026, including magnitude 4.8 quakes on 15 and 18 August. On 18 August the Alhambra was evacuated and closed for the afternoon while staff and experts inspected it." },
       { type: "p", text: "It reopened the next morning at its usual hours, without the Alcazaba. Reports at the time described only minor, non-structural damage, mostly in the Alcazaba." },
       { type: "h2", id: "open-closed", text: "What's open now" },
-      { type: "table", head: ["Area", "Status (21 Nov 2026)"], rows: [
-        ["Nasrid Palaces", "Open"],
+      { type: "table", head: ["Area", "Status (24 Nov 2026)"], rows: [
+        ["Nasrid Palaces", "Open (side rooms of the Hall of the Boat closed)"],
         ["Generalife and gardens", "Open"],
         ["Charles V Palace and Partal", "Open"],
-        ["Alcazaba", "Open since 23 Sep 2026, adapted route"],
+        ["Alcazaba", "Open since 23 Sep 2026, adapted route; Torre de la Vela closed"],
         ["Andalusi monuments (Albaicín)", "Check the official site before you go"],
       ] },
       { type: "p", text: "The official ticket site says the visitor route may still change for conservation, safety or visitor-management reasons." },
@@ -370,7 +370,7 @@ export const POSTS: Post[] = [
         ["1984", "UNESCO World Heritage Site (extended in 1994)", "Alhambra, Generalife and Albaicín"],
       ] },
       { type: "h2", id: "fortress", text: "1. A fortress on the hill" },
-      { type: "p", text: "The Sabika hill was fortified long before the palaces. The **Alcazaba**, at the western tip, is the oldest part of the Alhambra you can visit today: a military citadel with towers, barracks and the Torre de la Vela, the watchtower with the widest view over Granada. It reopened on 23 September 2026 on an adapted route after the August earthquakes." },
+      { type: "p", text: "The Sabika hill was fortified long before the palaces. The **Alcazaba**, at the western tip, is the oldest part of the Alhambra you can visit today: a military citadel with towers, barracks and the Torre de la Vela, the watchtower with the widest view over Granada (temporarily closed after the 2026 earthquakes). It reopened on 23 September 2026 on an adapted route after the August earthquakes." },
       { type: "h2", id: "nasrids", text: "2. The Nasrids build a palace city (1238 onwards)" },
       { type: "p", text: "In 1238 Muhammad I ibn al-Ahmar, the first Nasrid ruler, began turning the hill into a royal city, with walls, a water channel bringing water from the river Darro, houses and workshops. The Nasrids ruled the Emirate of Granada for more than two and a half centuries, the longest-lasting Muslim dynasty in the Iberian Peninsula. Water is the key to everything you see: the pools, fountains and gardens all depend on that channel." },
       { type: "h2", id: "golden-age", text: "3. The golden age: Yusuf I and Muhammad V" },

@@ -65,7 +65,7 @@ export default function AffiliateDisclosurePage() {
                   An affiliate link contains a tracking code (such as a partner ID or campaign parameter). When you click a tour recommendation on our site and complete a booking on GetYourGuide, the booking platform pays us a referral percentage.
                 </p>
                 <p className="mt-3">
-                  <strong>Crucially: You pay the exact same price</strong> as you would going directly to the provider&rsquo;s website. Many listings on partner sites also offer free cancellation up to 24 hours in advance and mobile tickets; check the terms on each listing.
+                  <strong>Crucially: You pay the exact same price</strong> as you would going directly to the provider&rsquo;s website. Cancellation and refund terms are set by each tour operator and shown on the listing before you pay; many Alhambra tours refund only part of the price.
                 </p>
               </div>
 

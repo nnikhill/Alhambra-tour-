@@ -81,7 +81,7 @@ export const WORTH_IT = {
     "The Nasrid Palaces have almost no signs. A guide explains what the carvings and inscriptions say",
     "Tickets are included, often on dates the official site shows sold out",
     "Your guide gets you to the palace entrance for your fixed time slot",
-    "Many tours on GetYourGuide offer free cancellation up to 24 hours before (check each listing)",
+    "Cancellation terms vary: the tours we link refund 60% if you cancel in time, not 100% (check each listing)",
   ],
   no: [
     "It costs more than the €22.27 official ticket",
@@ -96,7 +96,7 @@ export const CHECKLIST = [
   { title: "Group size", text: "Small-group tours cap numbers. Big groups use headsets and move slower." },
   { title: "Guide language", text: "Tours run in English, Spanish, French, German and Italian. Pick the language before you pay." },
   { title: "Meeting point", text: "Most meet near the ticket office at the top of the hill. Allow 20–30 minutes from the city centre." },
-  { title: "Free cancellation", text: "Book a tour you can cancel up to 24 hours before, especially if your plans may change." },
+  { title: "Check the refund terms", text: "Many Alhambra tours refund only part of the price, often 60% if you cancel 24 hours to 2 days ahead. Read the terms before you pay." },
 ];
 
 export const TOUR_DAY = [

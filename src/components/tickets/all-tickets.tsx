@@ -5,7 +5,7 @@ import { Check, Minus, Moon, Sun } from "lucide-react";
 import { OFFICIAL_TICKETS, LAST_CHECKED } from "@/content/facts";
 import { COVERAGE } from "@/content/tickets";
 import { euro, formatDate } from "@/lib/format";
-import { gygUrl, TICKET_GYG_KEY } from "@/lib/gyg";
+import { ticketLink } from "@/lib/gyg";
 
 type Filter = "all" | "palaces" | "night" | "gardens";
 
@@ -83,7 +83,7 @@ export function AllTickets() {
                 <th scope="col" className="p-4 text-center font-medium">Alcazaba</th>
                 <th scope="col" className="p-4 text-center font-medium">Albaicín monuments</th>
                 <th scope="col" className="p-4 font-medium">Best for</th>
-                <th scope="col" className="p-4 font-medium">Book via GetYourGuide</th>
+                <th scope="col" className="p-4 font-medium">Book</th>
               </tr>
             </thead>
             <tbody>
@@ -102,16 +102,21 @@ export function AllTickets() {
                     <td className="p-4 text-center"><Mark v={c.albaicin} /></td>
                     <td className="p-4 text-muted">{t.bestFor}</td>
                     <td className="p-4 text-right">
-                      <a
-                        href={gygUrl(TICKET_GYG_KEY[t.slug], { page: "tickets", position: `table_${t.slug}` })}
-                        target="_blank"
-                        rel="sponsored nofollow noopener"
-                        className="btn btn-outline min-h-10 whitespace-nowrap px-4 text-[0.9rem]"
-                        data-track="affiliate_click"
-                        aria-label={`Check dates: ${t.name}`}
-                      >
-                        Check dates
-                      </a>
+                      {(() => {
+                        const l = ticketLink(t.slug, { page: "tickets", position: `table_${t.slug}` });
+                        return (
+                          <a
+                            href={l.href}
+                            target="_blank"
+                            rel={l.rel}
+                            className="btn btn-outline min-h-10 whitespace-nowrap px-4 text-[0.9rem]"
+                            data-track={l.track}
+                            aria-label={`${l.official ? "Official site" : "Check dates"}: ${t.name}`}
+                          >
+                            {l.official ? "Official site" : "Check dates"}
+                          </a>
+                        );
+                      })()}
                     </td>
                   </tr>
                 );
@@ -122,7 +127,7 @@ export function AllTickets() {
         <p className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted">
           <span className="inline-flex items-center gap-1.5"><Sun className="size-4 text-[#c98a12]" aria-hidden /> By day</span>
           <span className="inline-flex items-center gap-1.5"><Moon className="size-4 text-brand" aria-hidden /> At night</span>
-          <span>Prices are the Patronato&rsquo;s official adult prices, checked {formatDate(LAST_CHECKED)}. GetYourGuide resells tickets with a booking fee, so its price is higher.</span>
+          <span>Prices are the Patronato&rsquo;s official adult prices, checked {formatDate(LAST_CHECKED)}. &ldquo;Check dates&rdquo; goes to GetYourGuide, which resells these tickets with a booking fee, so its price is higher. Tickets GetYourGuide doesn&rsquo;t sell link to the official shop.</span>
         </p>
       </div>
     </section>
