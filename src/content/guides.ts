@@ -1,5 +1,5 @@
 // Evergreen guide pages rendered by <GuideArticle>.
-// Every fact here was checked on 21 Nov 2026 against the sources listed on
+// Every fact here was checked on 21–24 Nov 2026 against the sources listed on
 // each guide. Official = alhambra-patronato.es and tickets.alhambra-patronato.es.
 // Block syntax is the same as posts.ts: [text](/path) and **bold**.
 
@@ -108,8 +108,8 @@ export const GETTING_THERE_GUIDE: Guide = {
   pageId: "getting-there",
   crumbs: [{ href: "/", label: "Home" }, { href: "/plan/", label: "Plan your visit" }, { href: "/plan/getting-there/", label: "Getting there" }],
   title: "How to get to the Alhambra",
-  seoTitle: "How to Get to the Alhambra: Walk, Bus, Taxi or Car (2026)",
-  description: "How to get to the Alhambra from central Granada, the train and bus stations: the uphill walk, the C30 and C32 minibuses, taxis and the car park.",
+  seoTitle: "How to Get to the Alhambra: Entrances, Bus, Walk & Car",
+  description: "How to get to the Alhambra and which entrance to use: the walk to the Gate of Justice, the C30 and C32 minibuses, taxis, the car park and the main entrance.",
   intro: "The Alhambra sits on a hill above the city centre. Here is each way up, where it drops you, and how much time to leave before your palace slot.",
   photo: PHOTOS.hero,
   updated: CHECKED,
@@ -122,6 +122,14 @@ export const GETTING_THERE_GUIDE: Guide = {
       ["Minibus C32", "Plaza Isabel la Católica, via the Albaicín", "Main entrance, then on to the Albaicín"],
       ["Taxi or car", "Anywhere", "Main entrance and car park"],
     ] },
+    { type: "h2", id: "entrances", text: "The Alhambra entrances" },
+    { type: "p", text: "The official map shows three ways in. You need your ticket and your original ID card or passport at all of them: tickets are issued in the visitor's name." },
+    { type: "table", head: ["Entrance", "Where", "Use it if"], rows: [
+      ["Pabellón de Acceso (main entrance)", "East end, by the Generalife, car park and ticket office", "You arrive by minibus, taxi or car, or need the ticket office"],
+      ["Puerta de la Justicia (Gate of Justice)", "South side, at the top of the walk from Plaza Nueva", "You walk up with your ticket already on your phone; it is the closest to the Nasrid Palaces and the Alcazaba"],
+      ["Puerta de los Carros", "Below the Palace of Charles V", "Shown as an entrance on the official map; follow staff directions on the day"],
+    ] },
+    { type: "tip", title: "Which entrance for an early palace slot?", text: "With an 8:30 palace time, the main entrance is a 15–30 minute walk from the palaces. Walking up to the Gate of Justice puts you much closer." },
     { type: "h2", id: "walk", text: "Walking to the Alhambra" },
     { type: "p", text: "The classic route starts at **Plaza Nueva**. Walk up the Cuesta de Gomérez, through the Gate of the Pomegranates and into the shady Alhambra woods. It is uphill all the way, and most people take 15–20 minutes. You arrive by the Gate of Justice, which is the closest entrance to the Nasrid Palaces." },
     { type: "p", text: "A second path, the Cuesta del Rey Chico, climbs from the Paseo de los Tristes along the river. It is steeper and quieter." },
@@ -144,6 +152,7 @@ export const GETTING_THERE_GUIDE: Guide = {
     { type: "p", text: "Still planning? Check the [Alhambra opening hours](/plan/opening-hours/) and [what to see once you're inside](/guide/)." },
   ],
   faq: [
+    { q: "Which entrance of the Alhambra should I use?", a: "The main entrance (Pabellón de Acceso) if you arrive by minibus, taxi or car or need the ticket office. If you walk up from Plaza Nueva with your ticket, the Gate of Justice is closer to the Nasrid Palaces." },
     { q: "Can you walk to the Alhambra from the city centre?", a: "Yes. From Plaza Nueva it is about 15–20 minutes up the Cuesta de Gomérez. It is steep and uphill the whole way." },
     { q: "Which bus goes to the Alhambra?", a: "The C30 and C32 minibuses from Plaza Isabel la Católica. The official site also lists the C35." },
     { q: "Is there parking at the Alhambra?", a: "Yes. The official car park has 360 spaces, is guarded 24 hours and is next to the main entrance." },
@@ -161,6 +170,8 @@ export const GETTING_THERE_GUIDE: Guide = {
     { label: "How to reach the Alhambra, lovegranada.com", url: "https://www.lovegranada.com/alhambra/travel/" },
     { label: "From the bus station to the centre, turismo.granada.org", url: "https://turismo.granada.org/en/how-get-city-centre-granada-bus-station" },
     { label: "Going to the Alhambra, alhambradegranada.org", url: "https://alhambradegranada.org/en/info/goingtothealhambra.asp" },
+    { label: "Official map of the complex with entrances (accessibility map, PDF), Patronato", url: "https://alhambra-patronato.es/wp-content/uploads/2024/10/PLANO_ACCESIBILIDAD.pdf" },
+    OFFICIAL_TICKETS,
   ],
 };
 
@@ -267,9 +278,11 @@ export const WHAT_TO_SEE: Guide = {
       "**The Comares Palace:** the **Court of the Myrtles**, with its long reflecting pool, leads to the Hall of the Ambassadors under the Comares Tower.",
       "**The Palace of the Lions:** the **Court of the Lions**, built for Muhammad V in the 1360s, with the Hall of the Abencerrages and the Hall of the Two Sisters and their honeycomb domes.",
     ] },
+    { type: "tip", title: "After the 2026 earthquakes", text: "The official ticket site says access to the Throne Room (the Hall of the Ambassadors) was restored from 17 November 2026. The side rooms of the Hall of the Boat, which leads into it, are still temporarily closed." },
     { type: "h2", id: "alcazaba", text: "The Alcazaba" },
     { type: "p", text: "The fortress at the western tip of the hill and the oldest part of the Alhambra. Its watchtower, the **Torre de la Vela**, has the best view over Granada and the Albaicín, but it is temporarily closed to visitors after the 2026 earthquakes (official ticket site, November 2026)." },
     { type: "tip", title: "Open again after the 2026 earthquakes", text: "The Alcazaba closed for inspections after the August 2026 earthquakes. The official ticket site says it reopened from 23 September 2026 with an adapted route. The Torre de la Vela and the side rooms of the Hall of the Boat (in the Nasrid Palaces) are still closed, and the route may change." },
+    { type: "p", text: "More in our [Alcazaba guide](/guide/alcazaba/): the towers, the parade ground and which tickets include it." },
     { type: "h2", id: "charles-v", text: "The Palace of Charles V" },
     { type: "p", text: "A Renaissance palace dropped into the middle of the Moorish city in the 16th century, with a striking round courtyard. It houses the **Alhambra Museum** and the **Museum of Fine Arts**." },
     { type: "h2", id: "medina-partal", text: "The Medina and the Partal" },
@@ -319,6 +332,69 @@ export const WHAT_TO_SEE: Guide = {
     OFFICIAL_TICKETS,
     { label: "Alhambra and Generalife, Frommer's", url: "https://www.frommers.com/destinations/granada/attractions/alhambra-and-generalife/" },
     { label: "What to see at the Alhambra, The Tour Guy", url: "https://thetourguy.com/travel-blog/spain/granada/alhambra/top-things-to-see-at-the-alhambra/" },
+  ],
+};
+
+// ---------------------------------------------------------------------------
+// /guide/alcazaba/  · primary keyword: "alcazaba alhambra"
+// Current status checked on tickets.alhambra-patronato.es, 24 Nov 2026.
+// ---------------------------------------------------------------------------
+export const ALCAZABA: Guide = {
+  path: "/guide/alcazaba/",
+  pageId: "alcazaba",
+  crumbs: [{ href: "/", label: "Home" }, { href: "/guide/", label: "Inside the Alhambra" }, { href: "/guide/alcazaba/", label: "Alcazaba" }],
+  title: "The Alcazaba of the Alhambra: what to see and what's open now",
+  seoTitle: "Alcazaba of the Alhambra: What to See, Tickets & What's Open",
+  description: "The Alhambra's oldest part: the Alcazaba fortress, its towers and parade ground, which tickets include it, how long to spend, and what is closed after the 2026 earthquakes.",
+  intro: "The Alcazaba is the fortress at the western tip of the Alhambra and its oldest part. Here is what to see inside, which tickets cover it, and what is still closed after the 2026 earthquakes.",
+  photo: PHOTOS.alcazaba,
+  updated: CHECKED,
+  body: [
+    { type: "answer", text: "The Alcazaba is the military fortress at the western end of the Alhambra, rebuilt by Muhammad I, the first Nasrid sultan, in the 13th century. It is included in the General, Gardens & Generalife and the other daytime tickets, takes 30–45 minutes, and is open on an adapted route since 23 September 2026. Its famous watchtower, the Torre de la Vela, is still temporarily closed." },
+    { type: "h2", id: "status", text: "What's open now (November 2026)" },
+    { type: "p", text: "The Alcazaba closed for inspections after the August 2026 earthquakes. According to the official ticket site, it has been open since 23 September on a visitor route adapted to safety and conservation needs, the **Torre de la Vela is temporarily closed**, and the route may change. Check the [latest status after the earthquakes](/blog/alhambra-after-the-2026-earthquakes/) before you go." },
+    { type: "h2", id: "what", text: "What the Alcazaba is" },
+    { type: "p", text: "The Sabika hill was fortified before the palaces were built. When Muhammad I founded the Nasrid kingdom in the 13th century, he rebuilt this fortress first and raised its two great towers, the Torre de la Vela and the Torre del Homenaje. It housed the garrison that guarded the palaces, and the ruins of their houses still fill the parade ground." },
+    { type: "p", text: "The fortress is roughly a triangle, with the Torre de la Vela at the western point, the Torre del Homenaje to the north-east and the Torre Hueca to the south-east. Tradition says the flag of Castile was raised over the Torre de la Vela on 2 January 1492, the day Granada surrendered." },
+    { type: "h2", id: "see", text: "What to see inside" },
+    { type: "list", items: [
+      "**Plaza de Armas:** the parade ground inside the walls, with the foundations of the soldiers' quarter, its streets, cisterns and a bathhouse.",
+      "**Torre de la Vela:** the watchtower on the western tip, with the widest view over Granada, the Albaicín and the Sierra Nevada. Temporarily closed in November 2026.",
+      "**Torre del Homenaje:** the keep, one of the two largest towers of the Alhambra, which guarded the fortress entrance.",
+      "**Puerta and Torre de las Armas:** the old gate to the city on the north side, with a terrace looking over the Darro valley and the Albaicín.",
+      "**Jardín de los Adarves:** a garden on the southern ramparts, between the inner and outer walls.",
+    ] },
+    { type: "table", head: ["Ticket", "Alcazaba included?"], rows: [
+      ["Alhambra General", "Yes, by day"],
+      ["Gardens & Generalife", "Yes"],
+      ["Dobla de Oro, Rodríguez-Acosta, Alhambra Experiences", "Yes, on the daytime visit"],
+      ["Night visits (Nasrid Palaces or Generalife)", "No"],
+      ["Guided tours with tickets", "Usually: check the listing (our first-pick tour includes it)"],
+    ] },
+    { type: "p", text: "See [all 8 official tickets compared](/tickets/) for prices and what else each one covers." },
+    { type: "h2", id: "when", text: "How long, and when in your visit" },
+    { type: "p", text: "Plan **30–45 minutes**, a little less while the Torre de la Vela is closed. The Alcazaba sits next to the Nasrid Palaces entrance, so it fits best just before your [palace time slot](/tickets/nasrid-palaces/): arrive early, walk the fortress, then queue for the palaces. If you walk up from Plaza Nueva, the Gate of Justice brings you in close to both. See [how to get to the Alhambra](/plan/getting-there/)." },
+    { type: "tip", title: "Don't spend your palace slot here", text: "Your ticket is valid all day, but the Nasrid Palaces only at the time printed on it. Leave the Alcazaba with at least 15 minutes to spare." },
+    { type: "cta", title: "See the fortress with a guide", text: "Guided tours with the Nasrid Palaces usually cover the Alcazaba too, ticket included. Check each listing for what it includes.", label: "See guided tours", query: "Alhambra guided tour Nasrid Palaces" },
+    { type: "p", text: "Planning the whole visit? See [what to see in the Alhambra](/guide/), area by area." },
+  ],
+  faq: [
+    { q: "Is the Alcazaba open?", a: "Yes. It has been open since 23 September 2026 on an adapted route after the August earthquakes. The Torre de la Vela is temporarily closed (official ticket site, November 2026)." },
+    { q: "Is the Alcazaba included in the Alhambra ticket?", a: "Yes, in the General ticket and the other daytime tickets, including Gardens & Generalife. Night visits don't include it." },
+    { q: "How long does it take to see the Alcazaba?", a: "About 30–45 minutes, a little less while the Torre de la Vela is closed." },
+    { q: "Is the Alcazaba the oldest part of the Alhambra?", a: "Yes. It is the fortress at the western end of the hill, rebuilt by Muhammad I in the 13th century on earlier fortifications." },
+  ],
+  sidebar: { title: "Want the history explained?", text: "Guided tours with the Nasrid Palaces usually include the Alcazaba.", label: "See guided tours", product: "Alhambra guided tour Nasrid Palaces" },
+  next: [
+    { href: "/guide/", title: "What to see in the Alhambra", text: "All five areas in order." },
+    { href: "/tickets/nasrid-palaces/", title: "Nasrid Palaces entry time", text: "How the timed slot works." },
+    { href: "/blog/alhambra-history/", title: "Alhambra history", text: "Who built it and when." },
+  ],
+  sources: [
+    OFFICIAL_TICKETS,
+    { label: "Torres de la Vela y del Homenaje, built by Alhamar (Muhammad I), Cuadernos de la Alhambra 38 (2002), Patronato", url: "https://www.alhambra-patronato.es/ria/bitstream/handle/10514/14193/4%20C.A%2038%20%282002%29%20encriptado.pdf?sequence=1" },
+    { label: "Alcazaba of the Alhambra (layout, 1492 flag), Wikipedia", url: "https://en.wikipedia.org/wiki/Alcazaba_of_the_Alhambra" },
+    { label: "The Alcazaba, Granada tourism office", url: "https://turismo.granada.org/en/alcazaba-old-citadel" },
   ],
 };
 
@@ -482,4 +558,4 @@ export const CATHEDRAL: Guide = {
   ],
 };
 
-export const GUIDES = [WHAT_TO_SEE, OPENING_HOURS, GETTING_THERE_GUIDE, NASRID_PALACES, ALBAICIN, SACROMONTE, CATHEDRAL];
+export const GUIDES = [WHAT_TO_SEE, ALCAZABA, OPENING_HOURS, GETTING_THERE_GUIDE, NASRID_PALACES, ALBAICIN, SACROMONTE, CATHEDRAL];

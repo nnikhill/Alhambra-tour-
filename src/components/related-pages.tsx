@@ -12,6 +12,7 @@ export const PAGE_LINKS = {
   hours: { href: "/plan/opening-hours/", title: "Opening hours", text: "Day, night and closed days." },
   gettingThere: { href: "/plan/getting-there/", title: "How to get to the Alhambra", text: "Walk, minibus, taxi or car." },
   guide: { href: "/guide/", title: "What to see inside", text: "The palaces, fortress and gardens in order." },
+  alcazaba: { href: "/guide/alcazaba/", title: "The Alcazaba fortress", text: "Towers, the parade ground and what's open now." },
   dayTrips: { href: "/day-trips/", title: "Day trips", text: "From Seville or Málaga, transport included." },
   bestTime: { href: "/blog/best-time-to-visit-the-alhambra/", title: "Best time to visit", text: "Months, days and palace slots compared." },
   howLong: { href: "/blog/how-long-do-you-need-at-the-alhambra/", title: "How long you need", text: "Plan 3 hours, and how to split them." },
