@@ -1,7 +1,9 @@
 // "Alhambra tickets sold out" page content.
 // Sources: official ticket site; turismo.granada.org (Granada Card types);
 // artvisitguide.com (Experiences/Gardens outlast General);
-// thebettervacation.com (cancelled tickets released around midnight CET).
+// turismo.granada.org/en/what-do-if-there-are-no-alhambra-tickets-official-website
+// (last-minute tickets 8–10 pm the day before; Granada Card quota and tiers;
+// free-access areas; warning about tours that get cancelled), checked 25 Nov 2026.
 
 export type Timeframe = "now" | "week" | "later";
 
@@ -48,7 +50,7 @@ export const OPTIONS: Record<OptionId, SoldOutOption> = {
   card: {
     id: "card",
     title: "Alhambra tour + Granada city pass",
-    what: "A guided Alhambra tour with the Nasrid Palaces, plus a city pass with entry to the Cathedral, the Royal Chapel and other sights, and city bus rides. Good if you're staying two days.",
+    what: "Some Alhambra tickets are kept for the official Granada Card (city pass with monuments and buses), so it can have space when the General ticket is gone. GetYourGuide sells a guided tour combined with a city pass. Good if you're staying two days.",
     price: "Live price on GetYourGuide",
     availability: "Sometimes",
     palaces: "Nasrid Palaces by day",
@@ -57,7 +59,7 @@ export const OPTIONS: Record<OptionId, SoldOutOption> = {
   midnight: {
     id: "midnight",
     title: "Check again for cancelled tickets",
-    what: "Availability changes as tickets are cancelled and released. Check entry tickets again the evening before your visit.",
+    what: "Some last-minute tickets go on sale on the official site between 8 pm and 10 pm the evening before (Granada's official tourism office). Check entry tickets again then. There's no guarantee.",
     price: "Live price on GetYourGuide",
     availability: "Rarely",
     palaces: "Nasrid Palaces by day",
@@ -105,6 +107,14 @@ export const DONT = [
   { title: "Don't buy from unknown sites", text: "Book through the official ticket site or a large platform with verified reviews and clear cancellation terms, such as GetYourGuide. Unknown sellers may not deliver a valid ticket." },
   { title: "Don't buy someone else's ticket", text: "Tickets carry the visitor's name, and staff check ID. A ticket in another name won't get you in." },
   { title: "Don't count on the ticket office", text: "On-the-day tickets are only sold if any are left, which rarely happens in spring, summer or autumn." },
+  { title: "Don't book a tour without the palaces", text: "Granada's tourism office warns that some companies sell gardens-only tours or cancel tours sold after tickets run out. Check the listing says the Nasrid Palaces entry is included, and choose free cancellation." },
+];
+
+// What you can see without any ticket (turismo.granada.org free-access list).
+export const FREE_AREAS = [
+  { name: "Palace of Charles V", text: "The Renaissance palace inside the walls, next to the Nasrid Palaces entrance." },
+  { name: "Gate of Justice and Gate of Wine", text: "The main gate into the complex and the gateway beyond it, both in the free area." },
+  { name: "Alhambra Forest and Cuesta de los Chinos", text: "The wooded slopes and the old path up the hill from the river." },
 ];
 
 export const SOLD_OUT_FAQ = [
@@ -118,15 +128,19 @@ export const SOLD_OUT_FAQ = [
   },
   {
     q: "When are cancelled Alhambra tickets released?",
-    a: "Returned tickets go back on sale on the official site. Checking just after midnight Spanish time gives you the best chance, but there's no guarantee.",
+    a: "Granada's official tourism office says some last-minute tickets may go on sale on the official Alhambra site between 8 pm and 10 pm the day before. Check again then, but there's no guarantee.",
   },
   {
     q: "Are tours on GetYourGuide real if the official site is sold out?",
-    a: "Yes. Licensed tour operators buy official tickets in advance and include them in the tour. That is why tours can have space on dates the official site shows as sold out. They cost more because a guide is included.",
+    a: "Many are: tour operators buy official tickets in advance, which is why tours can have space on sold-out dates. But Granada's official tourism office warns that some companies cancel tours booked after tickets sell out, and some sell gardens-only tours. Book only a listing that says the Nasrid Palaces entry is included, has recent reviews and offers free cancellation.",
   },
   {
     q: "Can I buy Alhambra tickets at the door?",
     a: "Only if tickets for that day are left, which is rare outside winter. Don't travel to Granada counting on it.",
+  },
+  {
+    q: "Does the Granada Card include the Alhambra?",
+    a: "Yes. A number of Alhambra tickets are kept for the Granada Card. The 72-hour and 48-hour cards include general Alhambra entry, the 24-hour card the Nasrid Palaces night visit, and the Jardines card the gardens. Check availability on the Granada Card booking site before you count on it.",
   },
   {
     q: "I only have one day in Granada. What should I book?",

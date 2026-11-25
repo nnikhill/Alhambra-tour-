@@ -8,7 +8,7 @@ import { Offers } from "@/components/home/offers";
 import { Faq } from "@/components/home/faq";
 import { FinalCta } from "@/components/home/final-cta";
 import { KEY_FACTS, LAST_CHECKED } from "@/content/facts";
-import { DONT, SOLD_OUT_FAQ } from "@/content/sold-out";
+import { DONT, FREE_AREAS, SOLD_OUT_FAQ } from "@/content/sold-out";
 import { PHOTOS } from "@/content/photos";
 import { AUTHOR, SITE, absoluteUrl } from "@/lib/site";
 import { formatDate } from "@/lib/format";
@@ -118,8 +118,8 @@ export default function SoldOutPage() {
         {/* Don't get caught out */}
         <section aria-labelledby="dont-title" className="bg-soft py-14 sm:py-16">
           <div className="wrap">
-            <h2 id="dont-title" className="section-title">Three mistakes to avoid when you&rsquo;re desperate</h2>
-            <div className="mt-8 grid gap-5 md:grid-cols-3">
+            <h2 id="dont-title" className="section-title">Four mistakes to avoid when you&rsquo;re desperate</h2>
+            <div className="mt-8 grid gap-5 sm:grid-cols-2">
               {DONT.map((d) => (
                 <div key={d.title} className="rounded-2xl border border-line bg-white p-6">
                   <ShieldAlert className="size-7 text-alert" aria-hidden />
@@ -128,6 +128,28 @@ export default function SoldOutPage() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* No ticket at all: what's still free (merged from the old blog post) */}
+        <section aria-labelledby="free-title" className="py-14 sm:py-16">
+          <div className="wrap">
+            <h2 id="free-title" className="section-title">No ticket at all? What you can still see for free</h2>
+            <p className="mt-3 max-w-[64ch] text-muted">
+              Part of the Alhambra hill is open to everyone without a ticket, according to Granada&rsquo;s official tourism office. You won&rsquo;t see the Nasrid Palaces, but you can still walk up and get a feel for the place.
+            </p>
+            <ul className="mt-6 grid gap-4 md:grid-cols-3">
+              {FREE_AREAS.map((a) => (
+                <li key={a.name} className="rounded-2xl border border-line bg-white p-5">
+                  <h3 className="font-bold">{a.name}</h3>
+                  <p className="mt-1 text-[0.95rem] text-muted">{a.text}</p>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 max-w-[64ch] text-muted">
+              Then cross the river to the <a href="/granada/albaicin/" className="font-semibold text-ink underline underline-offset-4">Albaicín</a> and the Mirador de San Nicolás for the classic view of the Alhambra, or see the{" "}
+              <a href="/granada/cathedral/" className="font-semibold text-ink underline underline-offset-4">Cathedral and Royal Chapel</a>.
+            </p>
           </div>
         </section>
 

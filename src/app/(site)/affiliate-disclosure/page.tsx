@@ -124,7 +124,7 @@ export default function AffiliateDisclosurePage() {
                   Our reviews, comparison tables, and guides are written independently. No tour operator can pay for a positive review or higher ranking on our comparison charts. We only recommend tours that have:
                 </p>
                 <ul className="mt-3 list-disc pl-6 space-y-2 text-muted">
-                  <li>Guaranteed access to the Nasrid Palaces (unless clearly noted otherwise)</li>
+                  <li>Nasrid Palaces entry included in the listing (unless clearly noted otherwise)</li>
                   <li>Official, licensed Andalusia tour guides</li>
                   <li>Consistently high customer ratings (typically 4.6/5 or higher)</li>
                   <li>Clear, fair cancellation policies</li>

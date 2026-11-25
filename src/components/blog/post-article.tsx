@@ -82,6 +82,18 @@ export function PostArticle({ p, related, preview = false }: { p: PostView; rela
                     <span className="block text-muted">Updated {formatDate(p.updatedAt)} · checked against the official Alhambra site</span>
                   </span>
                 </div>
+                {/* Mobile: a booking path in the first screen (desktop has the sidebar card). */}
+                <div className="mt-5 lg:hidden">
+                  <a
+                    href={gygUrl((p.booking ?? DEFAULT_BOOKING).query, { page: `blog_${p.slug}`, position: "header" })}
+                    target="_blank"
+                    rel="sponsored nofollow noopener"
+                    className="btn btn-primary h-11 px-5 text-[0.95rem]"
+                    data-track="affiliate_click"
+                  >
+                    {(p.booking ?? DEFAULT_BOOKING).label} <ArrowRight className="size-4" aria-hidden />
+                  </a>
+                </div>
               </div>
             </div>
           </header>

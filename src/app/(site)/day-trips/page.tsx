@@ -39,6 +39,15 @@ export default function DayTripsHub() {
         <p className="mt-3.5 max-w-[52ch] text-sm leading-relaxed text-muted sm:text-base">
           Staying on the coast or in Seville? These trips bring you to Granada and back with a guide, and on most options the Alhambra ticket.
         </p>
+        <a
+          href={gygUrl("Alhambra day trip from Malaga", { page: "day_trips", position: "header_mobile" })}
+          target="_blank"
+          rel="sponsored nofollow noopener"
+          className="mt-3 inline-flex min-h-11 items-center gap-1 text-[0.95rem] font-semibold text-brand underline underline-offset-4 sm:hidden"
+          data-track="affiliate_click"
+        >
+          See Alhambra day trips &rarr;
+        </a>
         <div className="mt-8 max-w-[760px] rounded-2xl border border-[#efd5b5] bg-[#fdf6ec] p-6">
           <p className="text-[0.85rem] font-semibold text-[#8a4b0a]">Short answer</p>
           <p className="mt-2 text-[1.08rem] leading-relaxed text-ink">

@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import { CalendarClock, Moon, Sun } from "lucide-react";
-import { OPTIONS, RANKING, type Timeframe } from "@/content/sold-out";
+import { OPTIONS, RANKING, type OptionId, type Timeframe } from "@/content/sold-out";
 import { gygUrl } from "@/lib/gyg";
 
-// "When is your visit?" → ranked options. One choice at a time; the best bet
-// for that situation is highlighted, with honest availability labels.
+// "When is your visit?" → ranked options. All 7 ways are always in the HTML
+// (crawlers and AI fetchers see the full list); the timeframe only reorders
+// them, with the best bet for that situation highlighted.
 
 const AVAIL_STYLE = {
   Often: "bg-[#e7f6ee] text-[#0f6b3f]",
@@ -17,6 +18,7 @@ const AVAIL_STYLE = {
 export function OptionFinder() {
   const [tf, setTf] = useState<Timeframe>("week");
   const r = RANKING[tf];
+  const order = [...r.order, ...(Object.keys(OPTIONS) as OptionId[]).filter((id) => !r.order.includes(id))];
 
   return (
     <section id="options" aria-labelledby="options-title" className="scroll-mt-24 py-12 sm:py-14">
@@ -43,7 +45,7 @@ export function OptionFinder() {
         </p>
 
         <ol aria-live="polite" className="mt-7 grid gap-4">
-          {r.order.map((id, i) => {
+          {order.map((id, i) => {
             const o = OPTIONS[id];
             const best = i === 0;
             const href =

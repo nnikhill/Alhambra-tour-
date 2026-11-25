@@ -14,6 +14,7 @@ import { gygUrl } from "@/lib/gyg";
 // independence + affiliate note before the first booking link.
 export function GuideArticle({ g }: { g: Guide }) {
   const toc = g.body.filter((b): b is Extract<Block, { type: "h2" }> => b.type === "h2");
+  const headerCta = g.body.find((b): b is Extract<Block, { type: "cta" }> => b.type === "cta" && !!b.query);
   return (
     <>
       <JsonLd
@@ -45,6 +46,18 @@ export function GuideArticle({ g }: { g: Guide }) {
               By <Link href="/about/" className="font-semibold text-ink no-underline hover:underline">{AUTHOR.name}</Link>. Last checked {formatDate(g.updated)} against the official Alhambra website. We are an independent guide, not the official
               ticket seller. Some links are <Link href="/affiliate-disclosure/" className="underline underline-offset-2">affiliate links</Link>.
             </p>
+            {headerCta && (
+              // Mobile: a booking path in the first screen (desktop has the sidebar).
+              <a
+                href={gygUrl(headerCta.query!, { page: g.pageId, position: "header" })}
+                target="_blank"
+                rel="sponsored nofollow noopener"
+                className="btn btn-primary mt-5 h-11 px-5 text-[0.95rem] lg:hidden"
+                data-track="affiliate_click"
+              >
+                {headerCta.label} <ArrowRight className="size-4" aria-hidden />
+              </a>
+            )}
           </header>
 
           <figure className="wrap mt-8 max-w-[1080px]">

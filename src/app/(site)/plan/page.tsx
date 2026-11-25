@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { gygUrl } from "@/lib/gyg";
 import { withOg } from "@/lib/seo";
 import Link from "next/link";
 import { Bus, Car, Check, Footprints } from "lucide-react";
@@ -62,6 +63,15 @@ export default function PlanPage() {
               <p className="mt-3 text-base text-muted sm:text-lg leading-relaxed">
                 Everything is timed around one thing: your Nasrid Palaces slot. Enter it below and we&rsquo;ll lay out your day.
               </p>
+              <a
+                href={gygUrl("Alhambra entry ticket", { page: "plan", position: "header_mobile" })}
+                target="_blank"
+                rel="sponsored nofollow noopener"
+                className="mt-3 inline-flex min-h-11 items-center gap-1 text-[0.95rem] font-semibold text-brand underline underline-offset-4 sm:hidden"
+                data-track="affiliate_click"
+              >
+                No ticket yet? Check tickets for your date &rarr;
+              </a>
             </div>
 
             <dl className="mt-8 grid grid-cols-2 gap-y-5 border-y border-line/80 py-6 sm:grid-cols-4 sm:gap-x-8">

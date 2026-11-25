@@ -48,7 +48,19 @@ export function DayTripPage({ slug }: { slug: City["slug"] }) {
               <h1 className="font-serif text-[clamp(1.85rem,3.4vw,2.75rem)] font-bold leading-[1.1] tracking-[-0.025em]">
                 Alhambra day trip from {c.name}
               </h1>
-              <p className="max-w-[26rem] text-sm leading-relaxed text-muted sm:text-base lg:justify-self-end lg:pb-2 lg:text-right">{c.intro}</p>
+              <p className="max-w-[26rem] text-sm leading-relaxed text-muted sm:text-base lg:justify-self-end lg:pb-2 lg:text-right">{c.intro}
+                {coach?.query && (
+                  <a
+                    href={gygUrl(coach.query, { page: `daytrip_${slug}`, position: "header_mobile" })}
+                    target="_blank"
+                    rel="sponsored nofollow noopener"
+                    className="mt-2 flex min-h-11 items-center gap-1 font-semibold text-brand underline underline-offset-4 sm:hidden"
+                    data-track="affiliate_click"
+                  >
+                    See day trips from {c.name} &rarr;
+                  </a>
+                )}
+              </p>
             </div>
 
             <dl className="mt-8 grid grid-cols-2 gap-y-4 border-y border-line py-5 md:grid-cols-4">

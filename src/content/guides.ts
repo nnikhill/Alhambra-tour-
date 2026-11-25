@@ -415,7 +415,7 @@ export const ALBAICIN: Guide = {
   photo: PHOTOS.hero,
   updated: CHECKED,
   body: [
-    { type: "answer", text: "The Albaicín is Granada's old Moorish quarter, on the hill facing the Alhambra and a UNESCO World Heritage Site alongside it since 1984. Start at Plaza Nueva, follow the Carrera del Darro along the river to the Paseo de los Tristes, then climb the steep lanes to the Mirador de San Nicolás for sunset over the Alhambra. Allow about two hours with stops." },
+    { type: "answer", text: "The Albaicín is Granada's old Moorish quarter, on the hill facing the Alhambra and part of its UNESCO World Heritage listing since 1994. Start at Plaza Nueva, follow the Carrera del Darro along the river to the Paseo de los Tristes, then climb the steep lanes to the Mirador de San Nicolás for sunset over the Alhambra. Allow about two hours with stops." },
     { type: "h2", id: "what", text: "What the Albaicín is" },
     { type: "p", text: "Before the Alhambra was built up, Granada grew on this hill. Today it's a maze of whitewashed houses, walled gardens (cármenes), old churches built on mosque sites and tiny squares. It shares its UNESCO listing with the Alhambra, and from almost every corner you look straight across at it." },
     { type: "h2", id: "route", text: "A two-hour Albaicín walking route" },
@@ -440,7 +440,7 @@ export const ALBAICIN: Guide = {
     { q: "How long do you need for the Albaicín?", a: "About two hours for the walk from Plaza Nueva to the Mirador de San Nicolás with stops. Longer if you visit the Andalusi monuments or stop for lunch." },
     { q: "Is the Albaicín steep?", a: "Yes. Above the river the lanes are steep and cobbled. Wear proper shoes, or take the C31 minibus up from Plaza Nueva and walk down." },
     { q: "When is the best time to visit the Mirador de San Nicolás?", a: "Sunset, when the Alhambra glows red. Arrive about half an hour early, as it gets crowded." },
-    { q: "Is the Albaicín a UNESCO site?", a: "Yes. It was added in 1984, alongside the Alhambra." },
+    { q: "Is the Albaicín a UNESCO site?", a: "Yes. The Alhambra and Generalife were listed in 1984, and the listing was extended to the Albaicín in 1994." },
   ],
   sidebar: { title: "See it with a local", text: "Sunset walking tour of the Albaicín and Sacromonte.", label: "Check dates", product: "Albaicin Sacromonte walking tour" },
   next: [

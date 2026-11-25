@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { gygUrl } from "@/lib/gyg";
 import { withOg } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { JsonLd } from "@/components/json-ld";
@@ -64,6 +65,15 @@ export default function ToursPage() {
               <p className="mt-3 text-base text-muted sm:text-lg leading-relaxed">
                 Every tour here includes the entry ticket. Tell us who&rsquo;s going and when, and we&rsquo;ll point you to the right kind of tour.
               </p>
+              <a
+                href={gygUrl("Alhambra guided tour Nasrid Palaces", { page: "tours", position: "header_mobile" })}
+                target="_blank"
+                rel="sponsored nofollow noopener"
+                className="mt-3 inline-flex min-h-11 items-center gap-1 text-[0.95rem] font-semibold text-brand underline underline-offset-4 sm:hidden"
+                data-track="affiliate_click"
+              >
+                Already decided? See tours with tickets &rarr;
+              </a>
             </div>
 
             <div className="mt-8">

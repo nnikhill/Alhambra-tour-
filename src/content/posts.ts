@@ -22,7 +22,7 @@
 // strollers, toilets, bags, children's tickets); travelynnfamily.com (2.5 h with kids).
 // granada-in-one-day: turismo.granada.org (C31/C34 from Plaza Nueva, Sacromonte
 // as the cradle of flamenco); getyourguide.com location page (Royal Chapel
-// tombs of Ferdinand and Isabella); afar.com (Albaicín UNESCO 1984).
+// tombs of Ferdinand and Isabella); whc.unesco.org/en/list/314 (Alhambra 1984, Albaicín added 1994).
 
 import type { Photo } from "./photos";
 import { PHOTOS } from "./photos";
