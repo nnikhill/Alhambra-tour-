@@ -1,15 +1,22 @@
-import type { MetadataRoute } from "next";
 import { absoluteUrl } from "@/lib/site";
 import { LAST_CHECKED } from "@/content/facts";
 import { listPublished } from "@/lib/blog/repo";
 import { GUIDES } from "@/content/guides";
 
-// Phase 2: generated from published rows in the `pages` and `posts` tables.
+// /sitemap.xml as a plain route handler, like /llms.txt. The metadata-route
+// version (app/sitemap.ts) was never refreshed on Vercel after the build: it
+// kept trashed posts and missed new ones. This one refreshes hourly and when
+// a post is saved in the admin (revalidatePath in admin-repo).
 export const revalidate = 3600;
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+type Entry = { url: string; lastModified: string | Date; changeFrequency: string; priority: number };
+
+const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const day = (d: string | Date) => (typeof d === "string" ? d : d.toISOString());
+
+export async function GET() {
   const posts = (await listPublished()).filter((p) => !p.noindex && !p.canonicalUrl);
-  return [
+  const entries: Entry[] = [
     { url: absoluteUrl("/"), lastModified: LAST_CHECKED, changeFrequency: "weekly", priority: 1 },
     { url: absoluteUrl("/tickets/"), lastModified: LAST_CHECKED, changeFrequency: "weekly", priority: 0.9 },
     { url: absoluteUrl("/tickets/sold-out/"), lastModified: LAST_CHECKED, changeFrequency: "weekly", priority: 0.9 },
@@ -28,4 +35,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: absoluteUrl("/affiliate-disclosure/"), lastModified: LAST_CHECKED, changeFrequency: "yearly", priority: 0.2 },
     { url: absoluteUrl("/contact/"), lastModified: LAST_CHECKED, changeFrequency: "yearly", priority: 0.2 },
   ];
+  const body =
+    '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    entries
+      .map((e) => `<url>\n<loc>${esc(e.url)}</loc>\n<lastmod>${day(e.lastModified)}</lastmod>\n<changefreq>${e.changeFrequency}</changefreq>\n<priority>${e.priority}</priority>\n</url>`)
+      .join("\n") +
+    "\n</urlset>\n";
+  return new Response(body, { headers: { "Content-Type": "application/xml; charset=utf-8" } });
 }

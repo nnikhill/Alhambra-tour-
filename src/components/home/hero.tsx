@@ -141,7 +141,7 @@ export function Hero() {
             <div className="relative px-4 py-2.5 transition-colors hover:bg-[#faf8f5] sm:px-5 sm:py-3">
               <label
                 htmlFor="f-tour"
-                className="block text-[0.62rem] font-bold uppercase tracking-[0.08em] text-[#717b8c] sm:text-[0.66rem]"
+                className="block text-[0.62rem] font-bold uppercase tracking-[0.08em] text-muted sm:text-[0.66rem]"
               >
                 Tour
               </label>
@@ -174,7 +174,7 @@ export function Hero() {
             <div className="relative px-4 py-2.5 transition-colors hover:bg-[#faf8f5] sm:px-5 sm:py-3">
               <label
                 htmlFor="f-who"
-                className="block text-[0.62rem] font-bold uppercase tracking-[0.08em] text-[#717b8c] sm:text-[0.66rem]"
+                className="block text-[0.62rem] font-bold uppercase tracking-[0.08em] text-muted sm:text-[0.66rem]"
               >
                 Who
               </label>
@@ -201,7 +201,7 @@ export function Hero() {
             <div className="relative px-4 py-2.5 transition-colors hover:bg-[#faf8f5] sm:px-5 sm:py-3">
               <label
                 htmlFor="f-lang"
-                className="block text-[0.62rem] font-bold uppercase tracking-[0.08em] text-[#717b8c] sm:text-[0.66rem]"
+                className="block text-[0.62rem] font-bold uppercase tracking-[0.08em] text-muted sm:text-[0.66rem]"
               >
                 Guide Language
               </label>

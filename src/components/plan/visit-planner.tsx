@@ -62,7 +62,7 @@ export function VisitPlanner() {
         <div>
           <label
             htmlFor="slot"
-            className="block text-[0.68rem] font-bold uppercase tracking-[0.1em] text-[#717b8c]"
+            className="block text-[0.68rem] font-bold uppercase tracking-[0.1em] text-muted"
           >
             Your Nasrid Palaces time
           </label>
@@ -86,7 +86,7 @@ export function VisitPlanner() {
 
         {/* Transportation pills */}
         <fieldset>
-          <legend className="text-[0.68rem] font-bold uppercase tracking-[0.1em] text-[#717b8c]">
+          <legend className="text-[0.68rem] font-bold uppercase tracking-[0.1em] text-muted">
             Getting up the hill
           </legend>
           <div className="mt-2 flex flex-wrap gap-2">
@@ -115,7 +115,7 @@ export function VisitPlanner() {
         className="mt-6 rounded-2xl border border-line/70 bg-[#faf8f5] p-5 sm:p-6"
         aria-live="polite"
       >
-        <span className="text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[#b87428]">
+        <span className="text-[0.68rem] font-bold uppercase tracking-[0.12em] text-amber-deep">
           {morning
             ? "Morning slot: palaces first, gardens after"
             : "Afternoon slot: gardens first, palaces after"}

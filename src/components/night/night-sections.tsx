@@ -71,7 +71,7 @@ export function NightOptions() {
     <section id="night-options" aria-labelledby="opts-title" className="scroll-mt-24 bg-[#fbf9f5] py-14 sm:py-18">
       <div className="wrap">
         <div className="text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#b87428]">
+          <p className="text-xs font-bold uppercase tracking-[0.14em] text-amber-deep">
             &mdash; NIGHT VISIT OPTIONS &mdash;
           </p>
           <h2 id="opts-title" className="mt-2.5 font-serif text-3xl font-bold tracking-tight text-ink sm:text-4xl">
@@ -164,7 +164,7 @@ export function DayVsNight() {
     <section aria-labelledby="dvn-title" className="bg-[#fbf9f5] border-t border-line/50 py-14 sm:py-18">
       <div className="wrap grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
         <div>
-          <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#b87428]">
+          <p className="text-xs font-bold uppercase tracking-[0.14em] text-amber-deep">
             &mdash; USEFUL INFO &mdash;
           </p>
           <h2 id="dvn-title" className="mt-2.5 font-serif text-3xl font-bold tracking-tight text-ink sm:text-4xl">
@@ -270,7 +270,7 @@ export function NightPlan() {
 
         {/* Right Side: Step list */}
         <div>
-          <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#b87428]">
+          <p className="text-xs font-bold uppercase tracking-[0.14em] text-amber-deep">
             &mdash; HOW TO PLAN &mdash;
           </p>
           <h2 id="plan-title" className="mt-2.5 font-serif text-3xl font-bold tracking-tight text-ink sm:text-4xl">

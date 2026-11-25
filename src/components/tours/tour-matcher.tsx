@@ -53,7 +53,7 @@ export function TourMatcher() {
       <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-start">
         {/* Who's going */}
         <fieldset>
-          <legend className="text-[0.68rem] font-bold uppercase tracking-[0.1em] text-[#717b8c]">
+          <legend className="text-[0.68rem] font-bold uppercase tracking-[0.1em] text-muted">
             Who&rsquo;s going
           </legend>
           <div className="mt-2.5 flex flex-wrap gap-2">
@@ -77,7 +77,7 @@ export function TourMatcher() {
 
         {/* When */}
         <fieldset>
-          <legend className="text-[0.68rem] font-bold uppercase tracking-[0.1em] text-[#717b8c]">
+          <legend className="text-[0.68rem] font-bold uppercase tracking-[0.1em] text-muted">
             When
           </legend>
           <div className="mt-2.5 flex gap-2">
@@ -127,7 +127,7 @@ export function TourMatcher() {
           </div>
 
           <div className="min-w-0 flex-1">
-            <span className="text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[#b87428]">
+            <span className="text-[0.68rem] font-bold uppercase tracking-[0.12em] text-amber-deep">
               Your best match
             </span>
             <h2 className="mt-1 font-serif text-xl font-bold tracking-tight text-ink sm:text-2xl">

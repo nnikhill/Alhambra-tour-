@@ -152,7 +152,7 @@ export function NightHero() {
             <div className="px-5 py-3.5 sm:px-6 sm:py-4">
               <label
                 htmlFor="night-date"
-                className="block text-[0.66rem] font-bold uppercase tracking-[0.08em] text-[#717b8c]"
+                className="block text-[0.66rem] font-bold uppercase tracking-[0.08em] text-muted"
               >
                 Your date in Granada
               </label>
@@ -171,7 +171,7 @@ export function NightHero() {
 
             {/* Column 2: Schedule summary */}
             <div className="px-5 py-3.5 sm:px-6 sm:py-4">
-              <span className="block text-[0.66rem] font-bold uppercase tracking-[0.08em] text-[#717b8c]">
+              <span className="block text-[0.66rem] font-bold uppercase tracking-[0.08em] text-muted">
                 In this season it runs
               </span>
               <p className="mt-1 text-[0.95rem] font-semibold text-ink">
@@ -181,7 +181,7 @@ export function NightHero() {
 
             {/* Column 3: Next available night dates */}
             <div className="px-5 py-3.5 sm:px-6 sm:py-4">
-              <span className="block text-[0.66rem] font-bold uppercase tracking-[0.08em] text-[#717b8c]">
+              <span className="block text-[0.66rem] font-bold uppercase tracking-[0.08em] text-muted">
                 Night visits on
               </span>
               <div className="mt-1.5 flex flex-wrap gap-1.5">

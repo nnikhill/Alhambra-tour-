@@ -23,7 +23,11 @@ export async function guardApi(req: Request, min: Role = "writer"): Promise<Guar
   if (req.method !== "GET" && req.method !== "HEAD") {
     const origin = req.headers.get("origin");
     const host = req.headers.get("x-forwarded-host") ?? req.headers.get("host");
-    if (!origin || !host || new URL(origin).host !== host) {
+    let originHost = "";
+    try {
+      originHost = origin ? new URL(origin).host : "";
+    } catch {} // "null" or garbage: treated as a foreign origin
+    if (!originHost || !host || originHost !== host) {
       return { error: NextResponse.json({ error: "Bad origin" }, { status: 403 }) };
     }
   }

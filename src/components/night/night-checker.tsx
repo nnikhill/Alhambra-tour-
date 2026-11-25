@@ -54,7 +54,7 @@ export function NightChecker() {
         <div>
           <label
             htmlFor="night-date"
-            className="block text-[0.68rem] font-bold uppercase tracking-[0.1em] text-[#717b8c]"
+            className="block text-[0.68rem] font-bold uppercase tracking-[0.1em] text-muted"
           >
             Your date in Granada
           </label>
@@ -92,7 +92,7 @@ export function NightChecker() {
             </div>
           ) : (
             <div className="rounded-2xl border border-line/70 bg-[#faf8f5] p-5">
-              <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#717b8c]">
+              <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted">
                 <span className="size-2 rounded-full bg-[#9ca3af]" aria-hidden />
                 No night visit on {fmt(date, true)}
               </span>

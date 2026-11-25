@@ -63,10 +63,10 @@ export function SiteHeader() {
         <div className="grid h-16 grid-cols-[minmax(0,1fr)_auto] items-center gap-2 pl-3 pr-2 sm:gap-3 sm:pl-6 xl:grid-cols-[1fr_auto_1fr]">
           <Link
             href="/"
-            className="flex min-w-0 items-center gap-2 justify-self-start whitespace-nowrap font-serif text-[0.98rem] font-bold tracking-[-0.01em] no-underline transition-colors sm:gap-2.5 sm:text-[1.25rem]"
+            className="flex min-w-0 max-w-full items-center gap-2 justify-self-stretch whitespace-nowrap xl:justify-self-start font-serif text-[0.92rem] font-bold tracking-[-0.01em] no-underline transition-colors sm:gap-2.5 sm:text-[1.25rem]"
           >
             <ArchMark className={isDark ? "text-[#e5b364]" : "text-amber"} />
-            <span className="truncate">{SITE.name}</span>
+            <span className="min-w-0 truncate">{SITE.name}</span>
           </Link>
 
           <nav aria-label="Main" className="hidden xl:block">
@@ -100,7 +100,7 @@ export function SiteHeader() {
           <div className="flex items-center gap-2 justify-self-end">
             <Link
               href="/tickets/"
-              className={`inline-flex min-h-11 shrink-0 items-center gap-1.5 rounded-full px-3.5 text-[0.92rem] font-semibold transition-colors sm:min-h-12 sm:px-5 sm:text-[0.95rem] ${
+              className={`inline-flex min-h-11 shrink-0 items-center gap-1.5 rounded-full px-3 text-[0.88rem] font-semibold transition-colors sm:min-h-12 sm:px-5 sm:text-[0.95rem] ${
                 isDark
                   ? "border border-white/35 bg-white/15 text-white hover:bg-white/25 shadow-sm"
                   : "btn btn-ink"

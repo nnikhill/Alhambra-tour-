@@ -128,7 +128,7 @@ export function TourTypes() {
     <section id="compare-tours" aria-labelledby="types-title" className="scroll-mt-24 bg-[#faf7f2] border-t border-line/40 py-14 sm:py-20">
       <div className="wrap">
         <div className="text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#b87428]">
+          <p className="text-xs font-bold uppercase tracking-[0.14em] text-amber-deep">
             &mdash; OUR TOURS &mdash;
           </p>
           <h2 id="types-title" className="mt-2.5 font-serif text-3xl font-bold tracking-tight text-ink sm:text-4xl">
@@ -178,7 +178,7 @@ export function TourTypes() {
                       </span>
                     )}
                     {t.nasrid === "no" && (
-                      <span className="inline-flex items-center gap-1 rounded-full bg-[#fef2f2] px-2.5 py-0.5 text-[0.72rem] font-semibold text-[#dc2626]">
+                      <span className="inline-flex items-center gap-1 rounded-full bg-[#fef2f2] px-2.5 py-0.5 text-[0.72rem] font-semibold text-alert">
                         <Ban className="size-3" />
                         <span>No palaces</span>
                       </span>
